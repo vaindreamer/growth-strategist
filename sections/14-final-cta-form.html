@@ -1,0 +1,181 @@
+<!-- ============================================================
+     LEVEL UP TALENT SOLUTIONS — RPO LANDING PAGE
+     Section 14: final-cta-form
+     Paste this entire block into a GoHighLevel "Custom Code" /
+     "Custom HTML" element in this position on the page.
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ===== LVLUP RPO LANDING PAGE — DESIGN SYSTEM =====
+   This same <style> block is repeated at the top of every file in /sections/
+   so each section can be pasted into GoHighLevel as an independent Custom
+   Code element and still render correctly. Do not remove it from a section
+   file when copying into GHL. */
+:root{
+  --navy:#004AAD;
+  --navy-dark:#00337a;
+  --blue:#0099FF;
+  --gold:#FFB803;
+  --white:#FFFFFF;
+  --ink:#0A1A33;
+  --gray-700:#3E4C63;
+  --gray-500:#6B7A90;
+  --gray-100:#F3F6FB;
+  --gray-200:#E6ECF5;
+  --radius:16px;
+  --shadow:0 20px 45px -20px rgba(0,45,110,0.25);
+  --container:1160px;
+}
+.lvlup *{box-sizing:border-box;}
+.lvlup{
+  font-family:'Roboto',Arial,sans-serif;
+  color:var(--ink);
+  line-height:1.6;
+  background:var(--white);
+}
+.lvlup h1,.lvlup h2,.lvlup h3,.lvlup h4{
+  font-family:'Poppins',Arial,sans-serif;
+  color:var(--navy);
+  line-height:1.2;
+  margin:0 0 16px;
+  font-weight:700;
+}
+.lvlup p{margin:0 0 16px;color:var(--gray-700);}
+.lvlup a{text-decoration:none;}
+.lvlup img{max-width:100%;display:block;}
+.lvlup .container{max-width:var(--container);margin:0 auto;padding:0 24px;}
+.lvlup .eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Poppins',Arial,sans-serif;
+  font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--navy);background:var(--gray-100);
+  padding:8px 16px;border-radius:999px;margin-bottom:18px;
+}
+.lvlup .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);}
+.lvlup .btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-family:'Poppins',Arial,sans-serif;font-weight:600;font-size:16px;
+  padding:16px 32px;border-radius:10px;border:2px solid transparent;
+  cursor:pointer;transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  white-space:nowrap;
+}
+.lvlup .btn:hover{transform:translateY(-2px);}
+.lvlup .btn-gold{background:var(--gold);color:var(--navy);box-shadow:0 12px 24px -10px rgba(255,184,3,0.6);}
+.lvlup .btn-gold:hover{box-shadow:0 16px 30px -10px rgba(255,184,3,0.75);}
+.lvlup .btn-outline{background:transparent;border-color:rgba(255,255,255,0.55);color:var(--white);}
+.lvlup .btn-outline:hover{background:rgba(255,255,255,0.12);}
+.lvlup .btn-navy{background:var(--navy);color:var(--white);}
+.lvlup .btn-navy:hover{background:var(--navy-dark);}
+.lvlup .btn-block{width:100%;}
+.lvlup .cta-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center;}
+.lvlup .section{padding:88px 0;}
+.lvlup .section-tight{padding:64px 0;}
+.lvlup .section-head{max-width:680px;margin:0 auto 48px;text-align:center;}
+.lvlup .section-head p{font-size:18px;}
+.lvlup .bg-navy{background:var(--navy);color:var(--white);}
+.lvlup .bg-navy h2,.lvlup .bg-navy h3,.lvlup .bg-navy h4{color:var(--white);}
+.lvlup .bg-navy p{color:rgba(255,255,255,0.82);}
+.lvlup .bg-gray{background:var(--gray-100);}
+.lvlup .grid{display:grid;gap:28px;}
+.lvlup .grid-2{grid-template-columns:repeat(2,1fr);}
+.lvlup .grid-3{grid-template-columns:repeat(3,1fr);}
+.lvlup .grid-4{grid-template-columns:repeat(4,1fr);}
+.lvlup .card{
+  background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius);
+  padding:32px;box-shadow:var(--shadow);
+}
+.lvlup .badge-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:44px;height:44px;border-radius:50%;background:var(--navy);color:var(--white);
+  font-family:'Poppins',Arial,sans-serif;font-weight:700;font-size:18px;margin-bottom:16px;
+}
+.lvlup .icon-tile{
+  width:56px;height:56px;border-radius:12px;background:var(--gray-100);
+  display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+  font-size:26px;
+}
+.lvlup .divider-gold{width:64px;height:4px;background:var(--gold);border-radius:2px;margin:0 auto 24px;}
+@media(max-width:900px){
+  .lvlup .grid-4{grid-template-columns:repeat(2,1fr);}
+  .lvlup .grid-3{grid-template-columns:repeat(2,1fr);}
+  .lvlup .grid-2{grid-template-columns:1fr;}
+}
+@media(max-width:640px){
+  .lvlup .section{padding:56px 0;}
+  .lvlup .grid-4,.lvlup .grid-3{grid-template-columns:1fr;}
+  .lvlup h1{font-size:34px !important;}
+  .lvlup h2{font-size:28px !important;}
+}
+</style>
+<div class="lvlup">
+<section class="section bg-navy" id="book-a-call" style="position:relative;overflow:hidden;">
+  <div style="position:absolute;top:-100px;right:-100px;width:340px;height:340px;background:var(--blue);opacity:0.15;border-radius:50%;"></div>
+  <div class="container" style="position:relative;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;">
+    <div>
+      <span class="eyebrow" style="background:rgba(255,255,255,0.1);color:var(--white);">Let's Talk</span>
+      <h2 style="color:var(--white);font-size:34px;">Ready to Level Up Your Hiring?</h2>
+      <p style="font-size:17px;">Tell us about your open roles and we'll show you exactly how an RPO engagement would work for your team — no pressure, no obligation.</p>
+      <div style="margin:28px 0;">
+        <p style="color:rgba(255,255,255,0.85);margin-bottom:10px;">📞 <strong style="color:var(--white);">Prefer to talk live?</strong></p>
+        <!-- TODO: Replace href below with your GHL Calendar booking link -->
+        <a href="#" class="btn btn-gold">Book a Free Strategy Call</a>
+      </div>
+      <p style="font-size:14px;color:rgba(255,255,255,0.6);">Or fill out the form and our team will follow up within one business day.</p>
+    </div>
+
+    <div class="card" style="background:var(--white);">
+      <!--
+        GHL SETUP NOTE:
+        Recommended: delete this native <form> and drop in a GoHighLevel
+        "Form" element here instead, styled to match (white card, navy
+        labels, gold submit button). If you'd rather keep this markup,
+        point the form's action at your GHL inbound webhook / form post
+        URL, or wire it to a GHL Workflow via the form's "action" endpoint.
+      -->
+      <form action="#" method="POST" style="display:flex;flex-direction:column;gap:14px;">
+        <h4 style="font-size:18px;margin-bottom:4px;">Get Your Custom RPO Quote</h4>
+        <div class="grid grid-2" style="gap:14px;">
+          <div>
+            <label style="font-family:'Poppins',Arial,sans-serif;font-size:13px;font-weight:600;color:var(--navy);">First Name</label>
+            <input type="text" name="first_name" required style="width:100%;padding:12px 14px;border:1px solid var(--gray-200);border-radius:8px;margin-top:6px;font-family:'Roboto',Arial,sans-serif;">
+          </div>
+          <div>
+            <label style="font-family:'Poppins',Arial,sans-serif;font-size:13px;font-weight:600;color:var(--navy);">Last Name</label>
+            <input type="text" name="last_name" required style="width:100%;padding:12px 14px;border:1px solid var(--gray-200);border-radius:8px;margin-top:6px;font-family:'Roboto',Arial,sans-serif;">
+          </div>
+        </div>
+        <div>
+          <label style="font-family:'Poppins',Arial,sans-serif;font-size:13px;font-weight:600;color:var(--navy);">Work Email</label>
+          <input type="email" name="email" required style="width:100%;padding:12px 14px;border:1px solid var(--gray-200);border-radius:8px;margin-top:6px;font-family:'Roboto',Arial,sans-serif;">
+        </div>
+        <div>
+          <label style="font-family:'Poppins',Arial,sans-serif;font-size:13px;font-weight:600;color:var(--navy);">Phone</label>
+          <input type="tel" name="phone" style="width:100%;padding:12px 14px;border:1px solid var(--gray-200);border-radius:8px;margin-top:6px;font-family:'Roboto',Arial,sans-serif;">
+        </div>
+        <div>
+          <label style="font-family:'Poppins',Arial,sans-serif;font-size:13px;font-weight:600;color:var(--navy);">Company</label>
+          <input type="text" name="company" style="width:100%;padding:12px 14px;border:1px solid var(--gray-200);border-radius:8px;margin-top:6px;font-family:'Roboto',Arial,sans-serif;">
+        </div>
+        <div>
+          <label style="font-family:'Poppins',Arial,sans-serif;font-size:13px;font-weight:600;color:var(--navy);"># of Roles You're Hiring For</label>
+          <select name="roles_to_fill" style="width:100%;padding:12px 14px;border:1px solid var(--gray-200);border-radius:8px;margin-top:6px;font-family:'Roboto',Arial,sans-serif;">
+            <option value="">Select one</option>
+            <option value="1-3">1–3</option>
+            <option value="4-10">4–10</option>
+            <option value="11-25">11–25</option>
+            <option value="25+">25+</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-family:'Poppins',Arial,sans-serif;font-size:13px;font-weight:600;color:var(--navy);">What roles are you hiring for?</label>
+          <textarea name="message" rows="3" style="width:100%;padding:12px 14px;border:1px solid var(--gray-200);border-radius:8px;margin-top:6px;font-family:'Roboto',Arial,sans-serif;resize:vertical;"></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold btn-block" style="border:none;margin-top:6px;">Request My Custom Quote</button>
+        <p style="font-size:12px;color:var(--gray-500);text-align:center;margin:0;">By submitting, you agree to be contacted by Level Up Talent Solutions.</p>
+      </form>
+    </div>
+  </div>
+</section>
+</div>

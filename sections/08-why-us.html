@@ -1,0 +1,148 @@
+<!-- ============================================================
+     LEVEL UP TALENT SOLUTIONS — RPO LANDING PAGE
+     Section 08: why-us
+     Paste this entire block into a GoHighLevel "Custom Code" /
+     "Custom HTML" element in this position on the page.
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ===== LVLUP RPO LANDING PAGE — DESIGN SYSTEM =====
+   This same <style> block is repeated at the top of every file in /sections/
+   so each section can be pasted into GoHighLevel as an independent Custom
+   Code element and still render correctly. Do not remove it from a section
+   file when copying into GHL. */
+:root{
+  --navy:#004AAD;
+  --navy-dark:#00337a;
+  --blue:#0099FF;
+  --gold:#FFB803;
+  --white:#FFFFFF;
+  --ink:#0A1A33;
+  --gray-700:#3E4C63;
+  --gray-500:#6B7A90;
+  --gray-100:#F3F6FB;
+  --gray-200:#E6ECF5;
+  --radius:16px;
+  --shadow:0 20px 45px -20px rgba(0,45,110,0.25);
+  --container:1160px;
+}
+.lvlup *{box-sizing:border-box;}
+.lvlup{
+  font-family:'Roboto',Arial,sans-serif;
+  color:var(--ink);
+  line-height:1.6;
+  background:var(--white);
+}
+.lvlup h1,.lvlup h2,.lvlup h3,.lvlup h4{
+  font-family:'Poppins',Arial,sans-serif;
+  color:var(--navy);
+  line-height:1.2;
+  margin:0 0 16px;
+  font-weight:700;
+}
+.lvlup p{margin:0 0 16px;color:var(--gray-700);}
+.lvlup a{text-decoration:none;}
+.lvlup img{max-width:100%;display:block;}
+.lvlup .container{max-width:var(--container);margin:0 auto;padding:0 24px;}
+.lvlup .eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Poppins',Arial,sans-serif;
+  font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--navy);background:var(--gray-100);
+  padding:8px 16px;border-radius:999px;margin-bottom:18px;
+}
+.lvlup .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);}
+.lvlup .btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-family:'Poppins',Arial,sans-serif;font-weight:600;font-size:16px;
+  padding:16px 32px;border-radius:10px;border:2px solid transparent;
+  cursor:pointer;transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  white-space:nowrap;
+}
+.lvlup .btn:hover{transform:translateY(-2px);}
+.lvlup .btn-gold{background:var(--gold);color:var(--navy);box-shadow:0 12px 24px -10px rgba(255,184,3,0.6);}
+.lvlup .btn-gold:hover{box-shadow:0 16px 30px -10px rgba(255,184,3,0.75);}
+.lvlup .btn-outline{background:transparent;border-color:rgba(255,255,255,0.55);color:var(--white);}
+.lvlup .btn-outline:hover{background:rgba(255,255,255,0.12);}
+.lvlup .btn-navy{background:var(--navy);color:var(--white);}
+.lvlup .btn-navy:hover{background:var(--navy-dark);}
+.lvlup .btn-block{width:100%;}
+.lvlup .cta-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center;}
+.lvlup .section{padding:88px 0;}
+.lvlup .section-tight{padding:64px 0;}
+.lvlup .section-head{max-width:680px;margin:0 auto 48px;text-align:center;}
+.lvlup .section-head p{font-size:18px;}
+.lvlup .bg-navy{background:var(--navy);color:var(--white);}
+.lvlup .bg-navy h2,.lvlup .bg-navy h3,.lvlup .bg-navy h4{color:var(--white);}
+.lvlup .bg-navy p{color:rgba(255,255,255,0.82);}
+.lvlup .bg-gray{background:var(--gray-100);}
+.lvlup .grid{display:grid;gap:28px;}
+.lvlup .grid-2{grid-template-columns:repeat(2,1fr);}
+.lvlup .grid-3{grid-template-columns:repeat(3,1fr);}
+.lvlup .grid-4{grid-template-columns:repeat(4,1fr);}
+.lvlup .card{
+  background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius);
+  padding:32px;box-shadow:var(--shadow);
+}
+.lvlup .badge-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:44px;height:44px;border-radius:50%;background:var(--navy);color:var(--white);
+  font-family:'Poppins',Arial,sans-serif;font-weight:700;font-size:18px;margin-bottom:16px;
+}
+.lvlup .icon-tile{
+  width:56px;height:56px;border-radius:12px;background:var(--gray-100);
+  display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+  font-size:26px;
+}
+.lvlup .divider-gold{width:64px;height:4px;background:var(--gold);border-radius:2px;margin:0 auto 24px;}
+@media(max-width:900px){
+  .lvlup .grid-4{grid-template-columns:repeat(2,1fr);}
+  .lvlup .grid-3{grid-template-columns:repeat(2,1fr);}
+  .lvlup .grid-2{grid-template-columns:1fr;}
+}
+@media(max-width:640px){
+  .lvlup .section{padding:56px 0;}
+  .lvlup .grid-4,.lvlup .grid-3{grid-template-columns:1fr;}
+  .lvlup h1{font-size:34px !important;}
+  .lvlup h2{font-size:28px !important;}
+}
+</style>
+<div class="lvlup">
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Why Level Up</span>
+      <h2 style="font-size:34px;">Not a Staffing Agency. A Recruiting Partner.</h2>
+      <p>Here's what makes an RPO engagement with Level Up different from a contingency agency or an internal hire.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card" style="border-top:4px solid var(--gold);">
+        <h4 style="font-size:18px;">Dedicated, Not Shared</h4>
+        <p>Your recruiters are mapped to your roles specifically — not splitting attention across a dozen other clients.</p>
+      </div>
+      <div class="card" style="border-top:4px solid var(--blue);">
+        <h4 style="font-size:18px;">Built for Speed</h4>
+        <p>A structured sourcing engine gets qualified candidates in front of you fast, cutting time-to-fill significantly.</p>
+      </div>
+      <div class="card" style="border-top:4px solid var(--navy);">
+        <h4 style="font-size:18px;">Fully Scalable</h4>
+        <p>Ramp up for a hiring surge, scale down between cycles — your recruiting capacity flexes with demand.</p>
+      </div>
+      <div class="card" style="border-top:4px solid var(--gold);">
+        <h4 style="font-size:18px;">Radically Transparent</h4>
+        <p>Live dashboards and regular reporting mean you're never left wondering what's happening with your roles.</p>
+      </div>
+      <div class="card" style="border-top:4px solid var(--blue);">
+        <h4 style="font-size:18px;">Cost-Efficient</h4>
+        <p>A predictable RPO model typically costs meaningfully less than stacking contingency agency fees per hire.</p>
+      </div>
+      <div class="card" style="border-top:4px solid var(--navy);">
+        <h4 style="font-size:18px;">You Own the Decision</h4>
+        <p>We build the pipeline and run the process — every final hiring call stays with your team.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</div>

@@ -38,8 +38,15 @@ Brand: Poppins (headings) + Roboto (body). Colors: Navy `#004AAD`, Gold `#FFB803
 
 If your GHL plan lets you paste raw HTML for a whole page at once, you can instead paste all of `index.html` (minus the outer `<html>/<head>/<body>` wrapper if GHL requires it) into a single Custom Code/HTML page element.
 
+## Full width in GHL
+
+Every section file wraps its content in `<div class="lvlup lvlup-bleed">`. The `lvlup-bleed` class forces that div to span the full browser width (100vw) even if GHL nests it inside a narrower Row/Section container — so you shouldn't need to touch GHL's width settings. If a section still looks boxed in after pasting:
+- Check the parent Row/Section's own width setting in GHL and set it to **Full Width** (belt-and-suspenders — the CSS fix should make this unnecessary, but some GHL themes add their own container padding).
+- Make sure you pasted the **entire** section file, including its `<style>` block — deleting or trimming it before pasting will drop the `lvlup-bleed` rule.
+
 ## Before you publish — replace these placeholders
 
+- **Logo**: the header (`01-header.html`) and footer (`15-footer.html`) now use an `<img>` placeholder (a dashed "YOUR LOGO" box) instead of a text wordmark. Upload your real logo to GHL's Media Library and swap the `src` on both `<!-- TODO -->`-marked `<img>` tags — use a white/reversed version for the footer's dark background.
 - **Booking link**: two `<!-- TODO -->` comments (in the hero/final CTA and footer) mark `href="#"` — replace with your real GHL Calendar booking link.
 - **Lead form**: the form in `14-final-cta-form.html` is plain HTML (`action="#"`). Either:
   - Swap it for a native **GHL Form element** styled to match (white card, navy labels, gold submit button), or

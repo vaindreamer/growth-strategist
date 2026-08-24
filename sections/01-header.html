@@ -2,7 +2,10 @@
      LEVEL UP TALENT SOLUTIONS — RPO LANDING PAGE
      Section 01: header
      Paste this entire block into a GoHighLevel "Custom Code" /
-     "Custom HTML" element in this position on the page.
+     "Custom HTML" element in this position on the page. The
+     "lvlup-bleed" class below makes this section span the full
+     browser width even if GHL's row/section wraps it in a
+     narrower container — no manual width settings needed in GHL.
      ============================================================ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -97,6 +100,11 @@
   font-size:26px;
 }
 .lvlup .divider-gold{width:64px;height:4px;background:var(--gold);border-radius:2px;margin:0 auto 24px;}
+/* Breaks a section out of whatever fixed-width row/container GHL wraps it in,
+   so it spans the full browser viewport regardless of the page builder's
+   default content width. Inner .container still centers content normally. */
+.lvlup-bleed{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;}
+body{overflow-x:hidden;}
 @media(max-width:900px){
   .lvlup .grid-4{grid-template-columns:repeat(2,1fr);}
   .lvlup .grid-3{grid-template-columns:repeat(2,1fr);}
@@ -109,12 +117,12 @@
   .lvlup h2{font-size:28px !important;}
 }
 </style>
-<div class="lvlup">
+<div class="lvlup lvlup-bleed">
 <header style="position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--gray-200);">
   <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px;">
-    <a href="#" style="display:flex;align-items:center;gap:10px;">
-      <span style="font-family:'Poppins',Arial,sans-serif;font-weight:800;font-size:22px;color:var(--navy);">Level<span style="color:var(--gold);">Up</span></span>
-      <span style="font-family:'Poppins',Arial,sans-serif;font-weight:500;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--gray-500);border-left:1px solid var(--gray-200);padding-left:10px;">Talent Solutions</span>
+    <a href="#" style="display:flex;align-items:center;">
+      <!-- TODO: Replace src with your logo file (upload it in GHL's Media Library, then paste the URL here) -->
+      <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27180%27%20height%3D%2744%27%20viewBox%3D%270%200%20180%2044%27%3E%3Crect%20x%3D%271%27%20y%3D%271%27%20width%3D%27178%27%20height%3D%2742%27%20rx%3D%278%27%20fill%3D%27%23F3F6FB%27%20stroke%3D%27%23004AAD%27%20stroke-width%3D%271.5%27%20stroke-dasharray%3D%274%203%27/%3E%3Ctext%20x%3D%2790%27%20y%3D%2727%27%20font-family%3D%27Poppins%2C%20Arial%2C%20sans-serif%27%20font-size%3D%2712%27%20font-weight%3D%27700%27%20fill%3D%27%23004AAD%27%20text-anchor%3D%27middle%27%3EYOUR%20LOGO%3C/text%3E%3C/svg%3E" alt="Level Up Talent Solutions" style="height:40px;width:auto;display:block;">
     </a>
     <nav style="display:flex;align-items:center;gap:28px;" class="lvlup-nav-links">
       <a href="#services" style="font-family:'Poppins',Arial,sans-serif;font-weight:500;font-size:15px;color:var(--ink);">Services</a>

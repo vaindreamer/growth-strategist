@@ -2,7 +2,10 @@
      LEVEL UP TALENT SOLUTIONS — RPO LANDING PAGE
      Section 09: industries
      Paste this entire block into a GoHighLevel "Custom Code" /
-     "Custom HTML" element in this position on the page.
+     "Custom HTML" element in this position on the page. The
+     "lvlup-bleed" class below makes this section span the full
+     browser width even if GHL's row/section wraps it in a
+     narrower container — no manual width settings needed in GHL.
      ============================================================ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -97,6 +100,11 @@
   font-size:26px;
 }
 .lvlup .divider-gold{width:64px;height:4px;background:var(--gold);border-radius:2px;margin:0 auto 24px;}
+/* Breaks a section out of whatever fixed-width row/container GHL wraps it in,
+   so it spans the full browser viewport regardless of the page builder's
+   default content width. Inner .container still centers content normally. */
+.lvlup-bleed{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;}
+body{overflow-x:hidden;}
 @media(max-width:900px){
   .lvlup .grid-4{grid-template-columns:repeat(2,1fr);}
   .lvlup .grid-3{grid-template-columns:repeat(2,1fr);}
@@ -109,7 +117,7 @@
   .lvlup h2{font-size:28px !important;}
 }
 </style>
-<div class="lvlup">
+<div class="lvlup lvlup-bleed">
 <section class="section-tight bg-gray">
   <div class="container">
     <div class="section-head" style="margin-bottom:32px;">

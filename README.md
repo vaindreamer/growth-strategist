@@ -47,6 +47,7 @@ Every section file wraps its content in `<div class="lvlup lvlup-bleed">`. The `
 ## Before you publish — replace these placeholders
 
 - **Logo**: the header (`01-header.html`) and footer (`15-footer.html`) now use an `<img>` placeholder (a dashed "YOUR LOGO" box) instead of a text wordmark. Upload your real logo to GHL's Media Library and swap the `src` on both `<!-- TODO -->`-marked `<img>` tags — use a white/reversed version for the footer's dark background.
+- **Hero photo**: the right column of the hero (`02-hero.html`) is now an `<img>` placeholder for Pedro's photo. A transparent-background PNG cutout (~800x1000px, portrait) works best since it floats directly on the navy gradient with no card behind it. Upload it in GHL's Media Library and swap the `<!-- TODO -->`-marked `src`.
 - **Booking link**: two `<!-- TODO -->` comments (in the hero/final CTA and footer) mark `href="#"` — replace with your real GHL Calendar booking link.
 - **Lead form**: the form in `14-final-cta-form.html` is plain HTML (`action="#"`). Either:
   - Swap it for a native **GHL Form element** styled to match (white card, navy labels, gold submit button), or

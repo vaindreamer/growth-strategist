@@ -118,6 +118,49 @@ body{overflow-x:hidden;}
 @media(prefers-reduced-motion: reduce){
   .lvlup .lvlup-step-btn,.lvlup .lvlup-step-line{transition:none;}
 }
+/* Every .card across the page (services, problem, why-us, industries,
+   stats, testimonials, engagement models, FAQ) lifts on hover so the
+   whole page feels responsive to the cursor, not just the process steps. */
+.lvlup .card{transition:transform .18s ease,box-shadow .18s ease;}
+.lvlup .card:hover{transform:translateY(-4px);box-shadow:0 28px 55px -22px rgba(0,45,110,0.32);}
+/* Trust-bar logo placeholders */
+.lvlup .lvlup-logo-slot{border:1px dashed var(--gray-200);border-radius:12px;padding:22px;text-align:center;color:var(--gray-500);font-family:'Poppins',Arial,sans-serif;font-weight:600;transition:border-color .18s ease,color .18s ease,transform .18s ease;}
+.lvlup .lvlup-logo-slot:hover{border-color:var(--navy);color:var(--navy);transform:translateY(-2px);}
+/* Underline-on-hover for header/footer nav links */
+.lvlup .lvlup-nav-links > a:not(.btn){position:relative;}
+.lvlup .lvlup-nav-links > a:not(.btn)::after{content:'';position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .18s ease;}
+.lvlup .lvlup-nav-links > a:not(.btn):hover::after{transform:scaleX(1);}
+.lvlup .lvlup-footer-link{transition:color .18s ease;}
+.lvlup .lvlup-footer-link:hover{color:var(--gold) !important;}
+/* Mobile header nav: hamburger toggle + slide-down menu */
+.lvlup .lvlup-nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:0;flex:none;}
+.lvlup .lvlup-nav-toggle span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px;transition:transform .2s ease,opacity .2s ease;}
+.lvlup .lvlup-nav-toggle.lvlup-nav-toggle-open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.lvlup .lvlup-nav-toggle.lvlup-nav-toggle-open span:nth-child(2){opacity:0;}
+.lvlup .lvlup-nav-toggle.lvlup-nav-toggle-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(max-width:800px){
+  .lvlup .lvlup-nav-toggle{display:flex;}
+  .lvlup .lvlup-nav-links{
+    position:absolute;top:100%;left:0;right:0;margin:0;
+    flex-direction:column;align-items:stretch;gap:0;
+    background:var(--white);border-bottom:1px solid var(--gray-200);
+    max-height:0;overflow:hidden;transition:max-height .25s ease;
+  }
+  .lvlup .lvlup-nav-links.lvlup-nav-open{max-height:320px;}
+  .lvlup .lvlup-nav-links > a:not(.btn){padding:14px 24px;border-top:1px solid var(--gray-200);}
+  .lvlup .lvlup-nav-links > a:not(.btn)::after{display:none;}
+  .lvlup .lvlup-nav-links > a.btn{margin:14px 24px;}
+}
+/* FAQ: custom +/x indicator instead of the browser's default marker */
+.lvlup details.card{padding:0;}
+.lvlup details.card summary{list-style:none;cursor:pointer;padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.lvlup details.card summary::-webkit-details-marker{display:none;}
+.lvlup details.card summary::after{content:'+';font-family:'Poppins',Arial,sans-serif;font-weight:700;font-size:22px;color:var(--navy);flex:none;line-height:1;transition:transform .18s ease;}
+.lvlup details[open].card summary::after{transform:rotate(45deg);}
+.lvlup details.card > p{padding:0 26px 22px;margin-top:0 !important;}
+@media(prefers-reduced-motion: reduce){
+  .lvlup .card,.lvlup .lvlup-logo-slot,.lvlup .lvlup-nav-links > a:not(.btn)::after,.lvlup .lvlup-footer-link,.lvlup .lvlup-nav-toggle span,.lvlup .lvlup-nav-links,.lvlup details.card summary::after{transition:none;}
+}
 @media(max-width:900px){
   .lvlup .grid-4{grid-template-columns:repeat(2,1fr);}
   .lvlup .grid-3{grid-template-columns:repeat(2,1fr);}
@@ -137,13 +180,35 @@ body{overflow-x:hidden;}
       <!-- TODO: Replace src with your logo file (upload it in GHL's Media Library, then paste the URL here) -->
       <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27180%27%20height%3D%2744%27%20viewBox%3D%270%200%20180%2044%27%3E%3Crect%20x%3D%271%27%20y%3D%271%27%20width%3D%27178%27%20height%3D%2742%27%20rx%3D%278%27%20fill%3D%27%23F3F6FB%27%20stroke%3D%27%23004AAD%27%20stroke-width%3D%271.5%27%20stroke-dasharray%3D%274%203%27/%3E%3Ctext%20x%3D%2790%27%20y%3D%2727%27%20font-family%3D%27Poppins%2C%20Arial%2C%20sans-serif%27%20font-size%3D%2712%27%20font-weight%3D%27700%27%20fill%3D%27%23004AAD%27%20text-anchor%3D%27middle%27%3EYOUR%20LOGO%3C/text%3E%3C/svg%3E" alt="Level Up Talent Solutions" style="height:40px;width:auto;display:block;">
     </a>
-    <nav style="display:flex;align-items:center;gap:28px;" class="lvlup-nav-links">
+    <button type="button" id="lvlup-nav-toggle" class="lvlup-nav-toggle" aria-expanded="false" aria-controls="lvlup-nav-menu" aria-label="Toggle navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="lvlup-nav-menu" style="display:flex;align-items:center;gap:28px;" class="lvlup-nav-links">
       <a href="#services" style="font-family:'Poppins',Arial,sans-serif;font-weight:500;font-size:15px;color:var(--ink);">Services</a>
       <a href="#process" style="font-family:'Poppins',Arial,sans-serif;font-weight:500;font-size:15px;color:var(--ink);">How It Works</a>
       <a href="#faq" style="font-family:'Poppins',Arial,sans-serif;font-weight:500;font-size:15px;color:var(--ink);">FAQ</a>
       <a href="#book-a-call" class="btn btn-navy" style="padding:12px 22px;font-size:14px;">Book a Call</a>
     </nav>
   </div>
-  <style>@media(max-width:800px){.lvlup-nav-links a:not(:last-child){display:none;}}</style>
 </header>
+<script>
+(function(){
+  var btn=document.getElementById('lvlup-nav-toggle');
+  var menu=document.getElementById('lvlup-nav-menu');
+  if(!btn||!menu)return;
+  function closeMenu(){
+    menu.classList.remove('lvlup-nav-open');
+    btn.classList.remove('lvlup-nav-toggle-open');
+    btn.setAttribute('aria-expanded','false');
+  }
+  btn.addEventListener('click',function(){
+    var open=menu.classList.toggle('lvlup-nav-open');
+    btn.classList.toggle('lvlup-nav-toggle-open',open);
+    btn.setAttribute('aria-expanded',open?'true':'false');
+  });
+  menu.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click',closeMenu);
+  });
+})();
+</script>
 </div>

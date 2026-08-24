@@ -118,6 +118,49 @@ body{overflow-x:hidden;}
 @media(prefers-reduced-motion: reduce){
   .lvlup .lvlup-step-btn,.lvlup .lvlup-step-line{transition:none;}
 }
+/* Every .card across the page (services, problem, why-us, industries,
+   stats, testimonials, engagement models, FAQ) lifts on hover so the
+   whole page feels responsive to the cursor, not just the process steps. */
+.lvlup .card{transition:transform .18s ease,box-shadow .18s ease;}
+.lvlup .card:hover{transform:translateY(-4px);box-shadow:0 28px 55px -22px rgba(0,45,110,0.32);}
+/* Trust-bar logo placeholders */
+.lvlup .lvlup-logo-slot{border:1px dashed var(--gray-200);border-radius:12px;padding:22px;text-align:center;color:var(--gray-500);font-family:'Poppins',Arial,sans-serif;font-weight:600;transition:border-color .18s ease,color .18s ease,transform .18s ease;}
+.lvlup .lvlup-logo-slot:hover{border-color:var(--navy);color:var(--navy);transform:translateY(-2px);}
+/* Underline-on-hover for header/footer nav links */
+.lvlup .lvlup-nav-links > a:not(.btn){position:relative;}
+.lvlup .lvlup-nav-links > a:not(.btn)::after{content:'';position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .18s ease;}
+.lvlup .lvlup-nav-links > a:not(.btn):hover::after{transform:scaleX(1);}
+.lvlup .lvlup-footer-link{transition:color .18s ease;}
+.lvlup .lvlup-footer-link:hover{color:var(--gold) !important;}
+/* Mobile header nav: hamburger toggle + slide-down menu */
+.lvlup .lvlup-nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:0;flex:none;}
+.lvlup .lvlup-nav-toggle span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px;transition:transform .2s ease,opacity .2s ease;}
+.lvlup .lvlup-nav-toggle.lvlup-nav-toggle-open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.lvlup .lvlup-nav-toggle.lvlup-nav-toggle-open span:nth-child(2){opacity:0;}
+.lvlup .lvlup-nav-toggle.lvlup-nav-toggle-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(max-width:800px){
+  .lvlup .lvlup-nav-toggle{display:flex;}
+  .lvlup .lvlup-nav-links{
+    position:absolute;top:100%;left:0;right:0;margin:0;
+    flex-direction:column;align-items:stretch;gap:0;
+    background:var(--white);border-bottom:1px solid var(--gray-200);
+    max-height:0;overflow:hidden;transition:max-height .25s ease;
+  }
+  .lvlup .lvlup-nav-links.lvlup-nav-open{max-height:320px;}
+  .lvlup .lvlup-nav-links > a:not(.btn){padding:14px 24px;border-top:1px solid var(--gray-200);}
+  .lvlup .lvlup-nav-links > a:not(.btn)::after{display:none;}
+  .lvlup .lvlup-nav-links > a.btn{margin:14px 24px;}
+}
+/* FAQ: custom +/x indicator instead of the browser's default marker */
+.lvlup details.card{padding:0;}
+.lvlup details.card summary{list-style:none;cursor:pointer;padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.lvlup details.card summary::-webkit-details-marker{display:none;}
+.lvlup details.card summary::after{content:'+';font-family:'Poppins',Arial,sans-serif;font-weight:700;font-size:22px;color:var(--navy);flex:none;line-height:1;transition:transform .18s ease;}
+.lvlup details[open].card summary::after{transform:rotate(45deg);}
+.lvlup details.card > p{padding:0 26px 22px;margin-top:0 !important;}
+@media(prefers-reduced-motion: reduce){
+  .lvlup .card,.lvlup .lvlup-logo-slot,.lvlup .lvlup-nav-links > a:not(.btn)::after,.lvlup .lvlup-footer-link,.lvlup .lvlup-nav-toggle span,.lvlup .lvlup-nav-links,.lvlup details.card summary::after{transition:none;}
+}
 @media(max-width:900px){
   .lvlup .grid-4{grid-template-columns:repeat(2,1fr);}
   .lvlup .grid-3{grid-template-columns:repeat(2,1fr);}

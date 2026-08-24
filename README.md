@@ -13,7 +13,7 @@ Brand: Poppins (headings) + Roboto (body). Colors: Navy `#004AAD`, Gold `#FFB803
 
 | # | File | Section |
 |---|------|---------|
-| 01 | `01-header.html` | Sticky nav + logo |
+| 01 | `01-header.html` | Sticky nav + logo, mobile hamburger menu |
 | 02 | `02-hero.html` | Hero headline + primary CTAs |
 | 03 | `03-trust-bar.html` | Client logo strip (placeholders) |
 | 04 | `04-problem.html` | Pain points |
@@ -25,7 +25,7 @@ Brand: Poppins (headings) + Roboto (body). Colors: Navy `#004AAD`, Gold `#FFB803
 | 10 | `10-results-stats.html` | Stat bar (placeholders) |
 | 11 | `11-testimonials.html` | Testimonials (placeholders) |
 | 12 | `12-engagement-models.html` | Full / Project / On-Demand RPO |
-| 13 | `13-faq.html` | FAQ accordion |
+| 13 | `13-faq.html` | FAQ accordion with animated +/× indicator |
 | 14 | `14-final-cta-form.html` | Book-a-call + lead form |
 | 15 | `15-footer.html` | Footer |
 
@@ -59,9 +59,21 @@ Every section file wraps its content in `<div class="lvlup lvlup-bleed">`. The `
 - **Contact info** (`15-footer.html`): swap in your real phone number.
 - **Email**: `hello@lvluptalentsolutions.com` is a placeholder — confirm the real inbox.
 
+## Interactivity
+
+The whole page responds to the cursor and touch now, not just the process steps:
+
+- **Header**: below 800px, the nav collapses behind a hamburger button (`01-header.html`) that slides open a full-width dropdown menu — fixes what was previously an inaccessible nav on mobile (links were just hidden with no way to reach them).
+- **Every `.card`** — problem, solution, services, why-us, industries, stats, testimonials, engagement models, FAQ — lifts with a shadow on hover, defined once in the shared design-system CSS so it applies everywhere automatically.
+- **Process** (`07-process.html`): click a step number 1–5 to switch the detail panel; the connecting line fills gold up to the active step.
+- **FAQ** (`13-faq.html`): each question shows a `+` that rotates into an `×` when expanded, replacing the browser's default disclosure triangle.
+- **Nav links**: header and footer links get an animated gold underline / color shift on hover.
+- **Trust-bar logo placeholders**: border and text shift to navy on hover.
+- All transitions are disabled under `prefers-reduced-motion: reduce`.
+
 ## Notes
 
 - Fully responsive (breakpoints at 900px and 640px).
-- `07-process.html` includes a small inline `<script>` for the clickable step stepper (click a number to see that step's detail). It's scoped to that section's own element IDs, so it's safe to paste as-is; no other section depends on it.
+- `01-header.html` and `07-process.html` each include a small inline `<script>` scoped to that section's own element IDs — safe to paste as-is, no section depends on another's script.
 - No external dependencies besides Google Fonts (Poppins/Roboto).
 - All copy is original and written for this offer — review it against your actual RPO process/pricing before publishing.

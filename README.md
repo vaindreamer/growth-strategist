@@ -19,7 +19,7 @@ Brand: Poppins (headings) + Roboto (body). Colors: Navy `#004AAD`, Gold `#FFB803
 | 04 | `04-problem.html` | Pain points |
 | 05 | `05-solution.html` | What is RPO |
 | 06 | `06-services.html` | What's included (9 services) |
-| 07 | `07-process.html` | How it works (5 steps) |
+| 07 | `07-process.html` | How it works — interactive 5-step stepper |
 | 08 | `08-why-us.html` | Differentiators |
 | 09 | `09-industries.html` | Industries served |
 | 10 | `10-results-stats.html` | Stat bar (placeholders) |
@@ -48,6 +48,7 @@ Every section file wraps its content in `<div class="lvlup lvlup-bleed">`. The `
 
 - **Logo**: the header (`01-header.html`) and footer (`15-footer.html`) now use an `<img>` placeholder (a dashed "YOUR LOGO" box) instead of a text wordmark. Upload your real logo to GHL's Media Library and swap the `src` on both `<!-- TODO -->`-marked `<img>` tags — use a white/reversed version for the footer's dark background.
 - **Hero photo**: the right column of the hero (`02-hero.html`) is now an `<img>` placeholder for Pedro's photo. A transparent-background PNG cutout (~800x1000px, portrait) works best since it floats directly on the navy gradient with no card behind it. Upload it in GHL's Media Library and swap the `<!-- TODO -->`-marked `src`.
+- **CTA form** (`14-final-cta-form.html`): the form is now a dashed "GHL Form Embed Placeholder" box. Replace it with your real GHL form embed (GHL: Sites → Forms → Builder → your form → Integrate → copy embed code — an `<iframe>` + a `form_embed.js` `<script>` tag). A commented-out plain-HTML fallback form is left in the file if you'd rather not use a native GHL form — see the comment directly above it for how to wire it up instead.
 - **Booking link**: two `<!-- TODO -->` comments (in the hero/final CTA and footer) mark `href="#"` — replace with your real GHL Calendar booking link.
 - **Lead form**: the form in `14-final-cta-form.html` is plain HTML (`action="#"`). Either:
   - Swap it for a native **GHL Form element** styled to match (white card, navy labels, gold submit button), or
@@ -61,5 +62,6 @@ Every section file wraps its content in `<div class="lvlup lvlup-bleed">`. The `
 ## Notes
 
 - Fully responsive (breakpoints at 900px and 640px).
+- `07-process.html` includes a small inline `<script>` for the clickable step stepper (click a number to see that step's detail). It's scoped to that section's own element IDs, so it's safe to paste as-is; no other section depends on it.
 - No external dependencies besides Google Fonts (Poppins/Roboto).
 - All copy is original and written for this offer — review it against your actual RPO process/pricing before publishing.

@@ -103,6 +103,19 @@
    default content width. Inner .container still centers content normally. */
 .lvlup-bleed{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;}
 body{overflow-x:hidden;}
+.lvlup .lvlup-step-btn{
+  width:52px;height:52px;border-radius:50%;border:none;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Poppins',Arial,sans-serif;font-weight:700;font-size:18px;
+  cursor:pointer;background:rgba(255,255,255,0.12);color:var(--white);
+  transition:transform .2s ease,background .2s ease,color .2s ease;
+}
+.lvlup .lvlup-step-btn:hover{transform:scale(1.08);}
+.lvlup .lvlup-step-btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px;}
+.lvlup .lvlup-step-line{flex:1;height:3px;min-width:24px;border-radius:2px;background:rgba(255,255,255,0.2);transition:background .2s ease;}
+@media(prefers-reduced-motion: reduce){
+  .lvlup .lvlup-step-btn,.lvlup .lvlup-step-line{transition:none;}
+}
 @media(max-width:900px){
   .lvlup .grid-4{grid-template-columns:repeat(2,1fr);}
   .lvlup .grid-3{grid-template-columns:repeat(2,1fr);}
@@ -305,39 +318,80 @@ body{overflow-x:hidden;}
       <h2 style="font-size:34px;">From Kickoff to Offer, in Five Steps</h2>
       <p>A clear, repeatable process so you always know what's happening and when.</p>
     </div>
-    <div class="grid grid-4" style="align-items:start;">
-      <div>
-        <div class="badge-num" style="background:var(--gold);color:var(--navy);">1</div>
-        <h4 style="color:var(--white);font-size:17px;">Discovery &amp; Role Scoping</h4>
-        <p>We map your roles, hiring bar, timeline, and target candidate profile.</p>
-      </div>
-      <div>
-        <div class="badge-num" style="background:var(--gold);color:var(--navy);">2</div>
-        <h4 style="color:var(--white);font-size:17px;">Sourcing Strategy</h4>
-        <p>A custom sourcing and outreach plan tailored to your market and role level.</p>
-      </div>
-      <div>
-        <div class="badge-num" style="background:var(--gold);color:var(--navy);">3</div>
-        <h4 style="color:var(--white);font-size:17px;">Pipeline Delivery</h4>
-        <p>Qualified candidates delivered on a set cadence, with full visibility into every stage.</p>
-      </div>
-      <div>
-        <div class="badge-num" style="background:var(--gold);color:var(--navy);">4</div>
-        <h4 style="color:var(--white);font-size:17px;">Interview &amp; Offer Support</h4>
-        <p>We coordinate interviews and manage offer negotiation to get to "yes" faster.</p>
-      </div>
-    </div>
-    <div style="margin-top:28px;">
-      <div class="grid" style="grid-template-columns:1fr;max-width:340px;">
-        <div>
-          <div class="badge-num" style="background:var(--gold);color:var(--navy);">5</div>
-          <h4 style="color:var(--white);font-size:17px;">Onboarding &amp; Optimization</h4>
-          <p>Smooth handoff at signing, plus ongoing reporting to keep improving results.</p>
+    <div id="lvlup-process" style="max-width:900px;margin:0 auto;">
+      <div style="display:flex;align-items:flex-start;gap:2px;overflow-x:auto;padding:4px 4px 12px;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;flex:none;width:110px;">
+          <button type="button" class="lvlup-step-btn" data-step="1" aria-pressed="true" aria-controls="lvlup-step-panel">1</button>
+          <span style="font-family:'Poppins',Arial,sans-serif;font-size:12px;font-weight:600;color:rgba(255,255,255,0.75);text-align:center;">Discovery</span>
         </div>
+        <div class="lvlup-step-line" style="margin-top:26px;"></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;flex:none;width:110px;">
+          <button type="button" class="lvlup-step-btn" data-step="2" aria-pressed="false" aria-controls="lvlup-step-panel">2</button>
+          <span style="font-family:'Poppins',Arial,sans-serif;font-size:12px;font-weight:600;color:rgba(255,255,255,0.75);text-align:center;">Sourcing</span>
+        </div>
+        <div class="lvlup-step-line" style="margin-top:26px;"></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;flex:none;width:110px;">
+          <button type="button" class="lvlup-step-btn" data-step="3" aria-pressed="false" aria-controls="lvlup-step-panel">3</button>
+          <span style="font-family:'Poppins',Arial,sans-serif;font-size:12px;font-weight:600;color:rgba(255,255,255,0.75);text-align:center;">Pipeline</span>
+        </div>
+        <div class="lvlup-step-line" style="margin-top:26px;"></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;flex:none;width:110px;">
+          <button type="button" class="lvlup-step-btn" data-step="4" aria-pressed="false" aria-controls="lvlup-step-panel">4</button>
+          <span style="font-family:'Poppins',Arial,sans-serif;font-size:12px;font-weight:600;color:rgba(255,255,255,0.75);text-align:center;">Interview</span>
+        </div>
+        <div class="lvlup-step-line" style="margin-top:26px;"></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;flex:none;width:110px;">
+          <button type="button" class="lvlup-step-btn" data-step="5" aria-pressed="false" aria-controls="lvlup-step-panel">5</button>
+          <span style="font-family:'Poppins',Arial,sans-serif;font-size:12px;font-weight:600;color:rgba(255,255,255,0.75);text-align:center;">Onboarding</span>
+        </div>
+      </div>
+
+      <div id="lvlup-step-panel" class="card" aria-live="polite" style="margin-top:24px;background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.18);">
+        <span class="eyebrow" id="lvlup-step-label" style="background:rgba(255,255,255,0.12);color:var(--gold);">Step 1 of 5</span>
+        <h3 id="lvlup-step-title" style="color:var(--white);font-size:22px;">Discovery &amp; Role Scoping</h3>
+        <p id="lvlup-step-desc" style="margin:0;font-size:16px;">We map your roles, hiring bar, timeline, and target candidate profile.</p>
       </div>
     </div>
   </div>
 </section>
+<script>
+(function(){
+  var steps=[
+    {title:"Discovery & Role Scoping",desc:"We map your roles, hiring bar, timeline, and target candidate profile."},
+    {title:"Sourcing Strategy",desc:"A custom sourcing and outreach plan tailored to your market and role level."},
+    {title:"Pipeline Delivery",desc:"Qualified candidates delivered on a set cadence, with full visibility into every stage."},
+    {title:"Interview & Offer Support",desc:"We coordinate interviews and manage offer negotiation to get to “yes” faster."},
+    {title:"Onboarding & Optimization",desc:"Smooth handoff at signing, plus ongoing reporting to keep improving results."}
+  ];
+  var root=document.getElementById('lvlup-process');
+  if(!root)return;
+  var buttons=root.querySelectorAll('.lvlup-step-btn');
+  var lines=root.querySelectorAll('.lvlup-step-line');
+  var labelEl=document.getElementById('lvlup-step-label');
+  var titleEl=document.getElementById('lvlup-step-title');
+  var descEl=document.getElementById('lvlup-step-desc');
+  function setActive(n){
+    buttons.forEach(function(btn){
+      var active=parseInt(btn.getAttribute('data-step'),10)===n;
+      btn.setAttribute('aria-pressed',active?'true':'false');
+      btn.style.background=active?'var(--gold)':'rgba(255,255,255,0.12)';
+      btn.style.color=active?'var(--navy)':'var(--white)';
+      btn.style.transform=active?'scale(1.1)':'scale(1)';
+    });
+    lines.forEach(function(line,i){
+      line.style.background=(i<n-1)?'var(--gold)':'rgba(255,255,255,0.2)';
+    });
+    var s=steps[n-1];
+    labelEl.textContent='Step '+n+' of 5';
+    titleEl.textContent=s.title;
+    descEl.textContent=s.desc;
+  }
+  buttons.forEach(function(btn){
+    btn.addEventListener('click',function(){setActive(parseInt(btn.getAttribute('data-step'),10));});
+  });
+  setActive(1);
+})();
+</script>
 <!-- /SECTION:07 -->
 
 <!-- SECTION:08:why-us -->
@@ -544,16 +598,47 @@ body{overflow-x:hidden;}
     </div>
 
     <div class="card" style="background:var(--white);">
+      <h4 style="font-size:18px;margin-bottom:14px;">Get Your Custom RPO Quote</h4>
+
       <!--
-        GHL SETUP NOTE:
-        Recommended: delete this native <form> and drop in a GoHighLevel
-        "Form" element here instead, styled to match (white card, navy
-        labels, gold submit button). If you'd rather keep this markup,
-        point the form's action at your GHL inbound webhook / form post
-        URL, or wire it to a GHL Workflow via the form's "action" endpoint.
+        GHL FORM EMBED — replace this whole placeholder block with your
+        real GoHighLevel form:
+        1. In GHL: Sites → Forms → Builder → select (or build) your form.
+        2. Click "Integrate" and copy the embed code (an <iframe> plus a
+           <script src="https://link.msgsdk.com/js/form_embed.js"> tag).
+        3. Paste that embed code in place of the placeholder <div> below,
+           then delete the placeholder.
+        Example of what a real embed typically looks like:
+
+        <iframe
+          src="https://api.leadconnectorhq.com/widget/form/YOUR_FORM_ID"
+          style="width:100%;height:600px;border:none;border-radius:12px;"
+          id="inline-YOUR_FORM_ID"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-activation-type="alwaysActivated"
+          data-deactivation-type="neverDeactivate"
+          data-form-name="RPO Quote Form"
+          data-height="600"
+          data-layout-iframe-id="inline-YOUR_FORM_ID"
+          data-form-id="YOUR_FORM_ID"
+          title="RPO Quote Form">
+        </iframe>
+        <script src="https://link.msgsdk.com/js/form_embed.js"></script>
       -->
+      <div style="border:2px dashed var(--gray-200);border-radius:12px;padding:56px 24px;text-align:center;background:var(--gray-100);min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;">
+        <div class="icon-tile" style="margin-bottom:0;">📋</div>
+        <p style="font-family:'Poppins',Arial,sans-serif;font-weight:700;color:var(--navy);font-size:14px;letter-spacing:1px;text-transform:uppercase;margin:0;">GHL Form Embed Placeholder</p>
+        <p style="margin:0;font-size:14px;max-width:280px;">Paste your GoHighLevel form embed here — Sites → Forms → Builder → Integrate → copy embed code.</p>
+      </div>
+
+      <!--
+        Fallback: a plain HTML form, in case you'd rather not use GHL's
+        native Form element. Delete the GHL placeholder <div> above if you
+        use this instead, and point action at your GHL inbound webhook /
+        form post URL.
+
       <form action="#" method="POST" style="display:flex;flex-direction:column;gap:14px;">
-        <h4 style="font-size:18px;margin-bottom:4px;">Get Your Custom RPO Quote</h4>
         <div class="grid grid-2" style="gap:14px;">
           <div>
             <label style="font-family:'Poppins',Arial,sans-serif;font-size:13px;font-weight:600;color:var(--navy);">First Name</label>
@@ -593,6 +678,7 @@ body{overflow-x:hidden;}
         <button type="submit" class="btn btn-gold btn-block" style="border:none;margin-top:6px;">Request My Custom Quote</button>
         <p style="font-size:12px;color:var(--gray-500);text-align:center;margin:0;">By submitting, you agree to be contacted by Level Up Talent Solutions.</p>
       </form>
+      -->
     </div>
   </div>
 </section>

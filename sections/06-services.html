@@ -105,6 +105,19 @@
    default content width. Inner .container still centers content normally. */
 .lvlup-bleed{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;}
 body{overflow-x:hidden;}
+.lvlup .lvlup-step-btn{
+  width:52px;height:52px;border-radius:50%;border:none;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Poppins',Arial,sans-serif;font-weight:700;font-size:18px;
+  cursor:pointer;background:rgba(255,255,255,0.12);color:var(--white);
+  transition:transform .2s ease,background .2s ease,color .2s ease;
+}
+.lvlup .lvlup-step-btn:hover{transform:scale(1.08);}
+.lvlup .lvlup-step-btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px;}
+.lvlup .lvlup-step-line{flex:1;height:3px;min-width:24px;border-radius:2px;background:rgba(255,255,255,0.2);transition:background .2s ease;}
+@media(prefers-reduced-motion: reduce){
+  .lvlup .lvlup-step-btn,.lvlup .lvlup-step-line{transition:none;}
+}
 @media(max-width:900px){
   .lvlup .grid-4{grid-template-columns:repeat(2,1fr);}
   .lvlup .grid-3{grid-template-columns:repeat(2,1fr);}

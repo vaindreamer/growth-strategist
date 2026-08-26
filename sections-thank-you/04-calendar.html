@@ -131,24 +131,82 @@ body{overflow-x:hidden;}
 }
 </style>
 <div class="lvlup lvlup-bleed">
-<section class="section bg-gray">
-  <div class="container" style="max-width:820px;text-align:center;">
+<section class="section bg-gray" id="book-a-time">
+  <div class="container" style="max-width:900px;text-align:center;">
     <span class="eyebrow">In the Meantime</span>
     <h2 style="font-size:30px;">Want to Skip the Wait?</h2>
-    <p style="font-size:17px;">Grab a time directly on our calendar and we'll speak sooner.</p>
+    <p style="font-size:17px;">Pick a time below — once you select a slot, a short form appears to confirm your details and lock in the booking.</p>
 
     <!--
-      GHL CALENDAR EMBED — replace this placeholder with a live calendar:
+      GHL CALENDAR EMBED — this placeholder mocks up a GHL "Calendar"
+      widget, which already shows a contact form once a time slot is
+      picked (you don't need a separate form element for this).
+      Replace the whole placeholder <div> below with your real embed:
       1. In GHL: Sites → Calendars → select your calendar → Embed.
-      2. Copy the embed code (usually an <iframe> pointed at your
-         calendar's booking widget URL).
-      3. Paste that embed code in place of the placeholder <div> below,
-         then delete the placeholder.
+      2. Copy the embed code — typically an <iframe> pointed at your
+         booking widget URL, plus a form_embed.js <script> tag:
+
+      <iframe
+        src="https://api.leadconnectorhq.com/widget/booking/YOUR_CALENDAR_ID"
+        style="width:100%;border:none;overflow:hidden;"
+        scrolling="no"
+        id="YOUR_CALENDAR_ID"
+        title="Book a Time">
+      </iframe>
+      <script src="https://link.msgsdk.com/js/form_embed.js"></script>
+
+      3. Paste that in place of the placeholder <div>, then delete the
+         placeholder. GHL calendars are responsive by default — no
+         separate mobile version needed.
     -->
-    <div style="border:2px dashed var(--gray-200);border-radius:12px;padding:56px 24px;text-align:center;background:var(--white);min-height:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;">
-      <div class="icon-tile" style="margin-bottom:0;">📅</div>
-      <p style="font-family:'Poppins',Arial,sans-serif;font-weight:700;color:var(--navy);font-size:14px;letter-spacing:1px;text-transform:uppercase;margin:0;">GHL Calendar Embed Placeholder</p>
-      <p style="margin:0;font-size:14px;max-width:320px;">Paste your GoHighLevel calendar embed here — Sites → Calendars → Embed.</p>
+    <div style="border:2px dashed var(--gray-200);border-radius:12px;padding:24px;background:var(--white);text-align:left;">
+      <div class="grid grid-2" style="gap:0;">
+        <div style="padding:20px;border-right:1px solid var(--gray-200);">
+          <p style="font-family:'Poppins',Arial,sans-serif;font-weight:700;color:var(--navy);font-size:12px;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;">Select a Date &amp; Time</p>
+          <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;">
+            <span style="font-family:'Poppins',Arial,sans-serif;font-weight:600;font-size:11px;color:var(--gray-500);">S</span>
+            <span style="font-family:'Poppins',Arial,sans-serif;font-weight:600;font-size:11px;color:var(--gray-500);">M</span>
+            <span style="font-family:'Poppins',Arial,sans-serif;font-weight:600;font-size:11px;color:var(--gray-500);">T</span>
+            <span style="font-family:'Poppins',Arial,sans-serif;font-weight:600;font-size:11px;color:var(--gray-500);">W</span>
+            <span style="font-family:'Poppins',Arial,sans-serif;font-weight:600;font-size:11px;color:var(--gray-500);">T</span>
+            <span style="font-family:'Poppins',Arial,sans-serif;font-weight:600;font-size:11px;color:var(--gray-500);">F</span>
+            <span style="font-family:'Poppins',Arial,sans-serif;font-weight:600;font-size:11px;color:var(--gray-500);">S</span>
+            <span></span><span></span>
+            <span style="font-size:13px;color:var(--ink);padding:6px 0;">1</span>
+            <span style="font-size:13px;color:var(--ink);padding:6px 0;">2</span>
+            <span style="font-size:13px;color:var(--ink);padding:6px 0;">3</span>
+            <span style="font-size:13px;color:var(--gray-500);padding:6px 0;">4</span>
+            <span style="font-size:13px;color:var(--gray-500);padding:6px 0;">5</span>
+            <span style="font-size:13px;color:var(--ink);padding:6px 0;">6</span>
+            <span style="font-size:13px;color:var(--ink);padding:6px 0;">7</span>
+            <span style="font-size:13px;color:var(--ink);padding:6px 0;">8</span>
+            <span style="font-size:13px;color:var(--ink);padding:6px 0;">9</span>
+            <span style="font-size:13px;color:var(--ink);padding:6px 0;">10</span>
+            <span style="font-size:13px;color:var(--gray-500);padding:6px 0;">11</span>
+            <span style="font-size:13px;color:var(--gray-500);padding:6px 0;">12</span>
+            <span style="font-size:13px;background:var(--gold);color:var(--navy);font-weight:700;border-radius:50%;padding:6px 0;">13</span>
+            <span style="font-size:13px;color:var(--ink);padding:6px 0;">14</span>
+          </div>
+          <p style="font-family:'Poppins',Arial,sans-serif;font-weight:700;color:var(--navy);font-size:12px;letter-spacing:1px;text-transform:uppercase;margin:18px 0 10px;">Available Times</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span style="font-size:12px;font-family:'Poppins',Arial,sans-serif;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--gold);color:var(--navy);">9:00 AM</span>
+            <span style="font-size:12px;font-family:'Poppins',Arial,sans-serif;font-weight:600;padding:6px 12px;border-radius:999px;border:1px solid var(--gray-200);color:var(--gray-500);">10:30 AM</span>
+            <span style="font-size:12px;font-family:'Poppins',Arial,sans-serif;font-weight:600;padding:6px 12px;border-radius:999px;border:1px solid var(--gray-200);color:var(--gray-500);">1:00 PM</span>
+            <span style="font-size:12px;font-family:'Poppins',Arial,sans-serif;font-weight:600;padding:6px 12px;border-radius:999px;border:1px solid var(--gray-200);color:var(--gray-500);">2:30 PM</span>
+          </div>
+        </div>
+        <div style="padding:20px;">
+          <p style="font-family:'Poppins',Arial,sans-serif;font-weight:700;color:var(--navy);font-size:12px;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;">Confirm Your Details</p>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="height:38px;border:1px solid var(--gray-200);border-radius:8px;background:var(--gray-100);"></div>
+            <div style="height:38px;border:1px solid var(--gray-200);border-radius:8px;background:var(--gray-100);"></div>
+            <div style="height:38px;border:1px solid var(--gray-200);border-radius:8px;background:var(--gray-100);"></div>
+            <div style="height:42px;border-radius:8px;background:var(--gold);"></div>
+          </div>
+        </div>
+      </div>
+      <p style="text-align:center;font-family:'Poppins',Arial,sans-serif;font-weight:700;color:var(--navy);font-size:13px;letter-spacing:1px;text-transform:uppercase;margin:20px 0 4px;">GHL Calendar + Form Widget Placeholder</p>
+      <p style="text-align:center;font-size:14px;margin:0;">A mockup of your GHL booking widget — the contact form is built into the calendar itself, no separate form needed. Replace with your real embed.</p>
     </div>
   </div>
 </section>

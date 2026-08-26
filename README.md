@@ -94,16 +94,16 @@ A generic, reusable confirmation page — not tied to the RPO offer specifically
 | # | File | Section |
 |---|------|---------|
 | 01 | `01-header.html` | Logo only, no nav (keeps focus on the confirmation) |
-| 02 | `02-confirmation.html` | Checkmark badge, "Thank You!" headline, book-a-call + return-home buttons |
+| 02 | `02-confirmation.html` | Checkmark badge, "Thank You!" headline, book-a-time + return-home buttons |
 | 03 | `03-next-steps.html` | Generic 3-step "what happens next" |
-| 04 | `04-calendar.html` | GHL calendar embed placeholder ("skip the wait, book now") |
+| 04 | `04-calendar.html` | GHL calendar + form widget placeholder ("skip the wait, book now") |
 | 05 | `05-footer.html` | Minimal footer — logo, return-home link, copyright |
 
 ## Before you publish — replace these placeholders
 
 - **Logo**: same `<!-- TODO -->` pattern as the landing page, in `01-header.html` and `05-footer.html`.
-- **Booking link**: `<!-- TODO -->` in `02-confirmation.html` — point at your GHL Calendar link, or delete the button entirely if this page only follows a call that's already booked.
-- **Calendar embed** (`04-calendar.html`): dashed "GHL Calendar Embed Placeholder" — replace with your real GHL calendar embed (Sites → Calendars → Embed), or delete this whole section if you don't want a second booking prompt on the thank-you page.
+- **Calendar + form widget** (`04-calendar.html`): a mockup of a date/time picker next to a contact form — that's what a real GHL Calendar widget looks like once it's embedded (picking a slot reveals the contact form; you don't need a separate Form element for this). Replace the whole placeholder `<div>` with your real GHL calendar embed (Sites → Calendars → your calendar → Embed — an `<iframe>` pointed at `widget/booking/YOUR_CALENDAR_ID` plus a `form_embed.js` `<script>` tag; a full example is in the comment directly above the placeholder). Delete the whole section if you don't want a second booking prompt on the thank-you page.
+- **"Book a Time Now" button** (`02-confirmation.html`): scrolls down to the calendar widget by anchor link (`#book-a-time`) — no URL to fill in. If you delete the calendar section, either remove this button or point its `href` at an external GHL Calendar link instead.
 - **Copyright/company name**: footer says "Your Company" — swap for your real name (or delete if GHL injects this globally).
 - Optional: GHL supports merge fields (e.g. `{{contact.first_name}}`) on native pages — you can drop one into the `<h1>Thank You!</h1>` in `02-confirmation.html` for personalization if you want it; left out by default to keep this page fully generic.
 

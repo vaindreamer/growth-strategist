@@ -26,7 +26,7 @@ Brand: Poppins (headings) + Roboto (body). Colors: Navy `#004AAD`, Gold `#FFB803
 | 11 | `11-testimonials.html` | Testimonials (placeholders) |
 | 12 | `12-engagement-models.html` | Full / Project / On-Demand RPO |
 | 13 | `13-faq.html` | FAQ accordion with animated +/× indicator |
-| 14 | `14-final-cta-form.html` | Book-a-call + lead form |
+| 14 | `14-final-cta-form.html` | Book-a-call + live GHL calendar embed |
 | 15 | `15-footer.html` | Footer |
 
 ## How to add this to GoHighLevel
@@ -48,11 +48,8 @@ Every section file wraps its content in `<div class="lvlup lvlup-bleed">`. The `
 
 - **Logo**: the header (`01-header.html`) and footer (`15-footer.html`) now use an `<img>` placeholder (a dashed "YOUR LOGO" box) instead of a text wordmark. Upload your real logo to GHL's Media Library and swap the `src` on both `<!-- TODO -->`-marked `<img>` tags — use a white/reversed version for the footer's dark background.
 - **Hero photo**: the right column of the hero (`02-hero.html`) is now an `<img>` placeholder for Pedro's photo. A transparent-background PNG cutout (~800x1000px, portrait) works best since it floats directly on the navy gradient with no card behind it. Upload it in GHL's Media Library and swap the `<!-- TODO -->`-marked `src`.
-- **CTA form** (`14-final-cta-form.html`): the form is now a dashed "GHL Form Embed Placeholder" box. Replace it with your real GHL form embed (GHL: Sites → Forms → Builder → your form → Integrate → copy embed code — an `<iframe>` + a `form_embed.js` `<script>` tag). A commented-out plain-HTML fallback form is left in the file if you'd rather not use a native GHL form — see the comment directly above it for how to wire it up instead.
-- **Booking link**: two `<!-- TODO -->` comments (in the hero/final CTA and footer) mark `href="#"` — replace with your real GHL Calendar booking link.
-- **Lead form**: the form in `14-final-cta-form.html` is plain HTML (`action="#"`). Either:
-  - Swap it for a native **GHL Form element** styled to match (white card, navy labels, gold submit button), or
-  - Point `action` at your GHL inbound form/webhook URL.
+- **CTA calendar** (`14-final-cta-form.html`): the right column is now a live GHL Calendar embed (`<iframe>` + `form_embed.js` `<script>`) — selecting a time slot reveals a short contact form built into the same widget, so no separate form element is needed. The "Book a Free Strategy Call" button in the left column scrolls down to this embed (`#lvlup-calendar-embed`) rather than linking out. The iframe's `height:780px` is a starting size so the widget doesn't flash from a collapsed height before GHL's script auto-resizes it — nudge that number if your calendar renders noticeably taller or shorter once live.
+- **Footer booking link**: one remaining `<!-- TODO -->` in `15-footer.html` marks `href="#"` — replace with your real GHL Calendar link (or point it at `/rpo#lvlup-calendar-embed` if the footer lives on the same page as the embed).
 - **Stats** (`10-results-stats.html`): `[XX]%` placeholders — replace with real, verifiable metrics only.
 - **Testimonials** (`11-testimonials.html`): `[Client Name]` / `[Title, Company]` — replace with real, permissioned quotes.
 - **Client logos** (`03-trust-bar.html`): replace the dashed placeholder boxes with actual client logo images.

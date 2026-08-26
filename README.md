@@ -82,28 +82,25 @@ The whole page responds to the cursor and touch now, not just the process steps:
 
 # Thank You Page
 
-A generic, reusable confirmation page — not tied to the RPO offer specifically, so it works after any form submission or booking anywhere on the site. Same brand system (fonts, colors, card/button styles) as the landing page above, but with no offer-specific copy, stats, or testimonials to fill in.
+A generic, reusable confirmation page — not tied to the RPO offer specifically, so it works after any form submission or booking anywhere on the site. Same brand system (fonts, colors, card/button styles) as the landing page above, but with no offer-specific copy, stats, or testimonials to fill in. No calendar or form on this page — that booking flow lives on the landing page itself (its final CTA section already combines a "Book a Call" button with a short lead-capture form); this page is a pure confirmation.
 
 ## Files
 
 - **`thank-you.html`** — the full page, combined.
-- **`sections-thank-you/`** — the same page split into 5 self-contained files for pasting into GHL, same convention as `sections/` above.
+- **`sections-thank-you/`** — the same page split into 4 self-contained files for pasting into GHL, same convention as `sections/` above.
 
 ## Section order
 
 | # | File | Section |
 |---|------|---------|
 | 01 | `01-header.html` | Logo only, no nav (keeps focus on the confirmation) |
-| 02 | `02-confirmation.html` | Checkmark badge, "Thank You!" headline, book-a-time + return-home buttons |
+| 02 | `02-confirmation.html` | Checkmark badge, "Thank You!" headline, return-home button |
 | 03 | `03-next-steps.html` | Generic 3-step "what happens next" |
-| 04 | `04-calendar.html` | GHL calendar + form widget placeholder ("skip the wait, book now") |
-| 05 | `05-footer.html` | Minimal footer — logo, return-home link, copyright |
+| 04 | `04-footer.html` | Minimal footer — logo, return-home link, copyright |
 
 ## Before you publish — replace these placeholders
 
-- **Logo**: same `<!-- TODO -->` pattern as the landing page, in `01-header.html` and `05-footer.html`.
-- **Calendar + form widget** (`04-calendar.html`): a mockup of a date/time picker next to a contact form — that's what a real GHL Calendar widget looks like once it's embedded (picking a slot reveals the contact form; you don't need a separate Form element for this). Replace the whole placeholder `<div>` with your real GHL calendar embed (Sites → Calendars → your calendar → Embed — an `<iframe>` pointed at `widget/booking/YOUR_CALENDAR_ID` plus a `form_embed.js` `<script>` tag; a full example is in the comment directly above the placeholder). Delete the whole section if you don't want a second booking prompt on the thank-you page.
-- **"Book a Time Now" button** (`02-confirmation.html`): scrolls down to the calendar widget by anchor link (`#book-a-time`) — no URL to fill in. If you delete the calendar section, either remove this button or point its `href` at an external GHL Calendar link instead.
+- **Logo**: same `<!-- TODO -->` pattern as the landing page, in `01-header.html` and `04-footer.html`.
 - **Copyright/company name**: footer says "Your Company" — swap for your real name (or delete if GHL injects this globally).
 - Optional: GHL supports merge fields (e.g. `{{contact.first_name}}`) on native pages — you can drop one into the `<h1>Thank You!</h1>` in `02-confirmation.html` for personalization if you want it; left out by default to keep this page fully generic.
 

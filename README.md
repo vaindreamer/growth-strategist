@@ -1,6 +1,6 @@
 # Level Up Talent Solutions — RPO Landing Page
 
-A GoHighLevel-ready landing page for the RPO (Recruitment Process Outsourcing) offer at `/rpo`.
+GoHighLevel-ready pages for the RPO (Recruitment Process Outsourcing) offer: the `/rpo` landing page, and a generic `/thank-you` page to follow any form or booking on the site.
 
 Brand: Poppins (headings) + Roboto (body). Colors: Navy `#004AAD`, Gold `#FFB803`, Blue `#0099FF`, White.
 
@@ -77,3 +77,36 @@ The whole page responds to the cursor and touch now, not just the process steps:
 - `01-header.html` and `07-process.html` each include a small inline `<script>` scoped to that section's own element IDs — safe to paste as-is, no section depends on another's script.
 - No external dependencies besides Google Fonts (Poppins/Roboto).
 - All copy is original and written for this offer — review it against your actual RPO process/pricing before publishing.
+
+---
+
+# Thank You Page
+
+A generic, reusable confirmation page — not tied to the RPO offer specifically, so it works after any form submission or booking anywhere on the site. Same brand system (fonts, colors, card/button styles) as the landing page above, but with no offer-specific copy, stats, or testimonials to fill in.
+
+## Files
+
+- **`thank-you.html`** — the full page, combined.
+- **`sections-thank-you/`** — the same page split into 5 self-contained files for pasting into GHL, same convention as `sections/` above.
+
+## Section order
+
+| # | File | Section |
+|---|------|---------|
+| 01 | `01-header.html` | Logo only, no nav (keeps focus on the confirmation) |
+| 02 | `02-confirmation.html` | Checkmark badge, "Thank You!" headline, book-a-call + return-home buttons |
+| 03 | `03-next-steps.html` | Generic 3-step "what happens next" |
+| 04 | `04-calendar.html` | GHL calendar embed placeholder ("skip the wait, book now") |
+| 05 | `05-footer.html` | Minimal footer — logo, return-home link, copyright |
+
+## Before you publish — replace these placeholders
+
+- **Logo**: same `<!-- TODO -->` pattern as the landing page, in `01-header.html` and `05-footer.html`.
+- **Booking link**: `<!-- TODO -->` in `02-confirmation.html` — point at your GHL Calendar link, or delete the button entirely if this page only follows a call that's already booked.
+- **Calendar embed** (`04-calendar.html`): dashed "GHL Calendar Embed Placeholder" — replace with your real GHL calendar embed (Sites → Calendars → Embed), or delete this whole section if you don't want a second booking prompt on the thank-you page.
+- **Copyright/company name**: footer says "Your Company" — swap for your real name (or delete if GHL injects this globally).
+- Optional: GHL supports merge fields (e.g. `{{contact.first_name}}`) on native pages — you can drop one into the `<h1>Thank You!</h1>` in `02-confirmation.html` for personalization if you want it; left out by default to keep this page fully generic.
+
+## How to add this to GoHighLevel
+
+Same process as the landing page: create/open your thank-you page in Sites → Funnels/Websites, add a Custom Code element per section, and paste `01` through `05` in order. See "Full width in GHL" above — the same `lvlup-bleed` fix applies here.

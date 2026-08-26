@@ -1,0 +1,155 @@
+<!-- ============================================================
+     THANK YOU PAGE
+     Section 04: calendar
+     Paste this entire block into a GoHighLevel "Custom Code" /
+     "Custom HTML" element in this position on the page.
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ===== LVLUP DESIGN SYSTEM =====
+   Identical to the block used on the main landing page, so this page's
+   sections can sit alongside those sections in GHL without any style
+   conflicts. This same <style> block is repeated at the top of every
+   file in /sections-thank-you/ for the same reason — don't remove it
+   when pasting into GHL. */
+:root{
+  --navy:#004AAD;
+  --navy-dark:#00337a;
+  --blue:#0099FF;
+  --gold:#FFB803;
+  --white:#FFFFFF;
+  --ink:#0A1A33;
+  --gray-700:#3E4C63;
+  --gray-500:#6B7A90;
+  --gray-100:#F3F6FB;
+  --gray-200:#E6ECF5;
+  --radius:16px;
+  --shadow:0 20px 45px -20px rgba(0,45,110,0.25);
+  --container:1160px;
+}
+.lvlup *{box-sizing:border-box;}
+.lvlup{
+  font-family:'Roboto',Arial,sans-serif;
+  color:var(--ink);
+  line-height:1.6;
+  background:var(--white);
+}
+.lvlup h1,.lvlup h2,.lvlup h3,.lvlup h4{
+  font-family:'Poppins',Arial,sans-serif;
+  color:var(--navy);
+  line-height:1.2;
+  margin:0 0 16px;
+  font-weight:700;
+}
+.lvlup p{margin:0 0 16px;color:var(--gray-700);}
+.lvlup a{text-decoration:none;}
+.lvlup img{max-width:100%;display:block;}
+.lvlup .container{max-width:var(--container);margin:0 auto;padding:0 24px;}
+.lvlup .eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Poppins',Arial,sans-serif;
+  font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--navy);background:var(--gray-100);
+  padding:8px 16px;border-radius:999px;margin-bottom:18px;
+}
+.lvlup .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);}
+.lvlup .btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-family:'Poppins',Arial,sans-serif;font-weight:600;font-size:16px;
+  padding:16px 32px;border-radius:10px;border:2px solid transparent;
+  cursor:pointer;transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  white-space:nowrap;
+}
+.lvlup .btn:hover{transform:translateY(-2px);}
+.lvlup .btn-gold{background:var(--gold);color:var(--navy);box-shadow:0 12px 24px -10px rgba(255,184,3,0.6);}
+.lvlup .btn-gold:hover{box-shadow:0 16px 30px -10px rgba(255,184,3,0.75);}
+.lvlup .btn-outline{background:transparent;border-color:rgba(255,255,255,0.55);color:var(--white);}
+.lvlup .btn-outline:hover{background:rgba(255,255,255,0.12);}
+.lvlup .btn-navy{background:var(--navy);color:var(--white);}
+.lvlup .btn-navy:hover{background:var(--navy-dark);}
+.lvlup .btn-block{width:100%;}
+.lvlup .cta-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center;}
+.lvlup .section{padding:88px 0;}
+.lvlup .section-tight{padding:64px 0;}
+.lvlup .section-head{max-width:680px;margin:0 auto 48px;text-align:center;}
+.lvlup .section-head p{font-size:18px;}
+.lvlup .bg-navy{background:var(--navy);color:var(--white);}
+.lvlup .bg-navy h2,.lvlup .bg-navy h3,.lvlup .bg-navy h4{color:var(--white);}
+.lvlup .bg-navy p{color:rgba(255,255,255,0.82);}
+.lvlup .bg-gray{background:var(--gray-100);}
+.lvlup .grid{display:grid;gap:28px;}
+.lvlup .grid-2{grid-template-columns:repeat(2,1fr);}
+.lvlup .grid-3{grid-template-columns:repeat(3,1fr);}
+.lvlup .grid-4{grid-template-columns:repeat(4,1fr);}
+.lvlup .card{
+  background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius);
+  padding:32px;box-shadow:var(--shadow);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.lvlup .card:hover{transform:translateY(-4px);box-shadow:0 28px 55px -22px rgba(0,45,110,0.32);}
+.lvlup .badge-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:44px;height:44px;border-radius:50%;background:var(--navy);color:var(--white);
+  font-family:'Poppins',Arial,sans-serif;font-weight:700;font-size:18px;margin-bottom:16px;
+}
+.lvlup .icon-tile{
+  width:56px;height:56px;border-radius:12px;background:var(--gray-100);
+  display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+  font-size:26px;
+}
+.lvlup .divider-gold{width:64px;height:4px;background:var(--gold);border-radius:2px;margin:0 auto 24px;}
+/* Breaks a section out of whatever fixed-width row/container GHL wraps it in,
+   so it spans the full browser viewport regardless of the page builder's
+   default content width. Inner .container still centers content normally. */
+.lvlup-bleed{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;}
+body{overflow-x:hidden;}
+.lvlup .lvlup-footer-link{transition:color .18s ease;}
+.lvlup .lvlup-footer-link:hover{color:var(--gold) !important;}
+/* Checkmark badge on the confirmation hero */
+.lvlup .lvlup-check-badge{
+  width:88px;height:88px;border-radius:50%;
+  background:var(--gold);display:flex;align-items:center;justify-content:center;
+  margin:0 auto 28px;box-shadow:0 16px 34px -12px rgba(255,184,3,0.55);
+  animation:lvlup-pop .5s ease;
+}
+@keyframes lvlup-pop{from{transform:scale(0.6);opacity:0;}to{transform:scale(1);opacity:1;}}
+@media(prefers-reduced-motion: reduce){
+  .lvlup .card,.lvlup .lvlup-footer-link,.lvlup .lvlup-check-badge{transition:none;animation:none;}
+}
+@media(max-width:900px){
+  .lvlup .grid-4{grid-template-columns:repeat(2,1fr);}
+  .lvlup .grid-3{grid-template-columns:repeat(2,1fr);}
+  .lvlup .grid-2{grid-template-columns:1fr;}
+}
+@media(max-width:640px){
+  .lvlup .section{padding:56px 0;}
+  .lvlup .grid-4,.lvlup .grid-3{grid-template-columns:1fr;}
+  .lvlup h1{font-size:34px !important;}
+  .lvlup h2{font-size:28px !important;}
+}
+</style>
+<div class="lvlup lvlup-bleed">
+<section class="section bg-gray">
+  <div class="container" style="max-width:820px;text-align:center;">
+    <span class="eyebrow">In the Meantime</span>
+    <h2 style="font-size:30px;">Want to Skip the Wait?</h2>
+    <p style="font-size:17px;">Grab a time directly on our calendar and we'll speak sooner.</p>
+
+    <!--
+      GHL CALENDAR EMBED — replace this placeholder with a live calendar:
+      1. In GHL: Sites → Calendars → select your calendar → Embed.
+      2. Copy the embed code (usually an <iframe> pointed at your
+         calendar's booking widget URL).
+      3. Paste that embed code in place of the placeholder <div> below,
+         then delete the placeholder.
+    -->
+    <div style="border:2px dashed var(--gray-200);border-radius:12px;padding:56px 24px;text-align:center;background:var(--white);min-height:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;">
+      <div class="icon-tile" style="margin-bottom:0;">📅</div>
+      <p style="font-family:'Poppins',Arial,sans-serif;font-weight:700;color:var(--navy);font-size:14px;letter-spacing:1px;text-transform:uppercase;margin:0;">GHL Calendar Embed Placeholder</p>
+      <p style="margin:0;font-size:14px;max-width:320px;">Paste your GoHighLevel calendar embed here — Sites → Calendars → Embed.</p>
+    </div>
+  </div>
+</section>
+</div>

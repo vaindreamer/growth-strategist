@@ -7,9 +7,11 @@ Brand: Poppins (headings) + Roboto (body). Colors: Navy `#004AAD`, Gold `#FFB803
 ## Files
 
 - **`index.html`** — the full page, combined. Open it directly in a browser to preview, or host it as-is if you're not using GHL's page builder.
-- **`sections/`** — the same page broken into 15 self-contained files, one per section, in build order. Each one includes its own Google Fonts link and `<style>` block so it renders correctly whether you paste it alone or alongside the others.
+- **`sections/`** — the same page broken into 18 self-contained files, one per section, in build order. Each one includes its own Google Fonts link and `<style>` block so it renders correctly whether you paste it alone or alongside the others.
 
 ## Section order
+
+Sections with a letter suffix (`05a`, `08a`, `12a`) were inserted later without renumbering the rest — so any of these files you've already pasted into GHL keep their identity; you only need to add the new ones in the right slot.
 
 | # | File | Section |
 |---|------|---------|
@@ -18,13 +20,16 @@ Brand: Poppins (headings) + Roboto (body). Colors: Navy `#004AAD`, Gold `#FFB803
 | 03 | `03-trust-bar.html` | Client logo strip (placeholders) |
 | 04 | `04-problem.html` | Pain points |
 | 05 | `05-solution.html` | What is RPO |
+| 05a | `05a-about.html` | About Level Up — company facts, license, Cebu HQ / BGC office |
 | 06 | `06-services.html` | What's included (9 services) |
 | 07 | `07-process.html` | How it works — interactive 5-step stepper |
 | 08 | `08-why-us.html` | Differentiators |
+| 08a | `08a-values.html` | How We Show Up — the LEVEL UP values acronym |
 | 09 | `09-industries.html` | Industries served |
-| 10 | `10-results-stats.html` | Stat bar (placeholders) |
+| 10 | `10-results-stats.html` | The Level Up RPO Advantage (90-day guarantee, 1-week delivery, 30K+ pipeline, strategic partnerships) |
 | 11 | `11-testimonials.html` | Testimonials (placeholders) |
 | 12 | `12-engagement-models.html` | Full / Project / On-Demand RPO |
+| 12a | `12a-billing-model.html` | Billing Model — fee-per-hire pricing table |
 | 13 | `13-faq.html` | FAQ accordion with animated +/× indicator |
 | 14 | `14-final-cta-form.html` | Book-a-call + live GHL calendar embed |
 | 15 | `15-footer.html` | Footer |
@@ -33,8 +38,8 @@ Brand: Poppins (headings) + Roboto (body). Colors: Navy `#004AAD`, Gold `#FFB803
 
 1. In your GHL sub-account, go to **Sites → Funnels/Websites**, create or open the `/rpo` page.
 2. Add a **Custom Code (HTML)** element to the page.
-3. Open each file in `sections/` **in numeric order** and paste its full contents into its own Custom Code element, stacked top to bottom (01 → 15).
-4. Repeat for all 15 files. Save and preview — the design system (fonts/colors) is duplicated in every file on purpose, so it renders correctly no matter how GHL isolates each block.
+3. Open each file in `sections/` **in the order in the table above** and paste its full contents into its own Custom Code element, stacked top to bottom.
+4. Repeat for all 18 files. Save and preview — the design system (fonts/colors) is duplicated in every file on purpose, so it renders correctly no matter how GHL isolates each block.
 
 If your GHL plan lets you paste raw HTML for a whole page at once, you can instead paste all of `index.html` (minus the outer `<html>/<head>/<body>` wrapper if GHL requires it) into a single Custom Code/HTML page element.
 
@@ -50,11 +55,13 @@ Every section file wraps its content in `<div class="lvlup lvlup-bleed">`. The `
 - **Hero photo**: the right column of the hero (`02-hero.html`) is now an `<img>` placeholder for Pedro's photo. A transparent-background PNG cutout (~800x1000px, portrait) works best since it floats directly on the navy gradient with no card behind it. Upload it in GHL's Media Library and swap the `<!-- TODO -->`-marked `src`.
 - **CTA calendar** (`14-final-cta-form.html`): the right column is now a live GHL Calendar embed (`<iframe>` + `form_embed.js` `<script>`) — selecting a time slot reveals a short contact form built into the same widget, so no separate form element is needed. The "Book a Free Strategy Call" button in the left column scrolls down to this embed (`#lvlup-calendar-embed`) rather than linking out. The iframe's `height:780px` is a starting size so the widget doesn't flash from a collapsed height before GHL's script auto-resizes it — nudge that number if your calendar renders noticeably taller or shorter once live.
 - **Footer booking link**: one remaining `<!-- TODO -->` in `15-footer.html` marks `href="#"` — replace with your real GHL Calendar link (or point it at `/rpo#lvlup-calendar-embed` if the footer lives on the same page as the embed).
-- **Stats** (`10-results-stats.html`): `[XX]%` placeholders — replace with real, verifiable metrics only.
 - **Testimonials** (`11-testimonials.html`): `[Client Name]` / `[Title, Company]` — replace with real, permissioned quotes.
 - **Client logos** (`03-trust-bar.html`): replace the dashed placeholder boxes with actual client logo images.
 - **Contact info** (`15-footer.html`): swap in your real phone number.
 - **Email**: `hello@lvluptalentsolutions.com` is a placeholder — confirm the real inbox.
+- **License number** (`05a-about.html`): double-check "PEA-Operator's License (New) No. ROVII-2026-02-LA-001-BLA-TCFO" against your current license before publishing — pulled from your deck, but license numbers should always get a final human check.
+- **Billing table** (`12a-billing-model.html`): pricing pulled from your RPO deck — reconfirm the figures are current before publishing, since a pricing table like this is one of the first things a prospect will screenshot.
+- **Stats** (`10-results-stats.html`): now populated with real figures from your deck (90-day guarantee, 1-week delivery, 30K+ pipeline) instead of placeholders — no longer needs editing unless those numbers change.
 
 ## Interactivity
 

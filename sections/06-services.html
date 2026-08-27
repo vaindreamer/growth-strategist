@@ -118,6 +118,18 @@ body{overflow-x:hidden;}
 @media(prefers-reduced-motion: reduce){
   .lvlup .lvlup-step-btn,.lvlup .lvlup-step-line{transition:none;}
 }
+.lvlup .lvlup-tier-btn{
+  font-family:'Poppins',Arial,sans-serif;font-weight:600;font-size:14px;
+  padding:12px 18px;border-radius:999px;border:2px solid var(--gray-200);
+  background:var(--white);color:var(--navy);cursor:pointer;white-space:nowrap;
+  transition:background .18s ease,color .18s ease,border-color .18s ease,transform .18s ease;
+}
+.lvlup .lvlup-tier-btn:hover{transform:translateY(-2px);border-color:var(--navy);}
+.lvlup .lvlup-tier-btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px;}
+.lvlup .lvlup-tier-btn[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:var(--white);}
+@media(prefers-reduced-motion: reduce){
+  .lvlup .lvlup-tier-btn{transition:none;}
+}
 /* Every .card across the page (services, problem, why-us, industries,
    stats, testimonials, engagement models, FAQ) lifts on hover so the
    whole page feels responsive to the cursor, not just the process steps. */

@@ -29,7 +29,7 @@ Sections with a letter suffix (`05a`, `08a`, `12a`) were inserted later without 
 | 10 | `10-results-stats.html` | The Level Up RPO Advantage (90-day guarantee, 1-week delivery, 30K+ pipeline, strategic partnerships) |
 | 11 | `11-testimonials.html` | Testimonials (placeholders) |
 | 12 | `12-engagement-models.html` | Full / Project / On-Demand RPO |
-| 12a | `12a-billing-model.html` | Billing Model — fee-per-hire pricing table |
+| 12a | `12a-billing-model.html` | Billing Model — interactive position-level tier selector (no prices shown) |
 | 13 | `13-faq.html` | FAQ accordion with animated +/× indicator |
 | 14 | `14-final-cta-form.html` | Book-a-call + live GHL calendar embed |
 | 15 | `15-footer.html` | Footer |
@@ -60,7 +60,7 @@ Every section file wraps its content in `<div class="lvlup lvlup-bleed">`. The `
 - **Contact info** (`15-footer.html`): swap in your real phone number.
 - **Email**: `hello@lvluptalentsolutions.com` is a placeholder — confirm the real inbox.
 - **License number** (`05a-about.html`): double-check "PEA-Operator's License (New) No. ROVII-2026-02-LA-001-BLA-TCFO" against your current license before publishing — pulled from your deck, but license numbers should always get a final human check.
-- **Billing table** (`12a-billing-model.html`): pricing pulled from your RPO deck — reconfirm the figures are current before publishing, since a pricing table like this is one of the first things a prospect will screenshot.
+- **Billing model** (`12a-billing-model.html`): no dollar/PHP figures are published — it's an interactive tier selector (Entry / Specialized / Middle Management / Senior-Executive) showing relative fee level and experience bands only, driving to "Get a Custom Quote." If you'd rather publish exact numbers, this is the section to rebuild as a table instead.
 - **Stats** (`10-results-stats.html`): now populated with real figures from your deck (90-day guarantee, 1-week delivery, 30K+ pipeline) instead of placeholders — no longer needs editing unless those numbers change.
 
 ## Interactivity

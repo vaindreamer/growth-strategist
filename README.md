@@ -24,7 +24,7 @@ Sections with a letter suffix (`05a`, `08a`, `12a`) were inserted later without 
 | 06 | `06-services.html` | What's included (9 services) |
 | 07 | `07-process.html` | How it works — interactive 5-step stepper |
 | 08 | `08-why-us.html` | Differentiators |
-| 08a | `08a-values.html` | How We Show Up — the LEVEL UP values acronym |
+| 08a | `08a-values.html` | How We Show Up — interactive LEVEL UP values selector |
 | 09 | `09-industries.html` | Industries served |
 | 10 | `10-results-stats.html` | The Level Up RPO Advantage (90-day guarantee, 1-week delivery, 30K+ pipeline, strategic partnerships) |
 | 11 | `11-testimonials.html` | Testimonials (placeholders) |

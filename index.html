@@ -128,6 +128,19 @@ body{overflow-x:hidden;}
 @media(prefers-reduced-motion: reduce){
   .lvlup .lvlup-tier-btn{transition:none;}
 }
+.lvlup .lvlup-value-btn{
+  width:56px;height:56px;border-radius:50%;border:2px solid var(--gray-200);flex:none;
+  background:var(--white);color:var(--navy);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Poppins',Arial,sans-serif;font-weight:800;font-size:22px;
+  transition:transform .18s ease,background .18s ease,color .18s ease,border-color .18s ease;
+}
+.lvlup .lvlup-value-btn:hover{transform:translateY(-3px);border-color:var(--navy);}
+.lvlup .lvlup-value-btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px;}
+.lvlup .lvlup-value-btn[aria-pressed="true"]{background:var(--navy);border-color:var(--gold);color:var(--gold);transform:scale(1.1);}
+@media(prefers-reduced-motion: reduce){
+  .lvlup .lvlup-value-btn{transition:none;}
+}
 /* Every .card across the page (services, problem, why-us, industries,
    stats, testimonials, engagement models, FAQ) lifts on hover so the
    whole page feels responsive to the cursor, not just the process steps. */
@@ -555,52 +568,82 @@ body{overflow-x:hidden;}
       <h2 style="font-size:34px;">How We Show Up</h2>
       <p style="font-style:italic;">Seven values. One acronym. Every day, this is the standard we hold ourselves to.</p>
     </div>
-    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:24px;">
-      <div style="text-align:center;">
-        <div style="width:60px;height:60px;border-radius:50%;background:var(--navy);border:3px solid var(--gold);color:var(--gold);font-family:'Poppins',Arial,sans-serif;font-weight:800;font-size:24px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">L</div>
-        <h4 style="font-size:15px;margin-bottom:2px;">Lead</h4>
-        <p style="font-style:italic;font-size:13px;color:var(--navy);margin-bottom:8px;">with Empathy</p>
-        <p style="font-size:13px;margin:0;">We create a culture where people feel heard, supported, and valued.</p>
+    <div id="lvlup-values" style="max-width:920px;margin:0 auto;">
+      <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:18px;margin-bottom:32px;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+          <button type="button" class="lvlup-value-btn" data-value="1" aria-pressed="true">L</button>
+          <span style="font-family:'Poppins',Arial,sans-serif;font-size:12px;font-weight:600;color:var(--gray-500);">Lead</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+          <button type="button" class="lvlup-value-btn" data-value="2" aria-pressed="false">E</button>
+          <span style="font-family:'Poppins',Arial,sans-serif;font-size:12px;font-weight:600;color:var(--gray-500);">Earn</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+          <button type="button" class="lvlup-value-btn" data-value="3" aria-pressed="false">V</button>
+          <span style="font-family:'Poppins',Arial,sans-serif;font-size:12px;font-weight:600;color:var(--gray-500);">Value</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+          <button type="button" class="lvlup-value-btn" data-value="4" aria-pressed="false">E</button>
+          <span style="font-family:'Poppins',Arial,sans-serif;font-size:12px;font-weight:600;color:var(--gray-500);">Execute</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+          <button type="button" class="lvlup-value-btn" data-value="5" aria-pressed="false">L</button>
+          <span style="font-family:'Poppins',Arial,sans-serif;font-size:12px;font-weight:600;color:var(--gray-500);">Learn</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+          <button type="button" class="lvlup-value-btn" data-value="6" aria-pressed="false">U</button>
+          <span style="font-family:'Poppins',Arial,sans-serif;font-size:12px;font-weight:600;color:var(--gray-500);">Unite</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+          <button type="button" class="lvlup-value-btn" data-value="7" aria-pressed="false">P</button>
+          <span style="font-family:'Poppins',Arial,sans-serif;font-size:12px;font-weight:600;color:var(--gray-500);">Pursue</span>
+        </div>
       </div>
-      <div style="text-align:center;">
-        <div style="width:60px;height:60px;border-radius:50%;background:var(--navy);border:3px solid var(--gold);color:var(--gold);font-family:'Poppins',Arial,sans-serif;font-weight:800;font-size:24px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">E</div>
-        <h4 style="font-size:15px;margin-bottom:2px;">Earn</h4>
-        <p style="font-style:italic;font-size:13px;color:var(--navy);margin-bottom:8px;">Trust</p>
-        <p style="font-size:13px;margin:0;">Integrity, honesty, and consistency — we do what's right and keep our word.</p>
-      </div>
-      <div style="text-align:center;">
-        <div style="width:60px;height:60px;border-radius:50%;background:var(--navy);border:3px solid var(--gold);color:var(--gold);font-family:'Poppins',Arial,sans-serif;font-weight:800;font-size:24px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">V</div>
-        <h4 style="font-size:15px;margin-bottom:2px;">Value</h4>
-        <p style="font-style:italic;font-size:13px;color:var(--navy);margin-bottom:8px;">Every Person</p>
-        <p style="font-size:13px;margin:0;">Recognition builds belonging, confidence, and long-term engagement.</p>
-      </div>
-      <div style="text-align:center;">
-        <div style="width:60px;height:60px;border-radius:50%;background:var(--navy);border:3px solid var(--gold);color:var(--gold);font-family:'Poppins',Arial,sans-serif;font-weight:800;font-size:24px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">E</div>
-        <h4 style="font-size:15px;margin-bottom:2px;">Execute</h4>
-        <p style="font-style:italic;font-size:13px;color:var(--navy);margin-bottom:8px;">with Ownership</p>
-        <p style="font-size:13px;margin:0;">Accountability, initiative, and a commitment to excellence.</p>
-      </div>
-      <div style="text-align:center;">
-        <div style="width:60px;height:60px;border-radius:50%;background:var(--navy);border:3px solid var(--gold);color:var(--gold);font-family:'Poppins',Arial,sans-serif;font-weight:800;font-size:24px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">L</div>
-        <h4 style="font-size:15px;margin-bottom:2px;">Learn</h4>
-        <p style="font-style:italic;font-size:13px;color:var(--navy);margin-bottom:8px;">and Level Up</p>
-        <p style="font-size:13px;margin:0;">We grow through training, feedback, and continuous improvement.</p>
-      </div>
-      <div style="text-align:center;">
-        <div style="width:60px;height:60px;border-radius:50%;background:var(--navy);border:3px solid var(--gold);color:var(--gold);font-family:'Poppins',Arial,sans-serif;font-weight:800;font-size:24px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">U</div>
-        <h4 style="font-size:15px;margin-bottom:2px;">Unite</h4>
-        <p style="font-style:italic;font-size:13px;color:var(--navy);margin-bottom:8px;">for the Mission</p>
-        <p style="font-size:13px;margin:0;">We move as one team, with shared purpose, alignment, and respect.</p>
-      </div>
-      <div style="text-align:center;">
-        <div style="width:60px;height:60px;border-radius:50%;background:var(--navy);border:3px solid var(--gold);color:var(--gold);font-family:'Poppins',Arial,sans-serif;font-weight:800;font-size:24px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">P</div>
-        <h4 style="font-size:15px;margin-bottom:2px;">Pursue</h4>
-        <p style="font-style:italic;font-size:13px;color:var(--navy);margin-bottom:8px;">Lasting Excellence</p>
-        <p style="font-size:13px;margin:0;">Quality, consistency, and sustainable growth, built for long-term impact.</p>
+
+      <div id="lvlup-value-panel" class="card" style="text-align:center;max-width:560px;margin:0 auto;">
+        <span class="eyebrow" id="lvlup-value-label">Value 1 of 7</span>
+        <h3 id="lvlup-value-title" style="font-size:24px;">Lead</h3>
+        <p id="lvlup-value-sub" style="font-style:italic;color:var(--navy);font-weight:600;margin-bottom:12px;">with Empathy</p>
+        <p id="lvlup-value-desc" style="margin:0;">We create a culture where people feel heard, supported, and valued.</p>
       </div>
     </div>
   </div>
 </section>
+<script>
+(function(){
+  var values=[
+    {title:"Lead",sub:"with Empathy",desc:"We create a culture where people feel heard, supported, and valued."},
+    {title:"Earn",sub:"Trust",desc:"Integrity, honesty, and consistency — we do what's right and keep our word."},
+    {title:"Value",sub:"Every Person",desc:"Recognition builds belonging, confidence, and long-term engagement."},
+    {title:"Execute",sub:"with Ownership",desc:"Accountability, initiative, and a commitment to excellence."},
+    {title:"Learn",sub:"and Level Up",desc:"We grow through training, feedback, and continuous improvement."},
+    {title:"Unite",sub:"for the Mission",desc:"We move as one team, with shared purpose, alignment, and respect."},
+    {title:"Pursue",sub:"Lasting Excellence",desc:"Quality, consistency, and sustainable growth, built for long-term impact."}
+  ];
+  var root=document.getElementById('lvlup-values');
+  if(!root)return;
+  var buttons=root.querySelectorAll('.lvlup-value-btn');
+  var labelEl=document.getElementById('lvlup-value-label');
+  var titleEl=document.getElementById('lvlup-value-title');
+  var subEl=document.getElementById('lvlup-value-sub');
+  var descEl=document.getElementById('lvlup-value-desc');
+  function setActive(n){
+    buttons.forEach(function(btn){
+      var active=parseInt(btn.getAttribute('data-value'),10)===n;
+      btn.setAttribute('aria-pressed',active?'true':'false');
+    });
+    var v=values[n-1];
+    labelEl.textContent='Value '+n+' of 7';
+    titleEl.textContent=v.title;
+    subEl.textContent=v.sub;
+    descEl.textContent=v.desc;
+  }
+  buttons.forEach(function(btn){
+    btn.addEventListener('click',function(){setActive(parseInt(btn.getAttribute('data-value'),10));});
+  });
+  setActive(1);
+})();
+</script>
 <!-- /SECTION:08a -->
 
 <!-- SECTION:09:industries -->

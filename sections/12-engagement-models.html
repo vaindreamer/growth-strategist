@@ -163,6 +163,12 @@ body{overflow-x:hidden;}
 @media(max-width:900px){
   .lvlup-solution-grid{grid-template-columns:1fr;}
 }
+/* Final CTA: copy + calendar embed side by side on desktop, single
+   column on mobile — same collapse-to-1fr fix as the hero grid. */
+.lvlup-cta-grid{display:grid;grid-template-columns:1fr 1fr;align-items:start;}
+@media(max-width:900px){
+  .lvlup-cta-grid{grid-template-columns:1fr;}
+}
 .lvlup-header-logo{height:60px;}
 @media(max-width:480px){
   .lvlup-header-logo{height:44px;}

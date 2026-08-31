@@ -163,6 +163,12 @@ body{overflow-x:hidden;}
 @media(max-width:900px){
   .lvlup-solution-grid{grid-template-columns:1fr;}
 }
+/* Final CTA: copy + calendar embed side by side on desktop, single
+   column on mobile — same collapse-to-1fr fix as the hero grid. */
+.lvlup-cta-grid{display:grid;grid-template-columns:1fr 1fr;align-items:start;}
+@media(max-width:900px){
+  .lvlup-cta-grid{grid-template-columns:1fr;}
+}
 .lvlup-header-logo{height:60px;}
 @media(max-width:480px){
   .lvlup-header-logo{height:44px;}
@@ -221,7 +227,7 @@ body{overflow-x:hidden;}
 <div class="lvlup lvlup-bleed">
 <section class="section bg-navy" id="book-a-call" style="position:relative;overflow:hidden;">
   <div style="position:absolute;top:-100px;right:-100px;width:340px;height:340px;background:var(--blue);opacity:0.15;border-radius:50%;"></div>
-  <div class="container" style="position:relative;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;">
+  <div class="container lvlup-cta-grid" style="position:relative;gap:56px;">
     <div>
       <span class="eyebrow" style="background:rgba(255,255,255,0.1);color:var(--white);">Let's Talk</span>
       <h2 style="color:var(--white);font-size:34px;">Ready to Level Up Your Hiring?</h2>

@@ -148,6 +148,25 @@ body{overflow-x:hidden;}
    whole page feels responsive to the cursor, not just the process steps. */
 .lvlup .card{transition:transform .18s ease,box-shadow .18s ease;}
 .lvlup .card:hover{transform:translateY(-4px);box-shadow:0 28px 55px -22px rgba(0,45,110,0.32);}
+/* Hero: two columns (copy + Pedro's photo) on desktop; below 900px the
+   photo column is dropped entirely so it never cramps the CTA buttons,
+   and the copy column runs full width on its own. */
+.lvlup-hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;align-items:center;}
+.lvlup-hero-photo-wrap{display:flex;}
+@media(max-width:900px){
+  .lvlup-hero-grid{grid-template-columns:1fr;}
+  .lvlup-hero-photo-wrap{display:none;}
+}
+/* Solution: copy + 3 stacked cards side by side on desktop, single
+   column on mobile — same collapse-to-1fr fix as the hero grid. */
+.lvlup-solution-grid{display:grid;grid-template-columns:1fr 1fr;}
+@media(max-width:900px){
+  .lvlup-solution-grid{grid-template-columns:1fr;}
+}
+.lvlup-header-logo{height:60px;}
+@media(max-width:480px){
+  .lvlup-header-logo{height:44px;}
+}
 /* Trust-bar logo placeholders */
 .lvlup .lvlup-logo-slot{border:1px dashed var(--gray-200);border-radius:12px;padding:22px;text-align:center;color:var(--gray-500);font-family:'Poppins',Arial,sans-serif;font-weight:600;transition:border-color .18s ease,color .18s ease,transform .18s ease;}
 .lvlup .lvlup-logo-slot:hover{border-color:var(--navy);color:var(--navy);transform:translateY(-2px);}

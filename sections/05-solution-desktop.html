@@ -1,9 +1,16 @@
 <!-- ============================================================
      LEVEL UP TALENT SOLUTIONS — RPO LANDING PAGE
-     Section 01: header
-     Paste this entire block into a GoHighLevel "Custom Code" /
-     "Custom HTML" element in this position on the page. The
-     "lvlup-bleed" class below makes this section span the full
+     Section 05: solution — DESKTOP / TABLET VERSION
+     This is one half of a two-file pair: this file (visible ≥900px)
+     and 05-solution-mobile.html (visible <900px). Paste BOTH as two
+     separate GoHighLevel "Custom Code" elements, stacked one after
+     the other in the same spot on the page — each hides itself via
+     CSS at the wrong breakpoint, so only one is ever visible at a
+     time. If your GHL plan/element also exposes a per-element
+     "Hide on Mobile" / "Hide on Desktop & Tablet" visibility toggle,
+     you can use that too as a belt-and-suspenders — it's optional,
+     the CSS below already handles it on its own.
+     The "lvlup-bleed" class below makes this section span the full
      browser width even if GHL's row/section wraps it in a
      narrower container — no manual width settings needed in GHL.
      ============================================================ -->
@@ -163,6 +170,11 @@ body{overflow-x:hidden;}
 @media(max-width:900px){
   .lvlup-solution-grid{grid-template-columns:1fr;}
 }
+/* This file is the DESKTOP/TABLET half of a two-file pair — hide it
+   below 900px so it never doubles up with 05-solution-mobile.html. */
+@media(max-width:899px){
+  .lvlup-solution-desktop-only{display:none;}
+}
 .lvlup-header-logo{height:60px;}
 @media(max-width:480px){
   .lvlup-header-logo{height:44px;}
@@ -218,41 +230,30 @@ body{overflow-x:hidden;}
   .lvlup h2{font-size:28px !important;}
 }
 </style>
-<div class="lvlup lvlup-bleed">
-<header style="position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--gray-200);">
-  <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px;">
-    <a href="#" style="display:flex;align-items:center;">
-      <img class="lvlup-header-logo" src="https://assets.cdn.filesafe.space/r5Wi68QaIHSEimHUMiSl/media/6873ca721726d5a384562809.png" alt="Level Up Talent Solutions" style="width:auto;display:block;">
-    </a>
-    <button type="button" id="lvlup-nav-toggle" class="lvlup-nav-toggle" aria-expanded="false" aria-controls="lvlup-nav-menu" aria-label="Toggle navigation menu">
-      <span></span><span></span><span></span>
-    </button>
-    <nav id="lvlup-nav-menu" class="lvlup-nav-links">
-      <a href="#services" style="font-family:'Poppins',Arial,sans-serif;font-weight:500;font-size:15px;color:var(--ink);">Services</a>
-      <a href="#process" style="font-family:'Poppins',Arial,sans-serif;font-weight:500;font-size:15px;color:var(--ink);">How It Works</a>
-      <a href="#faq" style="font-family:'Poppins',Arial,sans-serif;font-weight:500;font-size:15px;color:var(--ink);">FAQ</a>
-      <a href="#book-a-call" class="btn btn-navy" style="padding:12px 22px;font-size:14px;">Book a Call</a>
-    </nav>
+<div class="lvlup lvlup-bleed lvlup-solution-desktop-only">
+<section class="section bg-gray">
+  <div class="container lvlup-solution-grid" style="gap:56px;align-items:center;">
+    <div>
+      <span class="eyebrow">The Solution</span>
+      <h2 style="font-size:32px;">What Is Recruitment Process Outsourcing?</h2>
+      <p style="font-size:17px;">RPO means Level Up Talent Solutions becomes an extension of your team — not a vendor you chase for updates. We own the sourcing, screening, and pipeline management for your open roles, using your employer brand, your hiring bar, and your timeline.</p>
+      <p style="font-size:17px;">You get the output of an in-house recruiting team — without the cost, ramp-up time, or headcount, and you stay in control of every final hiring decision.</p>
+      <a href="#book-a-call" class="btn btn-navy" style="margin-top:8px;">Talk to Our Team</a>
+    </div>
+    <div class="grid" style="gap:16px;">
+      <div class="card" style="display:flex;gap:16px;align-items:flex-start;padding:22px;">
+        <div class="icon-tile" style="margin-bottom:0;flex:none;">🎯</div>
+        <div><h4 style="font-size:16px;margin-bottom:4px;">Built Around Your Roles</h4><p style="margin:0;">No generic playbook — every search is scoped to the role, level, and market you're hiring in.</p></div>
+      </div>
+      <div class="card" style="display:flex;gap:16px;align-items:flex-start;padding:22px;">
+        <div class="icon-tile" style="margin-bottom:0;flex:none;">🤝</div>
+        <div><h4 style="font-size:16px;margin-bottom:4px;">You Stay in Control</h4><p style="margin:0;">We run the process; you make every final hiring decision. Full transparency, zero black box.</p></div>
+      </div>
+      <div class="card" style="display:flex;gap:16px;align-items:flex-start;padding:22px;">
+        <div class="icon-tile" style="margin-bottom:0;flex:none;">📊</div>
+        <div><h4 style="font-size:16px;margin-bottom:4px;">Reporting You Can Trust</h4><p style="margin:0;">Live pipeline visibility and weekly reporting, so you always know where every role stands.</p></div>
+      </div>
+    </div>
   </div>
-</header>
-<script>
-(function(){
-  var btn=document.getElementById('lvlup-nav-toggle');
-  var menu=document.getElementById('lvlup-nav-menu');
-  if(!btn||!menu)return;
-  function closeMenu(){
-    menu.classList.remove('lvlup-nav-open');
-    btn.classList.remove('lvlup-nav-toggle-open');
-    btn.setAttribute('aria-expanded','false');
-  }
-  btn.addEventListener('click',function(){
-    var open=menu.classList.toggle('lvlup-nav-open');
-    btn.classList.toggle('lvlup-nav-toggle-open',open);
-    btn.setAttribute('aria-expanded',open?'true':'false');
-  });
-  menu.querySelectorAll('a').forEach(function(link){
-    link.addEventListener('click',closeMenu);
-  });
-})();
-</script>
+</section>
 </div>

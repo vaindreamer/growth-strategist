@@ -152,13 +152,14 @@ body{overflow-x:hidden;}
 .lvlup .lvlup-logo-slot{border:1px dashed var(--gray-200);border-radius:12px;padding:22px;text-align:center;color:var(--gray-500);font-family:'Poppins',Arial,sans-serif;font-weight:600;transition:border-color .18s ease,color .18s ease,transform .18s ease;}
 .lvlup .lvlup-logo-slot:hover{border-color:var(--navy);color:var(--navy);transform:translateY(-2px);}
 /* Underline-on-hover for header/footer nav links */
+.lvlup .lvlup-nav-links{display:flex;align-items:center;gap:28px;}
 .lvlup .lvlup-nav-links > a:not(.btn){position:relative;}
 .lvlup .lvlup-nav-links > a:not(.btn)::after{content:'';position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .18s ease;}
 .lvlup .lvlup-nav-links > a:not(.btn):hover::after{transform:scaleX(1);}
 .lvlup .lvlup-footer-link{transition:color .18s ease;}
 .lvlup .lvlup-footer-link:hover{color:var(--gold) !important;}
 /* Mobile header nav: hamburger toggle + slide-down menu */
-.lvlup .lvlup-nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:0;flex:none;}
+.lvlup .lvlup-nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:none;border:none;cursor:pointer;padding:0;flex:none;}
 .lvlup .lvlup-nav-toggle span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px;transition:transform .2s ease,opacity .2s ease;}
 .lvlup .lvlup-nav-toggle.lvlup-nav-toggle-open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .lvlup .lvlup-nav-toggle.lvlup-nav-toggle-open span:nth-child(2){opacity:0;}
@@ -174,7 +175,7 @@ body{overflow-x:hidden;}
   .lvlup .lvlup-nav-links.lvlup-nav-open{max-height:320px;}
   .lvlup .lvlup-nav-links > a:not(.btn){padding:14px 24px;border-top:1px solid var(--gray-200);}
   .lvlup .lvlup-nav-links > a:not(.btn)::after{display:none;}
-  .lvlup .lvlup-nav-links > a.btn{margin:14px 24px;}
+  .lvlup .lvlup-nav-links > a.btn{margin:14px 24px;display:flex;justify-content:center;}
 }
 /* FAQ: custom +/x indicator instead of the browser's default marker */
 .lvlup details.card{padding:0;}

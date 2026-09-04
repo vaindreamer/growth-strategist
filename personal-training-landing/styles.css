@@ -94,15 +94,8 @@ ul{list-style:none;margin:0;padding:0;}
 }
 .logo-mark{
   flex:none;
-  width:38px;height:38px;
-  border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-display);
-  font-weight:800;
-  font-size:17px;
-  color:#fff;
-  background:radial-gradient(circle at 32% 28%,#ff9a52,var(--accent) 55%,var(--accent-dark) 100%);
-  box-shadow:0 0 0 3px #fff, 0 0 0 5px #c7cad0, inset 0 -3px 5px rgba(0,0,0,.25);
+  width:40px;height:40px;
+  overflow:visible;
 }
 .logo-text{
   display:flex;

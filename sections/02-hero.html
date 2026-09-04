@@ -148,10 +148,12 @@ body{overflow-x:hidden;}
    whole page feels responsive to the cursor, not just the process steps. */
 .lvlup .card{transition:transform .18s ease,box-shadow .18s ease;}
 .lvlup .card:hover{transform:translateY(-4px);box-shadow:0 28px 55px -22px rgba(0,45,110,0.32);}
-/* Hero: two columns (copy + Pedro's photo) on desktop. Below 900px the
-   photo stops being a grid column and instead becomes a full-bleed
-   background behind the copy, with a navy scrim gradient over it for
-   text legibility — rather than just disappearing. */
+/* Hero: two columns (copy + Pedro's photo) side by side on desktop.
+   Below 900px the grid collapses to one column, so the photo simply
+   drops below the copy in normal document flow (after the CTA
+   buttons and trust line) instead of sitting beside it — same
+   grounded-portrait treatment (shadow + bottom fade), just stacked
+   instead of side-by-side. */
 .lvlup-hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;align-items:center;}
 .lvlup-hero-photo-wrap{display:flex;justify-content:center;align-self:flex-end;position:relative;}
 .lvlup-hero-photo{
@@ -161,19 +163,7 @@ body{overflow-x:hidden;}
 }
 @media(max-width:900px){
   .lvlup-hero-grid{grid-template-columns:1fr;}
-  .lvlup-hero-copy{position:relative;z-index:2;}
-  .lvlup-hero-photo-wrap{
-    position:absolute;inset:0;display:block;justify-content:normal;align-self:auto;
-  }
-  .lvlup-hero-shadow{display:none;}
-  .lvlup-hero-photo{
-    width:100%;max-width:none;height:100%;object-fit:cover;
-    -webkit-mask-image:none;mask-image:none;
-  }
-  .lvlup-hero-photo-wrap::after{
-    content:"";position:absolute;inset:0;
-    background:linear-gradient(180deg, rgba(0,31,77,0.35) 0%, rgba(0,31,77,0.68) 55%, rgba(0,31,77,0.92) 100%);
-  }
+  .lvlup-hero-photo-wrap{align-self:auto;margin-top:36px;}
 }
 /* Solution: copy + 3 stacked cards side by side on desktop, single
    column on mobile — same collapse-to-1fr fix as the hero grid. */
@@ -259,11 +249,11 @@ body{overflow-x:hidden;}
     </div>
     <div class="lvlup-hero-photo-wrap">
       <!-- Grounding shadow: a soft dark ellipse under the photo so it reads
-           as standing in the scene instead of floating on the desktop
-           layout. Widen/narrow it to match the width of the real photo
-           once it's in place. Hidden on mobile (see .lvlup-hero-shadow
-           media query) since it doesn't make sense once the photo
-           becomes a full-bleed background. -->
+           as standing in the scene instead of floating. Widen/narrow it
+           to match the width of the real photo once it's in place. Stays
+           visible on mobile too, since the photo keeps this same grounded
+           look — it just stacks below the copy instead of sitting beside
+           it (see the .lvlup-hero-photo-wrap media query). -->
       <div class="lvlup-hero-shadow" style="position:absolute;bottom:6px;left:50%;transform:translateX(-50%);width:65%;height:26px;background:radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 72%);filter:blur(3px);"></div>
       <!-- TODO: Replace src with Pedro's photo. A transparent-background PNG
            cutout (roughly 800x1000px, portrait) works best here. The
@@ -274,12 +264,12 @@ body{overflow-x:hidden;}
            isn't a perfectly clean cutout — delete the mask-image lines if
            your PNG already has a true transparent background and the fade
            isn't wanted. Upload the photo in GHL's Media Library, then
-           paste the URL as this src. This whole column is hidden below
-           900px, the photo becomes a full-bleed background behind the
-           copy instead of a grid column (see .lvlup-hero-photo-wrap /
-           .lvlup-hero-photo media queries) — same file, two very
-           different treatments depending on screen width, no separate
-           mobile photo needed. -->
+           paste the URL as this src. Below 900px the grid collapses to a
+           single column, so this photo simply drops below the copy block
+           (after the CTA buttons and trust line) instead of sitting
+           beside it — same file, same grounded look, just stacked
+           instead of side-by-side (see .lvlup-hero-photo-wrap's media
+           query for the spacing). -->
       <img class="lvlup-hero-photo" src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27420%27%20height%3D%27520%27%20viewBox%3D%270%200%20420%20520%27%3E%3Crect%20x%3D%272%27%20y%3D%272%27%20width%3D%27416%27%20height%3D%27516%27%20rx%3D%2724%27%20fill%3D%27%23ffffff%27%20fill-opacity%3D%270.07%27%20stroke%3D%27%23ffffff%27%20stroke-opacity%3D%270.4%27%20stroke-width%3D%272%27%20stroke-dasharray%3D%278%206%27/%3E%3Ccircle%20cx%3D%27210%27%20cy%3D%27200%27%20r%3D%2770%27%20fill%3D%27%23ffffff%27%20fill-opacity%3D%270.35%27/%3E%3Cpath%20d%3D%27M90%20430%20C90%20330%20330%20330%20330%20430%20L330%20460%20L90%20460%20Z%27%20fill%3D%27%23ffffff%27%20fill-opacity%3D%270.35%27/%3E%3Ctext%20x%3D%27210%27%20y%3D%27495%27%20font-family%3D%27Poppins%2C%20Arial%2C%20sans-serif%27%20font-size%3D%2716%27%20font-weight%3D%27700%27%20letter-spacing%3D%270.5%27%20fill%3D%27%23ffffff%27%20fill-opacity%3D%270.85%27%20text-anchor%3D%27middle%27%3EADD%20PEDRO%27S%20PHOTO%20%28PNG%29%3C/text%3E%3C/svg%3E" alt="Pedro">
     </div>
   </div>

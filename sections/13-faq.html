@@ -148,10 +148,12 @@ body{overflow-x:hidden;}
    whole page feels responsive to the cursor, not just the process steps. */
 .lvlup .card{transition:transform .18s ease,box-shadow .18s ease;}
 .lvlup .card:hover{transform:translateY(-4px);box-shadow:0 28px 55px -22px rgba(0,45,110,0.32);}
-/* Hero: two columns (copy + Pedro's photo) on desktop. Below 900px the
-   photo stops being a grid column and instead becomes a full-bleed
-   background behind the copy, with a navy scrim gradient over it for
-   text legibility — rather than just disappearing. */
+/* Hero: two columns (copy + Pedro's photo) side by side on desktop.
+   Below 900px the grid collapses to one column, so the photo simply
+   drops below the copy in normal document flow (after the CTA
+   buttons and trust line) instead of sitting beside it — same
+   grounded-portrait treatment (shadow + bottom fade), just stacked
+   instead of side-by-side. */
 .lvlup-hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;align-items:center;}
 .lvlup-hero-photo-wrap{display:flex;justify-content:center;align-self:flex-end;position:relative;}
 .lvlup-hero-photo{
@@ -161,19 +163,7 @@ body{overflow-x:hidden;}
 }
 @media(max-width:900px){
   .lvlup-hero-grid{grid-template-columns:1fr;}
-  .lvlup-hero-copy{position:relative;z-index:2;}
-  .lvlup-hero-photo-wrap{
-    position:absolute;inset:0;display:block;justify-content:normal;align-self:auto;
-  }
-  .lvlup-hero-shadow{display:none;}
-  .lvlup-hero-photo{
-    width:100%;max-width:none;height:100%;object-fit:cover;
-    -webkit-mask-image:none;mask-image:none;
-  }
-  .lvlup-hero-photo-wrap::after{
-    content:"";position:absolute;inset:0;
-    background:linear-gradient(180deg, rgba(0,31,77,0.35) 0%, rgba(0,31,77,0.68) 55%, rgba(0,31,77,0.92) 100%);
-  }
+  .lvlup-hero-photo-wrap{align-self:auto;margin-top:36px;}
 }
 /* Solution: copy + 3 stacked cards side by side on desktop, single
    column on mobile — same collapse-to-1fr fix as the hero grid. */

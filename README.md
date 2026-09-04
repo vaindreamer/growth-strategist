@@ -7,7 +7,7 @@ Brand: Poppins (headings) + Roboto (body). Colors: Navy `#004AAD`, Gold `#FFB803
 ## Files
 
 - **`index.html`** — the full page, combined. Open it directly in a browser to preview, or host it as-is if you're not using GHL's page builder.
-- **`sections/`** — the same page broken into 18 self-contained files, one per section, in build order. Each one includes its own Google Fonts link and `<style>` block so it renders correctly whether you paste it alone or alongside the others.
+- **`sections/`** — the same page broken into 19 self-contained files, one per section, in build order. Each one includes its own Google Fonts link and `<style>` block so it renders correctly whether you paste it alone or alongside the others.
 
 ## Section order
 
@@ -21,6 +21,7 @@ Sections with a letter suffix (`05a`, `08a`, `12a`) were inserted later without 
 | 04 | `04-problem.html` | Pain points |
 | 05 | `05-solution.html` | What is RPO |
 | 05a | `05a-about.html` | About Level Up — company facts, license, Cebu HQ / BGC office |
+| 05b | `05b-locations.html` | Our Reach in the Philippines — Cebu HQ + BGC office cards, workforce/extension-of-your-team copy |
 | 06 | `06-services.html` | What's included (9 services) |
 | 07 | `07-process.html` | How it works — interactive 5-step stepper |
 | 08 | `08-why-us.html` | Differentiators |
@@ -39,7 +40,7 @@ Sections with a letter suffix (`05a`, `08a`, `12a`) were inserted later without 
 1. In your GHL sub-account, go to **Sites → Funnels/Websites**, create or open the `/rpo` page.
 2. Add a **Custom Code (HTML)** element to the page.
 3. Open each file in `sections/` **in the order in the table above** and paste its full contents into its own Custom Code element, stacked top to bottom.
-4. Repeat for all 18 files. Save and preview — the design system (fonts/colors) is duplicated in every file on purpose, so it renders correctly no matter how GHL isolates each block.
+4. Repeat for all 19 files. Save and preview — the design system (fonts/colors) is duplicated in every file on purpose, so it renders correctly no matter how GHL isolates each block.
 
 If your GHL plan lets you paste raw HTML for a whole page at once, you can instead paste all of `index.html` (minus the outer `<html>/<head>/<body>` wrapper if GHL requires it) into a single Custom Code/HTML page element.
 

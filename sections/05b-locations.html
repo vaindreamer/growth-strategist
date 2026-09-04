@@ -1,0 +1,276 @@
+<!-- ============================================================
+     LEVEL UP TALENT SOLUTIONS — RPO LANDING PAGE
+     Section 05b: locations
+     Paste this entire block into a GoHighLevel "Custom Code" /
+     "Custom HTML" element in this position on the page. The
+     "lvlup-bleed" class below makes this section span the full
+     browser width even if GHL's row/section wraps it in a
+     narrower container — no manual width settings needed in GHL.
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ===== LVLUP RPO LANDING PAGE — DESIGN SYSTEM =====
+   This same <style> block is repeated at the top of every file in /sections/
+   so each section can be pasted into GoHighLevel as an independent Custom
+   Code element and still render correctly. Do not remove it from a section
+   file when copying into GHL. */
+:root{
+  --navy:#004AAD;
+  --navy-dark:#00337a;
+  --blue:#0099FF;
+  --gold:#FFB803;
+  --white:#FFFFFF;
+  --ink:#0A1A33;
+  --gray-700:#3E4C63;
+  --gray-500:#6B7A90;
+  --gray-100:#F3F6FB;
+  --gray-200:#E6ECF5;
+  --radius:16px;
+  --shadow:0 20px 45px -20px rgba(0,45,110,0.25);
+  --container:1160px;
+}
+.lvlup *{box-sizing:border-box;}
+.lvlup{
+  font-family:'Roboto',Arial,sans-serif;
+  color:var(--ink);
+  line-height:1.6;
+  background:var(--white);
+}
+.lvlup h1,.lvlup h2,.lvlup h3,.lvlup h4{
+  font-family:'Poppins',Arial,sans-serif;
+  color:var(--navy);
+  line-height:1.2;
+  margin:0 0 16px;
+  font-weight:700;
+}
+.lvlup p{margin:0 0 16px;color:var(--gray-700);}
+.lvlup a{text-decoration:none;}
+.lvlup img{max-width:100%;display:block;}
+.lvlup .container{max-width:var(--container);margin:0 auto;padding:0 24px;}
+.lvlup .eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Poppins',Arial,sans-serif;
+  font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--navy);background:var(--gray-100);
+  padding:8px 16px;border-radius:999px;margin-bottom:18px;
+}
+.lvlup .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);}
+.lvlup .btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-family:'Poppins',Arial,sans-serif;font-weight:600;font-size:16px;
+  padding:16px 32px;border-radius:10px;border:2px solid transparent;
+  cursor:pointer;transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  white-space:nowrap;
+}
+.lvlup .btn:hover{transform:translateY(-2px);}
+.lvlup .btn-gold{background:var(--gold);color:var(--navy);box-shadow:0 12px 24px -10px rgba(255,184,3,0.6);}
+.lvlup .btn-gold:hover{box-shadow:0 16px 30px -10px rgba(255,184,3,0.75);}
+.lvlup .btn-outline{background:transparent;border-color:rgba(255,255,255,0.55);color:var(--white);}
+.lvlup .btn-outline:hover{background:rgba(255,255,255,0.12);}
+.lvlup .btn-navy{background:var(--navy);color:var(--white);}
+.lvlup .btn-navy:hover{background:var(--navy-dark);}
+.lvlup .btn-block{width:100%;}
+.lvlup .cta-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center;}
+.lvlup .section{padding:88px 0;}
+.lvlup .section-tight{padding:64px 0;}
+.lvlup .section-head{max-width:680px;margin:0 auto 48px;text-align:center;}
+.lvlup .section-head p{font-size:18px;}
+.lvlup .bg-navy{background:var(--navy);color:var(--white);}
+.lvlup .bg-navy h2,.lvlup .bg-navy h3,.lvlup .bg-navy h4{color:var(--white);}
+.lvlup .bg-navy p{color:rgba(255,255,255,0.82);}
+.lvlup .bg-gray{background:var(--gray-100);}
+.lvlup .grid{display:grid;gap:28px;}
+.lvlup .grid-2{grid-template-columns:repeat(2,1fr);}
+.lvlup .grid-3{grid-template-columns:repeat(3,1fr);}
+.lvlup .grid-4{grid-template-columns:repeat(4,1fr);}
+.lvlup .card{
+  background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius);
+  padding:32px;box-shadow:var(--shadow);
+}
+.lvlup .badge-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:44px;height:44px;border-radius:50%;background:var(--navy);color:var(--white);
+  font-family:'Poppins',Arial,sans-serif;font-weight:700;font-size:18px;margin-bottom:16px;
+}
+.lvlup .icon-tile{
+  width:56px;height:56px;border-radius:12px;background:var(--gray-100);
+  display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+  font-size:26px;
+}
+.lvlup .divider-gold{width:64px;height:4px;background:var(--gold);border-radius:2px;margin:0 auto 24px;}
+/* Breaks a section out of whatever fixed-width row/container GHL wraps it in,
+   so it spans the full browser viewport regardless of the page builder's
+   default content width. Inner .container still centers content normally. */
+.lvlup-bleed{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;}
+body{overflow-x:hidden;}
+.lvlup .lvlup-step-btn{
+  width:52px;height:52px;border-radius:50%;border:none;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Poppins',Arial,sans-serif;font-weight:700;font-size:18px;
+  cursor:pointer;background:rgba(255,255,255,0.12);color:var(--white);
+  transition:transform .2s ease,background .2s ease,color .2s ease;
+}
+.lvlup .lvlup-step-btn:hover{transform:scale(1.08);}
+.lvlup .lvlup-step-btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px;}
+.lvlup .lvlup-step-line{flex:1;height:3px;min-width:24px;border-radius:2px;background:rgba(255,255,255,0.2);transition:background .2s ease;}
+@media(prefers-reduced-motion: reduce){
+  .lvlup .lvlup-step-btn,.lvlup .lvlup-step-line{transition:none;}
+}
+.lvlup .lvlup-tier-btn{
+  font-family:'Poppins',Arial,sans-serif;font-weight:600;font-size:14px;
+  padding:12px 18px;border-radius:999px;border:2px solid var(--gray-200);
+  background:var(--white);color:var(--navy);cursor:pointer;white-space:nowrap;
+  transition:background .18s ease,color .18s ease,border-color .18s ease,transform .18s ease;
+}
+.lvlup .lvlup-tier-btn:hover{transform:translateY(-2px);border-color:var(--navy);}
+.lvlup .lvlup-tier-btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px;}
+.lvlup .lvlup-tier-btn[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:var(--white);}
+@media(prefers-reduced-motion: reduce){
+  .lvlup .lvlup-tier-btn{transition:none;}
+}
+.lvlup .lvlup-value-btn{
+  width:56px;height:56px;border-radius:50%;border:2px solid var(--gray-200);flex:none;
+  background:var(--white);color:var(--navy);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Poppins',Arial,sans-serif;font-weight:800;font-size:22px;
+  transition:transform .18s ease,background .18s ease,color .18s ease,border-color .18s ease;
+}
+.lvlup .lvlup-value-btn:hover{transform:translateY(-3px);border-color:var(--navy);}
+.lvlup .lvlup-value-btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px;}
+.lvlup .lvlup-value-btn[aria-pressed="true"]{background:var(--navy);border-color:var(--gold);color:var(--gold);transform:scale(1.1);}
+@media(prefers-reduced-motion: reduce){
+  .lvlup .lvlup-value-btn{transition:none;}
+}
+/* Every .card across the page (services, problem, why-us, industries,
+   stats, testimonials, engagement models, FAQ) lifts on hover so the
+   whole page feels responsive to the cursor, not just the process steps. */
+.lvlup .card{transition:transform .18s ease,box-shadow .18s ease;}
+.lvlup .card:hover{transform:translateY(-4px);box-shadow:0 28px 55px -22px rgba(0,45,110,0.32);}
+/* Hero: two columns (copy + Pedro's photo) on desktop; below 900px the
+   photo column is dropped entirely so it never cramps the CTA buttons,
+   and the copy column runs full width on its own. */
+.lvlup-hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;align-items:center;}
+.lvlup-hero-photo-wrap{display:flex;}
+@media(max-width:900px){
+  .lvlup-hero-grid{grid-template-columns:1fr;}
+  .lvlup-hero-photo-wrap{display:none;}
+}
+/* Solution: copy + 3 stacked cards side by side on desktop, single
+   column on mobile — same collapse-to-1fr fix as the hero grid. */
+.lvlup-solution-grid{display:grid;grid-template-columns:1fr 1fr;}
+@media(max-width:900px){
+  .lvlup-solution-grid{grid-template-columns:1fr;}
+}
+/* Final CTA: copy + calendar embed side by side on desktop, single
+   column on mobile — same collapse-to-1fr fix as the hero grid. */
+.lvlup-cta-grid{display:grid;grid-template-columns:1fr 1fr;align-items:start;}
+@media(max-width:900px){
+  .lvlup-cta-grid{grid-template-columns:1fr;}
+}
+.lvlup-header-logo{height:60px;}
+@media(max-width:480px){
+  .lvlup-header-logo{height:44px;}
+}
+/* Trust-bar logo placeholders */
+.lvlup .lvlup-logo-slot{border:1px dashed var(--gray-200);border-radius:12px;padding:22px;text-align:center;color:var(--gray-500);font-family:'Poppins',Arial,sans-serif;font-weight:600;transition:border-color .18s ease,color .18s ease,transform .18s ease;}
+.lvlup .lvlup-logo-slot:hover{border-color:var(--navy);color:var(--navy);transform:translateY(-2px);}
+/* Underline-on-hover for header/footer nav links */
+.lvlup .lvlup-nav-links{display:flex;align-items:center;gap:28px;}
+.lvlup .lvlup-nav-links > a:not(.btn){position:relative;}
+.lvlup .lvlup-nav-links > a:not(.btn)::after{content:'';position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .18s ease;}
+.lvlup .lvlup-nav-links > a:not(.btn):hover::after{transform:scaleX(1);}
+.lvlup .lvlup-footer-link{transition:color .18s ease;}
+.lvlup .lvlup-footer-link:hover{color:var(--gold) !important;}
+/* Mobile header nav: hamburger toggle + slide-down menu */
+.lvlup .lvlup-nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:none;border:none;cursor:pointer;padding:0;flex:none;}
+.lvlup .lvlup-nav-toggle span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px;transition:transform .2s ease,opacity .2s ease;}
+.lvlup .lvlup-nav-toggle.lvlup-nav-toggle-open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.lvlup .lvlup-nav-toggle.lvlup-nav-toggle-open span:nth-child(2){opacity:0;}
+.lvlup .lvlup-nav-toggle.lvlup-nav-toggle-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(max-width:800px){
+  .lvlup .lvlup-nav-toggle{display:flex;}
+  .lvlup .lvlup-nav-links{
+    position:absolute;top:100%;left:0;right:0;margin:0;
+    flex-direction:column;align-items:stretch;gap:0;
+    background:var(--white);border-bottom:1px solid var(--gray-200);
+    max-height:0;overflow:hidden;transition:max-height .25s ease;
+  }
+  .lvlup .lvlup-nav-links.lvlup-nav-open{max-height:320px;}
+  .lvlup .lvlup-nav-links > a:not(.btn){padding:14px 24px;border-top:1px solid var(--gray-200);}
+  .lvlup .lvlup-nav-links > a:not(.btn)::after{display:none;}
+  .lvlup .lvlup-nav-links > a.btn{margin:14px 24px;display:flex;justify-content:center;}
+}
+/* FAQ: custom +/x indicator instead of the browser's default marker */
+.lvlup details.card{padding:0;}
+.lvlup details.card summary{list-style:none;cursor:pointer;padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.lvlup details.card summary::-webkit-details-marker{display:none;}
+.lvlup details.card summary::after{content:'+';font-family:'Poppins',Arial,sans-serif;font-weight:700;font-size:22px;color:var(--navy);flex:none;line-height:1;transition:transform .18s ease;}
+.lvlup details[open].card summary::after{transform:rotate(45deg);}
+.lvlup details.card > p{padding:0 26px 22px;margin-top:0 !important;}
+@media(prefers-reduced-motion: reduce){
+  .lvlup .card,.lvlup .lvlup-logo-slot,.lvlup .lvlup-nav-links > a:not(.btn)::after,.lvlup .lvlup-footer-link,.lvlup .lvlup-nav-toggle span,.lvlup .lvlup-nav-links,.lvlup details.card summary::after{transition:none;}
+}
+@media(max-width:900px){
+  .lvlup .grid-4{grid-template-columns:repeat(2,1fr);}
+  .lvlup .grid-3{grid-template-columns:repeat(2,1fr);}
+  .lvlup .grid-2{grid-template-columns:1fr;}
+}
+@media(max-width:640px){
+  .lvlup .section{padding:56px 0;}
+  .lvlup .grid-4,.lvlup .grid-3{grid-template-columns:1fr;}
+  .lvlup h1{font-size:34px !important;}
+  .lvlup h2{font-size:28px !important;}
+}
+</style>
+<div class="lvlup lvlup-bleed">
+<section class="section bg-gray">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Our Reach in the Philippines</span>
+      <h2 style="font-size:34px;">Connecting Businesses with Top Philippine Talent</h2>
+      <p>As a Philippine-based recruitment and placement company, Level Up Talent Solutions connects BPOs, startups, and growing businesses with skilled professionals across the Philippines. With our expanding presence in Bonifacio Global City (BGC), Taguig, alongside our established operations in Cebu, we give businesses access to a broader and more diverse talent pool.</p>
+    </div>
+
+    <div class="grid grid-2" style="margin-bottom:48px;">
+      <div class="card" style="text-align:center;padding:0;overflow:hidden;">
+        <!-- TODO: Replace src with a real photo of the Cebu office (upload to GHL Media Library, then paste the URL) -->
+        <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27480%27%20height%3D%27300%27%20viewBox%3D%270%200%20480%20300%27%3E%3Crect%20x%3D%271%27%20y%3D%271%27%20width%3D%27478%27%20height%3D%27298%27%20fill%3D%27%23F3F6FB%27%20stroke%3D%27%23004AAD%27%20stroke-width%3D%271.5%27%20stroke-dasharray%3D%278%206%27/%3E%3Ccircle%20cx%3D%27240%27%20cy%3D%27125%27%20r%3D%2734%27%20fill%3D%27%23004AAD%27%20fill-opacity%3D%270.12%27/%3E%3Ctext%20x%3D%27240%27%20y%3D%27133%27%20font-family%3D%27Poppins%2C%20Arial%2C%20sans-serif%27%20font-size%3D%2724%27%20text-anchor%3D%27middle%27%3E%F0%9F%93%8D%3C/text%3E%3Ctext%20x%3D%27240%27%20y%3D%27200%27%20font-family%3D%27Poppins%2C%20Arial%2C%20sans-serif%27%20font-size%3D%2714%27%20font-weight%3D%27700%27%20letter-spacing%3D%270.5%27%20fill%3D%27%23004AAD%27%20text-anchor%3D%27middle%27%3EADD%20CEBU%20OFFICE%20PHOTO%3C/text%3E%3C/svg%3E" alt="Cebu office photo placeholder" style="width:100%;height:220px;object-fit:cover;display:block;">
+        <div style="padding:24px;">
+          <span class="eyebrow">Established HQ</span>
+          <h3 style="font-size:22px;">Cebu</h3>
+          <p style="margin:0;">Our established home base, anchoring operations and a deep local talent network.</p>
+        </div>
+      </div>
+      <div class="card" style="text-align:center;padding:0;overflow:hidden;">
+        <!-- TODO: Replace src with a real photo of the BGC office (upload to GHL Media Library, then paste the URL) -->
+        <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27480%27%20height%3D%27300%27%20viewBox%3D%270%200%20480%20300%27%3E%3Crect%20x%3D%271%27%20y%3D%271%27%20width%3D%27478%27%20height%3D%27298%27%20fill%3D%27%23F3F6FB%27%20stroke%3D%27%23004AAD%27%20stroke-width%3D%271.5%27%20stroke-dasharray%3D%278%206%27/%3E%3Ccircle%20cx%3D%27240%27%20cy%3D%27125%27%20r%3D%2734%27%20fill%3D%27%23004AAD%27%20fill-opacity%3D%270.12%27/%3E%3Ctext%20x%3D%27240%27%20y%3D%27133%27%20font-family%3D%27Poppins%2C%20Arial%2C%20sans-serif%27%20font-size%3D%2724%27%20text-anchor%3D%27middle%27%3E%F0%9F%8F%99%EF%B8%8F%3C/text%3E%3Ctext%20x%3D%27240%27%20y%3D%27200%27%20font-family%3D%27Poppins%2C%20Arial%2C%20sans-serif%27%20font-size%3D%2714%27%20font-weight%3D%27700%27%20letter-spacing%3D%270.5%27%20fill%3D%27%23004AAD%27%20text-anchor%3D%27middle%27%3EADD%20BGC%20OFFICE%20PHOTO%3C/text%3E%3C/svg%3E" alt="BGC, Taguig office photo placeholder" style="width:100%;height:220px;object-fit:cover;display:block;">
+        <div style="padding:24px;">
+          <span class="eyebrow">Expanding Presence</span>
+          <h3 style="font-size:22px;">BGC, Taguig</h3>
+          <p style="margin:0;">A growing footprint in Metro Manila, widening access to talent across the Philippines.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="max-width:820px;margin:0 auto;">
+      <p style="font-size:17px;">The Philippines is home to a highly skilled, English-proficient, and service-oriented workforce, with experienced professionals across customer service, sales, technical support, administration, back-office operations, management, and more. We understand the local talent landscape and know how to connect businesses with the right people for the right roles.</p>
+
+      <div class="card" style="background:var(--navy);border:none;margin:32px 0;">
+        <span class="eyebrow" style="background:rgba(255,255,255,0.1);color:var(--white);">A True Extension of Your Hiring Team</span>
+        <p style="color:rgba(255,255,255,0.85);margin:0;">We offer RPO services that function as a true extension of your internal hiring team, managing the recruitment lifecycle from sourcing and screening to interviews, placement support, and onboarding coordination.</p>
+      </div>
+
+      <p style="font-size:17px;">Whether you're hiring in Cebu, BGC, Taguig, or elsewhere in the Philippines, our team helps you access the right talent while reducing the time and resources required to build your workforce. With local market knowledge, an expanding presence across the Philippines, and a people-first approach, we understand what it takes to connect businesses with the right people for the right roles.</p>
+
+      <div style="text-align:center;margin-top:40px;">
+        <div class="divider-gold"></div>
+        <p style="font-family:'Poppins',Arial,sans-serif;font-weight:700;font-size:22px;color:var(--navy);margin-bottom:8px;">Let's build your dream team in the Philippines.</p>
+        <p style="font-size:15px;color:var(--gray-500);margin-bottom:24px;">This allows your business to stay focused on growth while we help build the people foundation needed to support it.</p>
+        <a href="#book-a-call" class="btn btn-navy">Talk to Our Team</a>
+      </div>
+    </div>
+  </div>
+</section>
+</div>

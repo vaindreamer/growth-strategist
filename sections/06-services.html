@@ -148,12 +148,13 @@ body{overflow-x:hidden;}
    whole page feels responsive to the cursor, not just the process steps. */
 .lvlup .card{transition:transform .18s ease,box-shadow .18s ease;}
 .lvlup .card:hover{transform:translateY(-4px);box-shadow:0 28px 55px -22px rgba(0,45,110,0.32);}
-/* Hero: two columns (copy + Pedro's photo) side by side on desktop.
-   Below 900px the grid collapses to one column, so the photo simply
-   drops below the copy in normal document flow (after the CTA
-   buttons and trust line) instead of sitting beside it — same
-   grounded-portrait treatment (shadow + bottom fade), just stacked
-   instead of side-by-side. */
+/* Hero: two columns (copy + Pedro's photo) side by side on desktop,
+   with a grounded-portrait treatment (shadow + bottom fade). Below
+   900px the grid collapses to one column and the photo becomes a
+   plain, simple centered block image below the copy — no flex, no
+   absolute positioning, no mask-image — since those are the more
+   fragile pieces of the desktop treatment and the mobile photo
+   should render no matter what. */
 .lvlup-hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;align-items:center;}
 .lvlup-hero-photo-wrap{display:flex;justify-content:center;align-self:flex-end;position:relative;}
 .lvlup-hero-photo{
@@ -163,12 +164,16 @@ body{overflow-x:hidden;}
 }
 @media(max-width:900px){
   .lvlup-hero-grid{grid-template-columns:1fr;}
-  .lvlup-hero-photo-wrap{align-self:auto;margin-top:36px;}
-  /* mask-image (the bottom-fade effect) has a known history of
-     misbehaving on mobile Safari — instead of just fading the edge it
-     can fail silently and hide the whole element. Turning it off on
-     mobile is the safe fix; the fade was only a nice-to-have anyway. */
-  .lvlup-hero-photo{-webkit-mask-image:none;mask-image:none;}
+  /* Simplest possible mobile treatment: plain block image, centered
+     with text-align+margin instead of flex, no absolute positioning,
+     no mask-image. Trades the desktop grounded-shadow-and-fade look
+     for something that can't fail to render. */
+  .lvlup-hero-photo-wrap{display:block;position:static;text-align:center;margin-top:32px;}
+  .lvlup-hero-shadow{display:none;}
+  .lvlup-hero-photo{
+    display:inline-block;width:100%;max-width:280px;height:auto;
+    -webkit-mask-image:none;mask-image:none;
+  }
 }
 /* Solution: copy + 3 stacked cards side by side on desktop, single
    column on mobile — same collapse-to-1fr fix as the hero grid. */

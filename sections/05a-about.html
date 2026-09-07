@@ -164,6 +164,11 @@ body{overflow-x:hidden;}
 @media(max-width:900px){
   .lvlup-hero-grid{grid-template-columns:1fr;}
   .lvlup-hero-photo-wrap{align-self:auto;margin-top:36px;}
+  /* mask-image (the bottom-fade effect) has a known history of
+     misbehaving on mobile Safari — instead of just fading the edge it
+     can fail silently and hide the whole element. Turning it off on
+     mobile is the safe fix; the fade was only a nice-to-have anyway. */
+  .lvlup-hero-photo{-webkit-mask-image:none;mask-image:none;}
 }
 /* Solution: copy + 3 stacked cards side by side on desktop, single
    column on mobile — same collapse-to-1fr fix as the hero grid. */

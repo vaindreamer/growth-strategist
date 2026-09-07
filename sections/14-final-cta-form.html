@@ -150,11 +150,14 @@ body{overflow-x:hidden;}
 .lvlup .card:hover{transform:translateY(-4px);box-shadow:0 28px 55px -22px rgba(0,45,110,0.32);}
 /* Hero: two columns (copy + Pedro's photo) side by side on desktop,
    with a grounded-portrait treatment (shadow + bottom fade). Below
-   900px the grid collapses to one column and the photo becomes a
-   plain, simple centered block image below the copy — no flex, no
-   absolute positioning, no mask-image — since those are the more
-   fragile pieces of the desktop treatment and the mobile photo
-   should render no matter what. */
+   900px it STAYS two columns (just narrower/scaled down) instead of
+   stacking — a compact side-by-side hero for mobile. Several lines
+   that don't fit in a half-width column at that point are hidden
+   (the long subhead paragraph and the trust microcopy line), the
+   heading shrinks, and the CTA buttons stack instead of sitting
+   side by side. Photo stays a plain simple image (no mask-image, no
+   absolute positioning) since those were the fragile pieces that
+   caused it not to render on some mobile browsers. */
 .lvlup-hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;align-items:center;}
 .lvlup-hero-photo-wrap{display:flex;justify-content:center;align-self:flex-end;position:relative;}
 .lvlup-hero-photo{
@@ -163,15 +166,17 @@ body{overflow-x:hidden;}
   mask-image:linear-gradient(to bottom, black 82%, transparent 100%);
 }
 @media(max-width:900px){
-  .lvlup-hero-grid{grid-template-columns:1fr;}
-  /* Simplest possible mobile treatment: plain block image, centered
-     with text-align+margin instead of flex, no absolute positioning,
-     no mask-image. Trades the desktop grounded-shadow-and-fade look
-     for something that can't fail to render. */
-  .lvlup-hero-photo-wrap{display:block;position:static;text-align:center;margin-top:32px;}
+  .lvlup-hero-grid{grid-template-columns:1.15fr 0.85fr;gap:14px;align-items:center;}
+  .lvlup .lvlup-hero-grid .lvlup-hero-copy h1{font-size:21px !important;line-height:1.3;}
+  .lvlup-hero-copy .eyebrow{font-size:10px;padding:5px 10px;margin-bottom:10px;}
+  .lvlup-hero-copy p:first-of-type{display:none;}
+  .lvlup-hero-copy .cta-row{flex-direction:column;align-items:stretch;gap:8px;margin-top:14px;}
+  .lvlup-hero-copy .cta-row .btn{padding:10px 12px;font-size:12.5px;}
+  .lvlup-hero-copy p:last-of-type{display:none;}
+  .lvlup-hero-photo-wrap{display:block;position:static;}
   .lvlup-hero-shadow{display:none;}
   .lvlup-hero-photo{
-    display:inline-block;width:100%;max-width:280px;height:auto;
+    display:block;width:100%;max-width:160px;height:auto;margin:0 auto;
     -webkit-mask-image:none;mask-image:none;
   }
 }

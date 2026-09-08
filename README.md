@@ -35,6 +35,14 @@ Sections with a letter suffix (`05a`, `08a`, `12a`) were inserted later without 
 | 14 | `14-final-cta-form.html` | Book-a-call + live GHL calendar embed |
 | 15 | `15-footer.html` | Footer |
 
+## Extras
+
+Not part of the numbered page build — standalone, portable snippets you can paste anywhere you want, independent of section order.
+
+| File | What it is |
+|------|------------|
+| `extra-book-a-call-button.html` | A "Book a Free Strategy Call" button that pops your real GHL calendar open in a modal on click, instead of linking to a spot on the page. Fully self-contained (own styles + own scoped script), so you can paste it into as many Custom Code elements as you want — header, mid-page, footer, wherever — without them colliding with each other or depending on section 14's calendar being present. |
+
 ## How to add this to GoHighLevel
 
 1. In your GHL sub-account, go to **Sites → Funnels/Websites**, create or open the `/rpo` page.

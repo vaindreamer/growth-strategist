@@ -1,0 +1,112 @@
+<!-- ============================================================
+     LEVEL UP TALENT SOLUTIONS — "BOOK A FREE STRATEGY CALL" BUTTON
+     A portable, self-contained button you can paste into a
+     GoHighLevel "Custom Code" / "Custom HTML" element ANYWHERE on
+     the page — the header, mid-page, the footer, wherever you want
+     an extra conversion point. Clicking it pops open your real GHL
+     calendar in a modal, right there, no page navigation and no
+     dependency on being placed near any other section.
+
+     You can paste this snippet as many times as you like on the
+     same page (e.g. once in the header, once further down) — each
+     copy is fully self-contained with its own scoped styles and its
+     own script that only touches its own button/modal, so multiple
+     copies never collide with each other.
+
+     REPLACE BEFORE PUBLISHING
+     - The calendar URL in data-src below is already your real GHL
+       calendar (same one used on the main landing page's final CTA
+       section) — only change it if you want this button to open a
+       different calendar.
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+.lvlup-book-cta{font-family:'Poppins',Arial,sans-serif;display:inline-block;}
+.lvlup-book-cta-trigger{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-family:'Poppins',Arial,sans-serif;font-weight:600;font-size:16px;
+  padding:16px 32px;border-radius:10px;border:2px solid transparent;
+  background:#FFB803;color:#004AAD;text-decoration:none;cursor:pointer;
+  box-shadow:0 12px 24px -10px rgba(255,184,3,0.6);
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.lvlup-book-cta-trigger:hover{transform:translateY(-2px);box-shadow:0 16px 30px -10px rgba(255,184,3,0.75);}
+.lvlup-book-cta-trigger:focus-visible{outline:3px solid #0099FF;outline-offset:3px;}
+
+.lvlup-book-cta-modal{position:fixed;inset:0;z-index:9999;display:none;}
+.lvlup-book-cta-modal.lvlup-book-cta-open{display:block;}
+.lvlup-book-cta-backdrop{position:absolute;inset:0;background:rgba(10,26,51,0.6);}
+.lvlup-book-cta-panel{
+  position:relative;max-width:480px;width:calc(100% - 32px);margin:5vh auto 0;
+  background:#ffffff;border-radius:16px;box-shadow:0 30px 60px -20px rgba(0,45,110,0.4);
+  overflow:hidden;max-height:90vh;display:flex;flex-direction:column;
+}
+.lvlup-book-cta-close{
+  position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;
+  border:none;background:#F3F6FB;color:#0A1A33;font-size:22px;line-height:1;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;
+  transition:background .2s ease;
+}
+.lvlup-book-cta-close:hover{background:#E6ECF5;}
+.lvlup-book-cta-close:focus-visible{outline:3px solid #0099FF;outline-offset:2px;}
+.lvlup-book-cta-iframe{width:100%;height:80vh;max-height:700px;border:none;display:block;}
+body.lvlup-book-cta-lock{overflow:hidden;}
+@media(max-width:520px){
+  .lvlup-book-cta-panel{margin-top:0;max-height:100vh;height:100%;border-radius:0;width:100%;}
+  .lvlup-book-cta-iframe{height:100%;}
+}
+@media(prefers-reduced-motion: reduce){
+  .lvlup-book-cta-trigger{transition:none;}
+}
+</style>
+<div class="lvlup-book-cta">
+  <a href="#" class="lvlup-book-cta-trigger">Book a Free Strategy Call</a>
+
+  <div class="lvlup-book-cta-modal" aria-hidden="true">
+    <div class="lvlup-book-cta-backdrop"></div>
+    <div class="lvlup-book-cta-panel" role="dialog" aria-modal="true" aria-label="Book a free strategy call">
+      <button type="button" class="lvlup-book-cta-close" aria-label="Close">&times;</button>
+      <iframe class="lvlup-book-cta-iframe" src="" data-src="https://api.leadconnectorhq.com/widget/booking/gywBx4zp38ZWwE2IHfCH" title="Book a Free Strategy Call" allow="payment"></iframe>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var root = document.currentScript && document.currentScript.previousElementSibling;
+  if(!root || !root.classList.contains('lvlup-book-cta')) return;
+
+  var trigger = root.querySelector('.lvlup-book-cta-trigger');
+  var modal = root.querySelector('.lvlup-book-cta-modal');
+  var backdrop = root.querySelector('.lvlup-book-cta-backdrop');
+  var closeBtn = root.querySelector('.lvlup-book-cta-close');
+  var iframe = root.querySelector('.lvlup-book-cta-iframe');
+  if(!trigger || !modal || !iframe) return;
+
+  function openModal(e){
+    if(e) e.preventDefault();
+    if(!iframe.getAttribute('src')){
+      iframe.setAttribute('src', iframe.getAttribute('data-src'));
+    }
+    modal.classList.add('lvlup-book-cta-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('lvlup-book-cta-lock');
+    closeBtn.focus();
+  }
+  function closeModal(){
+    modal.classList.remove('lvlup-book-cta-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('lvlup-book-cta-lock');
+    trigger.focus();
+  }
+
+  trigger.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && modal.classList.contains('lvlup-book-cta-open')) closeModal();
+  });
+})();
+</script>
+<script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>

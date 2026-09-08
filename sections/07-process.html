@@ -73,6 +73,35 @@
 .lvlup .btn-navy:hover{background:var(--navy-dark);}
 .lvlup .btn-block{width:100%;}
 .lvlup .cta-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center;}
+/* "Book a Free Strategy Call" modal-popup button — self-contained,
+   reusable anywhere on the page. Clicking .lvlup-book-cta-trigger
+   opens the real GHL calendar in a modal instead of linking to a
+   spot on the page, so it works standalone regardless of where it's
+   pasted. Safe to use more than once on the same page — each
+   instance's script only touches its own container (see the script
+   at the bottom of any section that includes this). */
+.lvlup-book-cta-modal{position:fixed;inset:0;z-index:9999;display:none;}
+.lvlup-book-cta-modal.lvlup-book-cta-open{display:block;}
+.lvlup-book-cta-backdrop{position:absolute;inset:0;background:rgba(10,26,51,0.6);}
+.lvlup-book-cta-panel{
+  position:relative;max-width:480px;width:calc(100% - 32px);margin:5vh auto 0;
+  background:var(--white);border-radius:16px;box-shadow:0 30px 60px -20px rgba(0,45,110,0.4);
+  overflow:hidden;max-height:90vh;display:flex;flex-direction:column;
+}
+.lvlup-book-cta-close{
+  position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;
+  border:none;background:var(--gray-100);color:var(--ink);font-size:22px;line-height:1;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;
+  transition:background .2s ease;
+}
+.lvlup-book-cta-close:hover{background:var(--gray-200);}
+.lvlup-book-cta-close:focus-visible{outline:3px solid var(--blue);outline-offset:2px;}
+.lvlup-book-cta-iframe{width:100%;height:80vh;max-height:700px;border:none;display:block;}
+body.lvlup-book-cta-lock{overflow:hidden;}
+@media(max-width:520px){
+  .lvlup-book-cta-panel{margin-top:0;max-height:100vh;height:100%;border-radius:0;width:100%;}
+  .lvlup-book-cta-iframe{height:100%;}
+}
 .lvlup .section{padding:88px 0;}
 .lvlup .section-tight{padding:64px 0;}
 .lvlup .section-head{max-width:680px;margin:0 auto 48px;text-align:center;}

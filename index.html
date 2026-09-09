@@ -644,14 +644,15 @@ body{overflow-x:hidden;}
     </div>
 
     <!--
-      PLACEHOLDER — drop your GHL Calendar or Button element here
-      (Book a Strategy Call). Delete this whole .lvlup-element-slot
-      div once your real element is in place; it's just a visual
-      marker so the spot is obvious in the builder.
+      Plain anchor-link CTA — no calendar/modal code here on purpose,
+      since this button is meant to sit in one column of a GHL row
+      while the real calendar (section 14, id="book-a-call") lives in
+      the other column. If the calendar isn't on the same page as
+      this section, or you're placing it somewhere else, just swap
+      the href to point at wherever it actually lives.
     -->
-    <div class="lvlup-element-slot" style="margin-top:40px;">
-      <span class="lvlup-element-slot-label">📅 Element Placeholder</span>
-      <p>Add your GHL Calendar or Button element here — "Book a Strategy Call"</p>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="#book-a-call" class="btn btn-gold">Book a Free Strategy Call</a>
     </div>
   </div>
 </section>

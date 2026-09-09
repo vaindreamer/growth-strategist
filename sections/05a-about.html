@@ -228,6 +228,20 @@ body{overflow-x:hidden;}
 /* Trust-bar logo placeholders */
 .lvlup .lvlup-logo-slot{border:1px dashed var(--gray-200);border-radius:12px;padding:22px;text-align:center;color:var(--gray-500);font-family:'Poppins',Arial,sans-serif;font-weight:600;transition:border-color .18s ease,color .18s ease,transform .18s ease;}
 .lvlup .lvlup-logo-slot:hover{border-color:var(--navy);color:var(--navy);transform:translateY(-2px);}
+/* Generic "drop a GHL element here" placeholder — for spots where a
+   native GHL widget (Calendar, Button, Form) will be added directly
+   in the page builder instead of custom code. */
+.lvlup .lvlup-element-slot{
+  border:2px dashed var(--gray-200);border-radius:var(--radius);
+  padding:36px 24px;text-align:center;color:var(--gray-500);
+  font-family:'Poppins',Arial,sans-serif;
+}
+.lvlup .lvlup-element-slot-label{
+  display:inline-flex;align-items:center;gap:8px;font-weight:700;
+  font-size:13px;letter-spacing:1.2px;text-transform:uppercase;color:var(--navy);
+  margin-bottom:8px;
+}
+.lvlup .lvlup-element-slot p{margin:0;font-size:14.5px;color:var(--gray-500);}
 /* Underline-on-hover for header/footer nav links */
 .lvlup .lvlup-nav-links{display:flex;align-items:center;gap:28px;}
 .lvlup .lvlup-nav-links > a:not(.btn){position:relative;}

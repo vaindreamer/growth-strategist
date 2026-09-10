@@ -1,10 +1,16 @@
 (function () {
   "use strict";
 
-  // ---- Config: swap these for your real booking + CRM endpoints ----
+  // ---- Config -----------------------------------------------------------
+  // GHL_WEBHOOK_URL: paste the URL from a GoHighLevel workflow that starts
+  //   with an "Inbound Webhook" trigger. That trigger auto-generates a URL
+  //   you can POST JSON to with no API key needed. See README.md for the
+  //   step-by-step setup.
+  // DISCOVERY_CALL_URL: your GHL (or Calendly) booking calendar link, used
+  //   for the Green and Yellow result CTAs.
   var CONFIG = {
-    DISCOVERY_CALL_URL: "#book-a-call", // TODO: replace with real Calendly / GHL calendar link
-    NURTURE_WEBHOOK_URL: null            // TODO: replace with real CRM/webhook endpoint, or leave null
+    GHL_WEBHOOK_URL: null, // TODO: paste your GHL Inbound Webhook trigger URL
+    DISCOVERY_CALL_URL: "#book-a-call" // TODO: paste your real booking calendar link
   };
 
   var TIER_RANK = { green: 0, yellow: 1, red: 2 };
@@ -12,17 +18,18 @@
 
   var panelLanding = document.getElementById("panel-landing");
   var panelQuiz = document.getElementById("panel-quiz");
+  var panelCapture = document.getElementById("panel-capture");
   var panelResults = document.getElementById("panel-results");
   var startBtn = document.getElementById("startBtn");
   var backBtn = document.getElementById("backBtn");
   var restartBtn = document.getElementById("restartBtn");
   var tapeEl = document.getElementById("tape");
   var tapeStatus = document.getElementById("tapeStatus");
-  var nurtureForm = document.getElementById("nurtureForm");
-  var nurtureNote = document.getElementById("nurtureNote");
+  var captureForm = document.getElementById("captureForm");
 
   var answers = {}; // { "1": "green", ... }
   var step = 1;
+  var pendingTier = null;
 
   // Build the measuring-tape progress segments
   for (var i = 0; i < TOTAL_QUESTIONS; i++) {
@@ -31,6 +38,10 @@
     tapeEl.appendChild(seg);
   }
   var segments = tapeEl.querySelectorAll(".tape-seg");
+
+  function pad(n) {
+    return n < 10 ? "0" + n : String(n);
+  }
 
   function updateTape() {
     segments.forEach(function (seg, idx) {
@@ -41,22 +52,18 @@
     tapeStatus.textContent = "Section " + pad(step) + " / " + pad(TOTAL_QUESTIONS);
   }
 
-  function pad(n) {
-    return n < 10 ? "0" + n : String(n);
-  }
-
   function showStep(n) {
-    document.querySelectorAll(".q-card").forEach(function (card) {
+    document.querySelectorAll(".q-card[data-step]").forEach(function (card) {
       card.hidden = Number(card.dataset.step) !== n;
     });
     backBtn.hidden = n === 1;
     updateTape();
   }
 
-  function goToLanding() {
-    panelLanding.hidden = false;
-    panelQuiz.hidden = true;
-    panelResults.hidden = true;
+  function showOnly(panel) {
+    [panelLanding, panelQuiz, panelCapture, panelResults].forEach(function (p) {
+      p.hidden = p !== panel;
+    });
   }
 
   function startQuiz() {
@@ -65,9 +72,7 @@
     document.querySelectorAll(".q-option").forEach(function (opt) {
       opt.classList.remove("is-selected");
     });
-    panelLanding.hidden = true;
-    panelResults.hidden = true;
-    panelQuiz.hidden = false;
+    showOnly(panelQuiz);
     showStep(1);
   }
 
@@ -85,7 +90,9 @@
         step = Number(qNum) + 1;
         showStep(step);
       } else {
-        finishQuiz();
+        pendingTier = computeTier();
+        showOnly(panelCapture);
+        panelCapture.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }, 260);
   }
@@ -98,18 +105,42 @@
     return worst;
   }
 
-  function finishQuiz() {
-    var tier = computeTier();
-    panelQuiz.hidden = true;
-    panelResults.hidden = false;
+  // Sends the full quiz payload to a GHL Inbound Webhook trigger, if one
+  // is configured. GHL will surface every top-level key (tier, answers,
+  // name, email, ...) as a trigger value your workflow can branch on.
+  function sendToGHL(contact, tier) {
+    if (!CONFIG.GHL_WEBHOOK_URL) return Promise.resolve();
+    var payload = {
+      name: contact.name,
+      email: contact.email,
+      tier: tier, // "green" | "yellow" | "red"
+      answers: answers, // { "1": "green", "2": "yellow", ... }
+      quiz: "journee-readiness-quiz",
+      submittedAt: new Date().toISOString()
+    };
+    return fetch(CONFIG.GHL_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    }).catch(function (err) {
+      console.error("GHL webhook failed", err);
+    });
+  }
+
+  function revealResults(tier, contact) {
+    showOnly(panelResults);
     ["green", "yellow", "red"].forEach(function (t) {
       document.getElementById("result-" + t).hidden = t !== tier;
     });
 
-    var bookLinks = document.querySelectorAll('[data-role="book-call"]');
-    bookLinks.forEach(function (link) {
+    document.querySelectorAll('[data-role="book-call"]').forEach(function (link) {
       link.href = CONFIG.DISCOVERY_CALL_URL;
     });
+
+    var redConfirm = document.getElementById("redConfirm");
+    if (redConfirm && contact.email) {
+      redConfirm.textContent = "A short resource series is on its way to " + contact.email + " — no spam, unsubscribe anytime.";
+    }
 
     var live = document.getElementById("result-" + tier);
     if (live) live.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -129,23 +160,26 @@
   });
 
   startBtn.addEventListener("click", startQuiz);
+
   restartBtn.addEventListener("click", function () {
-    goToLanding();
+    answers = {};
+    pendingTier = null;
+    captureForm.reset();
+    showOnly(panelLanding);
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
-  if (nurtureForm) {
-    nurtureForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      if (CONFIG.NURTURE_WEBHOOK_URL) {
-        fetch(CONFIG.NURTURE_WEBHOOK_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: document.getElementById("nurtureEmail").value })
-        }).catch(function () {});
-      }
-      nurtureForm.hidden = true;
-      nurtureNote.textContent = "Thanks — check your inbox. Your readiness resources are on the way.";
+  captureForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var contact = {
+      name: document.getElementById("captureName").value.trim(),
+      email: document.getElementById("captureEmail").value.trim()
+    };
+    var submitBtn = captureForm.querySelector("button[type=submit]");
+    submitBtn.disabled = true;
+    sendToGHL(contact, pendingTier).then(function () {
+      revealResults(pendingTier, contact);
+      submitBtn.disabled = false;
     });
-  }
+  });
 })();

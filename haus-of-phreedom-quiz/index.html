@@ -143,6 +143,25 @@
     </form>
   </section>
 
+  <!-- ============ CAPTURE ============ -->
+  <section class="wrap" id="panel-capture" hidden>
+    <div class="q-card panel">
+      <span class="eyebrow">Your Map Is Marked</span>
+      <h2 class="q-title" style="margin-top:14px;">Where should we send your results?</h2>
+      <p class="hero-intro" style="margin-top:16px; border-top:none; padding-top:0;">We'll log your answers so your discovery call — or your readiness resources — are waiting for you, not starting from scratch.</p>
+      <form class="nurture-form" id="captureForm" style="margin-top:28px; border-top:none; padding-top:0;">
+        <label for="captureName">Name
+          <input type="text" id="captureName" name="name" placeholder="Full name" required autocomplete="name">
+        </label>
+        <label for="captureEmail">Email
+          <input type="email" id="captureEmail" name="email" placeholder="you@email.com" required autocomplete="email">
+        </label>
+        <button type="submit" class="btn btn-primary">See My Results &rarr;</button>
+      </form>
+      <p class="form-note">No spam — just what you need for your next step.</p>
+    </div>
+  </section>
+
   <!-- ============ RESULTS ============ -->
   <section class="wrap" id="panel-results" hidden>
 
@@ -168,14 +187,7 @@
       <span class="result-stamp">+ Result: Not Yet</span>
       <h2>Not Quite Yet — And That's Okay</h2>
       <p class="result-body">Based on what you shared, this training may not be the right fit just yet — whether that's timing, commitment, or readiness for hands-on technical work. This isn't a no — it's a not yet. We'll send you resources to help you get ready, and you're welcome to retake this quiz anytime.</p>
-
-      <form class="nurture-form" id="nurtureForm">
-        <label for="nurtureEmail">Email for readiness resources
-          <input type="email" id="nurtureEmail" name="email" placeholder="you@email.com" required autocomplete="email">
-        </label>
-        <button type="submit" class="btn btn-primary">Send Me the Resources</button>
-      </form>
-      <p class="form-note" id="nurtureNote">We'll send a short series to help you get ready — no spam, unsubscribe anytime.</p>
+      <p class="form-note" id="redConfirm" style="margin-top:28px;">A short resource series is on its way to your inbox — no spam, unsubscribe anytime.</p>
     </article>
 
     <p class="restart-line">Answers don't feel right? <button type="button" id="restartBtn">Retake the quiz</button></p>

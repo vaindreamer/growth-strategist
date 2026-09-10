@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Journee Readiness Quiz | Haus of Phreedom</title>
+<meta name="description" content="Take the 2-minute readiness quiz to see if you're a fit for the next Journee of Micro Interlocks training cohort at Haus of Phreedom.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="#top" class="logo">
+      <svg class="logo-mark" width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="32" height="32" stroke-width="1.4"/>
+        <line x1="1" y1="12.3" x2="33" y2="12.3" stroke-width="1"/>
+        <line x1="1" y1="23.6" x2="33" y2="23.6" stroke-width="1"/>
+        <line x1="12.3" y1="1" x2="12.3" y2="33" stroke-width="1"/>
+        <line x1="23.6" y1="1" x2="23.6" y2="33" stroke-width="1"/>
+        <g class="lm-cross" stroke-width="1.6">
+          <line x1="23.6" y1="8.3" x2="23.6" y2="16.3"/>
+          <line x1="19.6" y1="12.3" x2="27.6" y2="12.3"/>
+        </g>
+      </svg>
+      <span class="logo-text">HAUS OF PHREEDOM<span class="logo-sub">Journee Training</span></span>
+    </a>
+    <span class="header-tag">Applicant Readiness Check</span>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ LANDING ============ -->
+  <section class="hero panel" id="panel-landing">
+    <div class="wrap hero-inner">
+      <svg class="hero-grid" viewBox="0 0 760 340" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <g stroke="var(--line-soft)" stroke-width="1">
+          <line x1="0" y1="85" x2="760" y2="85"/>
+          <line x1="0" y1="170" x2="760" y2="170"/>
+          <line x1="0" y1="255" x2="760" y2="255"/>
+          <line x1="190" y1="0" x2="190" y2="340"/>
+          <line x1="380" y1="0" x2="380" y2="340"/>
+          <line x1="570" y1="0" x2="570" y2="340"/>
+        </g>
+        <g stroke="var(--brass)" stroke-width="1.6" opacity=".8">
+          <line x1="570" y1="150" x2="570" y2="190"/>
+          <line x1="550" y1="170" x2="590" y2="170"/>
+        </g>
+        <g stroke="var(--oxblood)" stroke-width="1.6" opacity=".7">
+          <line x1="190" y1="235" x2="190" y2="275"/>
+          <line x1="170" y1="255" x2="210" y2="255"/>
+        </g>
+      </svg>
+
+      <p class="eyebrow">Journee &middot; Micro Interlocks Training</p>
+      <h1>Is Becoming a Certified Loctitian Right for You?</h1>
+      <p class="hero-sub">Take the 2-minute readiness quiz to see if you're a fit for the next Journee of Micro Interlocks training cohort.</p>
+      <p class="hero-intro">Learning Microlocks is a real investment of time, hands-on practice, and focus — for you and for us. This quick quiz helps us understand where you're starting from, so if you're accepted, you walk in ready to get the most out of your training.</p>
+      <div class="hero-actions">
+        <button type="button" class="btn btn-primary" id="startBtn">Start My Readiness Check &rarr;</button>
+      </div>
+      <p class="hero-note">Six questions &middot; no wrong answers &middot; results in under two minutes</p>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="quiz wrap" id="panel-quiz" hidden>
+    <div class="tape" id="tape" aria-hidden="true"></div>
+    <div class="tape-label">
+      <span id="tapeStatus">Section 01 / 06</span>
+      <span>Readiness Map</span>
+    </div>
+
+    <form id="quizForm">
+
+      <div class="q-card panel" data-step="1">
+        <span class="q-num">01 / 06</span>
+        <h2 class="q-title">What's your current relationship to the hair industry?</h2>
+        <div class="q-options" data-question="1">
+          <button type="button" class="q-option" data-tier="green"><span class="q-mark"></span><span class="q-option-text">I'm a licensed cosmetologist/stylist (or currently in school for it).</span></button>
+          <button type="button" class="q-option" data-tier="yellow"><span class="q-mark"></span><span class="q-option-text">I'm not licensed, but I work in the beauty industry in another way (braider, natural hair care, etc.).</span></button>
+          <button type="button" class="q-option" data-tier="red"><span class="q-mark"></span><span class="q-option-text">I have no background in hair services and no current plans to pursue licensing.</span></button>
+        </div>
+      </div>
+
+      <div class="q-card panel" data-step="2" hidden>
+        <span class="q-num">02 / 06</span>
+        <h2 class="q-title">Why do you want to learn Microlocks?</h2>
+        <div class="q-options" data-question="2">
+          <button type="button" class="q-option" data-tier="green"><span class="q-mark"></span><span class="q-option-text">To add a specialized, in-demand skill and grow my income as a stylist/loctitian.</span></button>
+          <button type="button" class="q-option" data-tier="yellow"><span class="q-mark"></span><span class="q-option-text">I'm exploring it as a possible new direction, but I'm still deciding.</span></button>
+          <button type="button" class="q-option" data-tier="red"><span class="q-mark"></span><span class="q-option-text">I'm just curious — I don't have a real plan to use this professionally.</span></button>
+        </div>
+      </div>
+
+      <div class="q-card panel" data-step="3" hidden>
+        <span class="q-num">03 / 06</span>
+        <h2 class="q-title">Can you commit to the full 10-week training, including practice between sessions?</h2>
+        <div class="q-options" data-question="3">
+          <button type="button" class="q-option" data-tier="green"><span class="q-mark"></span><span class="q-option-text">Yes — I can commit the time each week, including hands-on practice.</span></button>
+          <button type="button" class="q-option" data-tier="yellow"><span class="q-mark"></span><span class="q-option-text">Probably, though my schedule can be unpredictable some weeks.</span></button>
+          <button type="button" class="q-option" data-tier="red"><span class="q-mark"></span><span class="q-option-text">I'm hoping to learn this quickly, in much less time.</span></button>
+        </div>
+      </div>
+
+      <div class="q-card panel" data-step="4" hidden>
+        <span class="q-num">04 / 06</span>
+        <h2 class="q-title">How comfortable are you with detailed, repetitive, hands-on technical work (precise sectioning, parting, tool control)?</h2>
+        <div class="q-options" data-question="4">
+          <button type="button" class="q-option" data-tier="green"><span class="q-mark"></span><span class="q-option-text">Very comfortable — I enjoy detail-focused, hands-on craft work.</span></button>
+          <button type="button" class="q-option" data-tier="yellow"><span class="q-mark"></span><span class="q-option-text">I think so, but I haven't done much technical hair work like this before.</span></button>
+          <button type="button" class="q-option" data-tier="red"><span class="q-mark"></span><span class="q-option-text">Detailed, repetitive work isn't really my strength.</span></button>
+        </div>
+      </div>
+
+      <div class="q-card panel" data-step="5" hidden>
+        <span class="q-num">05 / 06</span>
+        <h2 class="q-title">Do you have access to a mannequin head or willing models to practice on between lessons?</h2>
+        <div class="q-options" data-question="5">
+          <button type="button" class="q-option" data-tier="green"><span class="q-mark"></span><span class="q-option-text">Yes, I already have what I need to practice.</span></button>
+          <button type="button" class="q-option" data-tier="yellow"><span class="q-mark"></span><span class="q-option-text">Not yet, but I'm willing to arrange it before we start.</span></button>
+          <button type="button" class="q-option" data-tier="red"><span class="q-mark"></span><span class="q-option-text">No, and I'm not sure I'd be able to.</span></button>
+        </div>
+      </div>
+
+      <div class="q-card panel" data-step="6" hidden>
+        <span class="q-num">06 / 06</span>
+        <h2 class="q-title">Where are you financially in preparing for this training investment?</h2>
+        <div class="q-options" data-question="6">
+          <button type="button" class="q-option" data-tier="green"><span class="q-mark"></span><span class="q-option-text">I have my budget ready to enroll.</span></button>
+          <button type="button" class="q-option" data-tier="yellow"><span class="q-mark"></span><span class="q-option-text">I'm close, but still finalizing my budget.</span></button>
+          <button type="button" class="q-option" data-tier="red"><span class="q-mark"></span><span class="q-option-text">I'm not financially prepared for this right now.</span></button>
+        </div>
+      </div>
+
+      <div class="q-nav">
+        <button type="button" class="q-back" id="backBtn" hidden>&larr; Back</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- ============ RESULTS ============ -->
+  <section class="wrap" id="panel-results" hidden>
+
+    <article class="result panel" id="result-green" data-tier="green" hidden>
+      <span class="result-stamp">+ Result: Strong Match</span>
+      <h2>You're a Great Fit — Let's Talk</h2>
+      <p class="result-body">Based on your answers, you're exactly the kind of student Haus of Phreedom loves to train: committed, hands-on, and ready to build a real skill. The next step is a short discovery call so we can talk through the program and answer any questions before you enroll.</p>
+      <div class="result-actions">
+        <a href="#book-a-call" class="btn btn-primary" data-role="book-call">Book My Discovery Call &rarr;</a>
+      </div>
+    </article>
+
+    <article class="result panel" id="result-yellow" data-tier="yellow" hidden>
+      <span class="result-stamp">+ Result: Worth a Conversation</span>
+      <h2>You Might Be Ready — Let's Talk It Through</h2>
+      <p class="result-body">You're close! A couple of your answers tell us there's a bit more to walk through together before diving in — that's completely normal, and it's exactly what the discovery call is for. Let's talk about where you are and what a realistic training plan looks like for you.</p>
+      <div class="result-actions">
+        <a href="#book-a-call" class="btn btn-primary" data-role="book-call">Book My Discovery Call &rarr;</a>
+      </div>
+    </article>
+
+    <article class="result panel" id="result-red" data-tier="red" hidden>
+      <span class="result-stamp">+ Result: Not Yet</span>
+      <h2>Not Quite Yet — And That's Okay</h2>
+      <p class="result-body">Based on what you shared, this training may not be the right fit just yet — whether that's timing, commitment, or readiness for hands-on technical work. This isn't a no — it's a not yet. We'll send you resources to help you get ready, and you're welcome to retake this quiz anytime.</p>
+
+      <form class="nurture-form" id="nurtureForm">
+        <label for="nurtureEmail">Email for readiness resources
+          <input type="email" id="nurtureEmail" name="email" placeholder="you@email.com" required autocomplete="email">
+        </label>
+        <button type="submit" class="btn btn-primary">Send Me the Resources</button>
+      </form>
+      <p class="form-note" id="nurtureNote">We'll send a short series to help you get ready — no spam, unsubscribe anytime.</p>
+    </article>
+
+    <p class="restart-line">Answers don't feel right? <button type="button" id="restartBtn">Retake the quiz</button></p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span>Haus of Phreedom &middot; Dallas, TX</span>
+    <span>Journee Micro Interlocks Training</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

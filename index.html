@@ -201,11 +201,8 @@ body{overflow-x:hidden;}
 }
 @media(max-width:900px){
   .lvlup-hero-grid{grid-template-columns:1fr;}
-  .lvlup-hero-photo-wrap{margin-top:32px;}
+  .lvlup-hero-photo-wrap{display:none;}
   .lvlup-hero-copy .cta-row{flex-direction:column;align-items:stretch;}
-  .lvlup-hero-photo{
-    max-width:280px;-webkit-mask-image:none;mask-image:none;
-  }
 }
 /* Solution: copy + 3 stacked cards side by side on desktop, single
    column on mobile — same collapse-to-1fr fix as the hero grid. */

@@ -1,0 +1,84 @@
+<!-- VA Starter Roadmap · Upsell · 30-Day Roadmap Support · 02-hero-countdown
+     Paste into a GHL Custom JS/HTML element (full-width section, row/column padding 0). -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400&display=swap');
+.vsr{--ink:#400106;--wine:#800f1d;--rose:#ff2487;--rose-d:#c4126a;--cream:#f7f0ea;--paper:#fbf8f4;--text:#1f1919;--muted:#5c4f4f;--line:rgba(64,1,6,.12);font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:18px;line-height:1.6;color:var(--text);background:var(--paper);-webkit-font-smoothing:antialiased;width:100%;box-sizing:border-box}
+.vsr *,.vsr *::before,.vsr *::after{box-sizing:border-box}
+:where(.vsr) :where(h1,h2,h3,p,ul,ol){margin:0;padding:0}
+.vsr h1,.vsr h2,.vsr h3{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.02em;line-height:1.08;color:var(--ink)}
+.vsr a{color:var(--ink)}
+.vsr-white{background:#fff}
+.vsr-dark{background:var(--ink);color:var(--cream)}
+.vsr-dark h1,.vsr-dark h2,.vsr-dark h3{color:#fff}
+.vsr-wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.vsr-sec{padding:104px 0}
+.vsr-eyebrow{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--rose-d);margin-bottom:20px}
+.vsr-eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+.vsr-dark .vsr-eyebrow{color:var(--rose)}
+.vsr-center{text-align:center}
+.vsr-center .vsr-eyebrow{justify-content:center}
+.vsr-h2{font-size:clamp(32px,4.2vw,48px);max-width:22ch;margin-bottom:18px}
+.vsr-lead{max-width:62ch;color:var(--muted)}
+.vsr-dark .vsr-lead{color:rgba(247,240,234,.8)}
+.vsr-btn{display:inline-block;background:var(--rose);color:#fff!important;text-decoration:none!important;font-weight:700;font-size:18px;line-height:1.2;padding:18px 34px;border-radius:999px;transition:background .2s,transform .2s}
+.vsr-btn:hover{background:#e0157a;transform:translateY(-1px)}
+.vsr-btn--ink{background:var(--ink)}
+.vsr-btn--ink:hover{background:var(--wine)}
+.vsr a:focus-visible,.vsr summary:focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+@media (max-width:720px){.vsr{font-size:17px}.vsr-sec{padding:72px 0}.vsr-wrap{padding:0 20px}}
+.vsr-uhero{padding:96px 0 104px}
+.vsr-uhero h1{font-size:clamp(40px,5.8vw,68px);line-height:1.02;letter-spacing:-.03em;max-width:18ch;margin:0 auto 24px}
+.vsr-uhero__sub{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:clamp(19px,2.1vw,23px);line-height:1.45;max-width:40ch;margin:0 auto 44px;color:rgba(247,240,234,.88)}
+.vsr-uhero__timer{display:inline-flex;flex-direction:column;align-items:center;gap:16px;border:1px solid rgba(247,240,234,.2);border-radius:20px;padding:26px 32px}
+.vsr-uhero__label{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(247,240,234,.75)}
+.vsr-uhero__units{display:flex;gap:12px}
+.vsr-uhero__unit{min-width:82px;background:rgba(247,240,234,.07);border:1px solid rgba(247,240,234,.14);border-radius:12px;padding:12px 10px}
+.vsr-uhero__v{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:38px;line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+.vsr-uhero__l{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(247,240,234,.65);margin-top:6px}
+.vsr-uhero__closed{font-size:17px}
+.vsr-uhero__meta{font-size:15px;color:rgba(247,240,234,.72);margin-top:22px}
+.vsr-uhero__meta b{color:#fff}
+@media (max-width:560px){.vsr-uhero{padding:72px 0 80px}.vsr-uhero__timer{padding:22px 16px}.vsr-uhero__units{gap:8px}.vsr-uhero__unit{min-width:64px}.vsr-uhero__v{font-size:30px}}
+</style>
+<section class="vsr vsr-dark vsr-uhero">
+  <div class="vsr-wrap vsr-center">
+    <div class="vsr-eyebrow">Before you go</div>
+    <h1>Want me beside you for the next 30 days?</h1>
+    <p class="vsr-uhero__sub">Join the 30-Day Roadmap Support cohort. You do the work, I check it, and you never get stuck alone.</p>
+    <!-- Countdown deadline: change data-deadline (Philippine time, +08:00) -->
+    <div class="vsr-uhero__timer" id="vsr-countdown" data-deadline="2026-10-31T23:59:00+08:00">
+      <div class="vsr-uhero__open">
+        <div class="vsr-uhero__label">Cohort 1 enrollment closes in</div>
+        <div class="vsr-uhero__units" style="margin-top:16px">
+          <div class="vsr-uhero__unit"><div class="vsr-uhero__v" data-u="d">00</div><div class="vsr-uhero__l">days</div></div>
+          <div class="vsr-uhero__unit"><div class="vsr-uhero__v" data-u="h">00</div><div class="vsr-uhero__l">hours</div></div>
+          <div class="vsr-uhero__unit"><div class="vsr-uhero__v" data-u="m">00</div><div class="vsr-uhero__l">mins</div></div>
+          <div class="vsr-uhero__unit"><div class="vsr-uhero__v" data-u="s">00</div><div class="vsr-uhero__l">secs</div></div>
+        </div>
+      </div>
+      <div class="vsr-uhero__closed" hidden>Cohort 1 enrollment has closed. Join the waitlist for Cohort 2 below.</div>
+    </div>
+    <p class="vsr-uhero__meta">Enrollment closes Oct 31, 11:59 PM PH time · Cohort starts Monday, Nov 2 · <b>[15] of 15 seats open</b></p>
+  </div>
+</section>
+<script>
+(function () {
+  var el = document.getElementById('vsr-countdown');
+  if (!el) return;
+  var deadline = new Date(el.getAttribute('data-deadline')).getTime();
+  var open = el.querySelector('.vsr-uhero__open');
+  var closed = el.querySelector('.vsr-uhero__closed');
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function set(u, v) { el.querySelector('[data-u="' + u + '"]').textContent = pad(v); }
+  function tick() {
+    var left = Math.max(0, deadline - Date.now());
+    if (left <= 0) { open.hidden = true; closed.hidden = false; clearInterval(timer); return; }
+    set('d', Math.floor(left / 86400000));
+    set('h', Math.floor(left / 3600000) % 24);
+    set('m', Math.floor(left / 60000) % 60);
+    set('s', Math.floor(left / 1000) % 60);
+  }
+  var timer = setInterval(tick, 1000);
+  tick();
+})();
+</script>

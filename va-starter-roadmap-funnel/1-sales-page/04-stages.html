@@ -1,0 +1,85 @@
+<!-- VA Starter Roadmap · Sales page · ₱550 Roadmap · 04-stages
+     Paste into a GHL Custom JS/HTML element (full-width section, row/column padding 0). -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400&display=swap');
+.vsr{--ink:#400106;--wine:#800f1d;--rose:#ff2487;--rose-d:#c4126a;--cream:#f7f0ea;--paper:#fbf8f4;--text:#1f1919;--muted:#5c4f4f;--line:rgba(64,1,6,.12);font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:18px;line-height:1.6;color:var(--text);background:var(--paper);-webkit-font-smoothing:antialiased;width:100%;box-sizing:border-box}
+.vsr *,.vsr *::before,.vsr *::after{box-sizing:border-box}
+:where(.vsr) :where(h1,h2,h3,p,ul,ol){margin:0;padding:0}
+.vsr h1,.vsr h2,.vsr h3{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.02em;line-height:1.08;color:var(--ink)}
+.vsr a{color:var(--ink)}
+.vsr-white{background:#fff}
+.vsr-dark{background:var(--ink);color:var(--cream)}
+.vsr-dark h1,.vsr-dark h2,.vsr-dark h3{color:#fff}
+.vsr-wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.vsr-sec{padding:104px 0}
+.vsr-eyebrow{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--rose-d);margin-bottom:20px}
+.vsr-eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+.vsr-dark .vsr-eyebrow{color:var(--rose)}
+.vsr-center{text-align:center}
+.vsr-center .vsr-eyebrow{justify-content:center}
+.vsr-h2{font-size:clamp(32px,4.2vw,48px);max-width:22ch;margin-bottom:18px}
+.vsr-lead{max-width:62ch;color:var(--muted)}
+.vsr-dark .vsr-lead{color:rgba(247,240,234,.8)}
+.vsr-btn{display:inline-block;background:var(--rose);color:#fff!important;text-decoration:none!important;font-weight:700;font-size:18px;line-height:1.2;padding:18px 34px;border-radius:999px;transition:background .2s,transform .2s}
+.vsr-btn:hover{background:#e0157a;transform:translateY(-1px)}
+.vsr-btn--ink{background:var(--ink)}
+.vsr-btn--ink:hover{background:var(--wine)}
+.vsr a:focus-visible,.vsr summary:focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+@media (max-width:720px){.vsr{font-size:17px}.vsr-sec{padding:72px 0}.vsr-wrap{padding:0 20px}}
+.vsr-stages__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:48px}
+.vsr-stages__item{background:#fff;padding:30px 26px}
+.vsr-stages__n{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:15px;letter-spacing:.08em;color:var(--rose-d);margin-bottom:18px}
+.vsr-stages__t{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:20px;line-height:1.25;color:var(--ink);margin-bottom:8px}
+.vsr-stages__item p{font-size:15px;line-height:1.55;color:var(--muted)}
+@media (max-width:980px){.vsr-stages__grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.vsr-stages__grid{grid-template-columns:1fr}}
+</style>
+<section class="vsr vsr-sec vsr-stages">
+  <div class="vsr-wrap">
+    <div class="vsr-eyebrow">The roadmap</div>
+    <h2 class="vsr-h2">Eight stages, in order</h2>
+    <p class="vsr-lead">Each stage ends with a “Done when” checklist, so you always know when to move on.</p>
+    <div class="vsr-stages__grid">
+      <div class="vsr-stages__item">
+        <div class="vsr-stages__n">01</div>
+        <div class="vsr-stages__t">Decide your service lane</div>
+        <p>Turn your 9–5 skills into one clear VA service.</p>
+      </div>
+      <div class="vsr-stages__item">
+        <div class="vsr-stages__n">02</div>
+        <div class="vsr-stages__t">Package your offer and rate</div>
+        <p>Peso and USD rate guide plus a rate calculator.</p>
+      </div>
+      <div class="vsr-stages__item">
+        <div class="vsr-stages__n">03</div>
+        <div class="vsr-stages__t">Build your portfolio from zero</div>
+        <p>3 sample project briefs per lane, with a Canva template.</p>
+      </div>
+      <div class="vsr-stages__item">
+        <div class="vsr-stages__n">04</div>
+        <div class="vsr-stages__t">Optimize your profiles</div>
+        <p>OnlineJobs.ph, Upwork, LinkedIn, and Facebook formulas.</p>
+      </div>
+      <div class="vsr-stages__item">
+        <div class="vsr-stages__n">05</div>
+        <div class="vsr-stages__t">Outreach that gets replies</div>
+        <p>5 scripts, follow-ups, and an outreach tracker.</p>
+      </div>
+      <div class="vsr-stages__item">
+        <div class="vsr-stages__n">06</div>
+        <div class="vsr-stages__t">Ace the interview</div>
+        <p>Call flow, answers, red flags, and offer checklist.</p>
+      </div>
+      <div class="vsr-stages__item">
+        <div class="vsr-stages__n">07</div>
+        <div class="vsr-stages__t">Land and keep your client</div>
+        <p>Onboarding, agreement, invoice, and EOD report.</p>
+      </div>
+      <div class="vsr-stages__item">
+        <div class="vsr-stages__n">08</div>
+        <div class="vsr-stages__t">Leave your 9–5 safely</div>
+        <p>Readiness test, transition numbers, and BIR basics.</p>
+      </div>
+    </div>
+  </div>
+</section>

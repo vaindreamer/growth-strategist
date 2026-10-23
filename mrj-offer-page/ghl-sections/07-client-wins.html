@@ -1,0 +1,81 @@
+<!-- ==========================================================
+     MRJ Offer Page · Client wins + stats
+     GHL: add a Custom Code element and paste this whole file in.
+     Needs 00-global-styles on the same page.
+     ========================================================== -->
+<div class="mrj">
+<section class="mrj-section" style="padding-bottom:0">
+  <div class="mrj-wrap">
+    <div class="mrj-head mrj-reveal">
+      <h2 class="mrj-h2">What clients said <em>after the build.</em></h2>
+      <p>Real messages from founders I've worked with.</p>
+    </div>
+    <div class="mrj-wins" id="mrj-wins"></div>
+  </div>
+  <div class="mrj-stats">
+    <div class="mrj-wrap mrj-stats-grid">
+      <div class="mrj-stat mrj-reveal"><b>5+ yrs</b><span>building marketing systems for founder-led businesses</span></div>
+      <div class="mrj-stat mrj-reveal"><b>10 wks</b><span>from onboarding to a live system, guaranteed</span></div>
+      <div class="mrj-stat mrj-reveal"><b>4 max</b><span>partnerships at a time, so every build gets my full attention</span></div>
+    </div>
+  </div>
+</section>
+</div>
+<script>
+(function () {
+  /* ============================================================
+     EDIT HERE: client message screenshots (paste links into img)
+     ============================================================ */
+  var WINS = [
+    { who:"Mo Lima · Coach", img:"" },
+    { who:"Tammy · Wellness business", img:"" },
+    { who:"Habitat Gym · Personal trainers", img:"" },
+  ];
+  /* ============================================================ */
+
+  var wrap = document.getElementById("mrj-wins");
+  if (!wrap || wrap.dataset.ready) return;
+  wrap.dataset.ready = "1";
+
+  /* Shared full-size viewer (created once, used by portfolio and client wins) */
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) { return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]; });
+  }
+  function media(item, label) {
+    if (item.img) return '<img src="' + esc(item.img) + '" alt="' + esc(label) + '" loading="lazy">';
+    return '<div class="mrj-ph"><b>' + esc(item.title || "") + '</b><small>Add image link</small></div>';
+  }
+  function lightbox() {
+    if (window.MRJ_LB) return window.MRJ_LB;
+    var host = document.createElement("div");
+    host.className = "mrj mrj-lb-host";
+    host.innerHTML =
+      '<dialog class="mrj-lightbox" aria-label="Full size view"><div class="mrj-lightbox-inner">' +
+      '<button class="mrj-close" type="button" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>' +
+      '<div class="mrj-lightbox-media"></div><div class="mrj-lightbox-cap"></div></div></dialog>';
+    document.body.appendChild(host);
+    var dlg = host.querySelector("dialog");
+    function close() { if (dlg.close) dlg.close(); else dlg.removeAttribute("open"); }
+    host.querySelector(".mrj-close").addEventListener("click", close);
+    dlg.addEventListener("click", function (e) { if (e.target === dlg) close(); });
+    window.MRJ_LB = function (item, title, sub) {
+      dlg.querySelector(".mrj-lightbox-media").innerHTML = media(item, title);
+      dlg.querySelector(".mrj-lightbox-cap").innerHTML = "<b>" + esc(title) + "</b><span>" + esc(sub) + "</span>";
+      if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
+    };
+    return window.MRJ_LB;
+  }
+
+  var bubbles = '<div class="mrj-ph"><div class="mrj-bubble"><i></i><i></i></div><div class="mrj-bubble me"><i></i></div><div class="mrj-bubble"><i></i><i></i></div><small>Add screenshot link</small></div>';
+  WINS.forEach(function (w) {
+    var b = document.createElement("button");
+    b.className = "mrj-win mrj-tape mrj-reveal";
+    b.type = "button";
+    b.setAttribute("aria-label", "View message from " + w.who + " full size");
+    b.innerHTML = '<div class="mrj-shot">' + (w.img ? '<img src="' + esc(w.img) + '" alt="Message from ' + esc(w.who) + '" loading="lazy">' : bubbles) + "</div>" +
+      '<span class="mrj-win-who">' + esc(w.who) + "</span>";
+    b.addEventListener("click", function () { lightbox()({ img: w.img, title: w.who }, w.who, "Message screenshot"); });
+    wrap.appendChild(b);
+  });
+})();
+</script>

@@ -1,0 +1,40 @@
+<!-- ==========================================================
+     MRJ Offer Page · About
+     GHL: add a Custom Code element and paste this whole file in.
+     Needs 00-global-styles on the same page.
+     ========================================================== -->
+<div class="mrj">
+<section class="mrj-section">
+  <div class="mrj-wrap mrj-about">
+    <div class="mrj-polaroid-wrap mrj-reveal">
+      <div class="mrj-sticker"><span><b>5+</b>years building systems</span></div>
+      <figure class="mrj-polaroid mrj-tape">
+        <div class="photo" id="mrj-photo"></div>
+        <figcaption>Hi, I'm Mary</figcaption>
+      </figure>
+    </div>
+    <div class="mrj-about-copy mrj-reveal">
+      <h2 class="mrj-h2">I've watched great offers go unseen. <em>That's why I do this.</em></h2>
+      <p>I left a corporate tech support job in 2020 to freelance, and I've spent every year since inside the marketing of coaches, agencies and service businesses. The pattern never changes: the offer is good, but the content, ads, funnel and follow-up are run by different people with no shared plan.</p>
+      <p>So I build them as one. I'm a digital marketing specialist working across content strategy, Meta ads, funnel systems and email and AI automation. My team and I build your system, run it, and stay accountable to how it performs, not just to what we delivered.</p>
+      <p>I've also mentored 50+ aspiring freelancers who now work with their own clients, so clear process and clear communication are how I work by default.</p>
+      <ul class="mrj-tags">
+        <li>GoHighLevel</li><li>Meta ads</li><li>Funnel design</li><li>Content strategy</li><li>Email and automation</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</div>
+<script>
+(function () {
+  /* EDIT HERE: paste your photo link between the quotes */
+  var ABOUT_IMG = "";
+
+  var photo = document.getElementById("mrj-photo");
+  if (!photo || photo.dataset.ready) return;
+  photo.dataset.ready = "1";
+  photo.innerHTML = ABOUT_IMG
+    ? '<img src="' + ABOUT_IMG.replace(/"/g, "&quot;") + '" alt="Mary, founder of MRJ Creatives">'
+    : '<div class="mrj-ph"><b>M</b></div>';
+})();
+</script>

@@ -1,0 +1,64 @@
+<!-- ==========================================================
+     MRJ Offer Page · Hero + quick check
+     GHL: add a Custom Code element and paste this whole file in.
+     Needs 00-global-styles on the same page.
+     ========================================================== -->
+<div class="mrj">
+<div class="mrj-atmos" aria-hidden="true"></div>
+<section class="mrj-hero" id="mrj-top">
+  <div class="mrj-stars" aria-hidden="true"><span class="s1"></span><span class="s2"></span></div>
+  <div class="mrj-hero-grid mrj-grid-paper" aria-hidden="true"></div>
+  <div class="mrj-orb" aria-hidden="true"></div>
+
+  <div class="mrj-wrap mrj-hero-inner">
+    <div class="mrj-reveal">
+      <div class="mrj-pill"><span class="mrj-ping"></span>Connected Growth Partnership</div>
+      <h1 class="mrj-h1">
+        <span class="grad">Do you have an offer </span><span class="pink">worth selling?<svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true"><path d="M1 6 Q 30 1 55 5 T 99 4" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg></span>
+      </h1>
+      <p class="mrj-follow">Then let me build the funnel and the content that sell it.</p>
+      <p class="mrj-hero-body">You already did the hard part. Clients pay you, and they get results. What's missing is the system that puts your offer in front of the right people and turns their interest into booked calls, without you chasing every lead.</p>
+      <div class="mrj-ctas">
+        <a class="mrj-btn mrj-shiny" data-book href="https://themrjcreatives.com/growth-audit">Book your free growth audit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="mrj-btn mrj-btn-ghost" href="#mrj-work">See the work</a>
+      </div>
+    </div>
+
+    <div class="mrj-check mrj-reveal" id="mrj-check">
+      <div class="mrj-check-bar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Quick check<span class="cursor" aria-hidden="true"></span></div>
+      <h3>Tick what's true for you</h3>
+      <ul class="mrj-check-list">
+        <li class="mrj-check-item"><input type="checkbox" id="mrj-c1"><label for="mrj-c1"><span class="mrj-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>People already pay for my offer</label></li>
+        <li class="mrj-check-item"><input type="checkbox" id="mrj-c2"><label for="mrj-c2"><span class="mrj-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>My clients get real results</label></li>
+        <li class="mrj-check-item"><input type="checkbox" id="mrj-c3"><label for="mrj-c3"><span class="mrj-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Not enough of the right people know it exists</label></li>
+      </ul>
+      <div class="mrj-check-out" id="mrj-check-out" aria-live="polite">
+        <p>Three ticks means you're exactly who I build for.</p>
+      </div>
+      <div class="mrj-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+    </div>
+  </div>
+</section>
+</div>
+<script>
+(function () {
+  var card = document.getElementById("mrj-check");
+  if (!card || card.dataset.ready) return;
+  card.dataset.ready = "1";
+  var boxes = card.querySelectorAll(".mrj-check-item input");
+  var out = document.getElementById("mrj-check-out");
+  var dots = card.querySelectorAll(".mrj-dots i");
+  var arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  function update() {
+    var n = 0;
+    boxes.forEach(function (b) { if (b.checked) n++; });
+    dots.forEach(function (d, i) { d.classList.toggle("on", i < n); });
+    var done = n === boxes.length;
+    out.classList.toggle("done", done);
+    out.innerHTML = done
+      ? '<p>Your offer is ready. Your marketing isn\'t yet.</p><a href="#mrj-build">Here\'s what I\'d build for you. ' + arrow + '</a>'
+      : "<p>Three ticks means you're exactly who I build for.</p>";
+  }
+  boxes.forEach(function (b) { b.addEventListener("change", update); });
+})();
+</script>

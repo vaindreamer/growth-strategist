@@ -1,0 +1,104 @@
+<!-- ==========================================================
+     MRJ Offer Page · Portfolio
+     GHL: add a Custom Code element and paste this whole file in.
+     Needs 00-global-styles on the same page.
+     ========================================================== -->
+<div class="mrj">
+<section class="mrj-section" id="mrj-work">
+  <div class="mrj-wrap">
+    <div class="mrj-port-top mrj-reveal">
+      <h2 class="mrj-port-title"><span>Port</span><em>folio</em></h2>
+      <p>Funnels, full systems, ad campaigns and email builds I've designed and launched for coaches, agencies and service businesses. Tap any piece to see it full size.</p>
+    </div>
+    <div class="mrj-filters mrj-reveal" id="mrj-filters" role="group" aria-label="Filter portfolio"></div>
+    <div class="mrj-work" id="mrj-work-grid"></div>
+  </div>
+</section>
+</div>
+<script>
+(function () {
+  /* ============================================================
+     EDIT HERE: portfolio pieces
+     Types: funnel, system, ads, email, content.
+     A new filter button appears on its own for each type used.
+     Paste each image link from your GHL media library into img.
+     ============================================================ */
+  var WORK = [
+    { type:"funnel", title:"Founding Membership Launch Funnel", client:"Personal training studio · GHL build", img:"" },
+    { type:"funnel", title:"Lead Magnet Funnel", client:"VA agency · GHL build", img:"" },
+    { type:"funnel", title:"Portrait Special Opt-In", client:"Photographer · Lead funnel", img:"" },
+    { type:"system", title:"Agency Growth System", client:"Recruitment agency · Full system build", img:"" },
+    { type:"ads", title:"3-Campaign Meta Ads Launch", client:"Personal training · Paid acquisition", img:"" },
+    { type:"email", title:"Nurture + Automation Flow", client:"Health insurance broker · Email sequence", img:"" },
+  ];
+  var TYPES = { funnel:"Funnels", system:"Full systems", ads:"Meta ads", email:"Email & automation", content:"Content" };
+  /* ============================================================ */
+
+  var grid = document.getElementById("mrj-work-grid");
+  var filters = document.getElementById("mrj-filters");
+  if (!grid || grid.dataset.ready) return;
+  grid.dataset.ready = "1";
+
+  /* Shared full-size viewer (created once, used by portfolio and client wins) */
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) { return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]; });
+  }
+  function media(item, label) {
+    if (item.img) return '<img src="' + esc(item.img) + '" alt="' + esc(label) + '" loading="lazy">';
+    return '<div class="mrj-ph"><b>' + esc(item.title || "") + '</b><small>Add image link</small></div>';
+  }
+  function lightbox() {
+    if (window.MRJ_LB) return window.MRJ_LB;
+    var host = document.createElement("div");
+    host.className = "mrj mrj-lb-host";
+    host.innerHTML =
+      '<dialog class="mrj-lightbox" aria-label="Full size view"><div class="mrj-lightbox-inner">' +
+      '<button class="mrj-close" type="button" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>' +
+      '<div class="mrj-lightbox-media"></div><div class="mrj-lightbox-cap"></div></div></dialog>';
+    document.body.appendChild(host);
+    var dlg = host.querySelector("dialog");
+    function close() { if (dlg.close) dlg.close(); else dlg.removeAttribute("open"); }
+    host.querySelector(".mrj-close").addEventListener("click", close);
+    dlg.addEventListener("click", function (e) { if (e.target === dlg) close(); });
+    window.MRJ_LB = function (item, title, sub) {
+      dlg.querySelector(".mrj-lightbox-media").innerHTML = media(item, title);
+      dlg.querySelector(".mrj-lightbox-cap").innerHTML = "<b>" + esc(title) + "</b><span>" + esc(sub) + "</span>";
+      if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
+    };
+    return window.MRJ_LB;
+  }
+
+  var zoom = '<span class="mrj-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>';
+  WORK.forEach(function (w) {
+    var b = document.createElement("button");
+    b.className = "mrj-piece mrj-reveal";
+    b.type = "button";
+    b.dataset.type = w.type;
+    b.setAttribute("aria-label", "View " + w.title + " full size");
+    b.innerHTML =
+      '<div class="mrj-frame mrj-tape"><div class="mrj-shot">' + media(w, w.title) + zoom + "</div></div>" +
+      '<div class="mrj-cap"><span class="type">' + esc(TYPES[w.type] || w.type) + "</span><b>" + esc(w.title) + '</b><span class="client">' + esc(w.client) + "</span></div>";
+    b.addEventListener("click", function () { lightbox()(w, w.title, w.client); });
+    grid.appendChild(b);
+  });
+
+  var used = [];
+  WORK.forEach(function (w) { if (used.indexOf(w.type) < 0) used.push(w.type); });
+  var order = Object.keys(TYPES);
+  used.sort(function (a, b) { return (order.indexOf(a) + 1 || 99) - (order.indexOf(b) + 1 || 99); });
+  function addFilter(key, label, count) {
+    var f = document.createElement("button");
+    f.className = "mrj-filter";
+    f.type = "button";
+    f.innerHTML = esc(label) + '<span class="n">' + count + "</span>";
+    f.setAttribute("aria-pressed", key === "all" ? "true" : "false");
+    f.addEventListener("click", function () {
+      filters.querySelectorAll(".mrj-filter").forEach(function (x) { x.setAttribute("aria-pressed", x === f ? "true" : "false"); });
+      grid.querySelectorAll(".mrj-piece").forEach(function (p) { p.hidden = !(key === "all" || p.dataset.type === key); });
+    });
+    filters.appendChild(f);
+  }
+  addFilter("all", "All", WORK.length);
+  used.forEach(function (t) { addFilter(t, TYPES[t] || t, WORK.filter(function (w) { return w.type === t; }).length); });
+})();
+</script>

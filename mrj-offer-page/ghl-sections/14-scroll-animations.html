@@ -1,0 +1,27 @@
+<!-- ==========================================================
+     MRJ Offer Page · Scroll animations (optional)
+     GHL: add a Custom Code element and paste this whole file in.
+     Paste as the LAST element on the page (or in Tracking Code > Footer).
+     ========================================================== -->
+<script>
+(function () {
+  /* Fades sections in as you scroll. Optional: without it everything simply shows. */
+  function run() {
+    var wraps = document.querySelectorAll(".mrj:not(.mrj-js)");
+    if (!wraps.length) return;
+    if (!("IntersectionObserver" in window)) return;
+    var io = window.MRJ_IO || (window.MRJ_IO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("mrj-in"); window.MRJ_IO.unobserve(e.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }));
+    wraps.forEach(function (w) {
+      w.classList.add("mrj-js");
+      w.querySelectorAll(".mrj-reveal").forEach(function (n) { io.observe(n); });
+    });
+  }
+  run();
+  if (document.readyState !== "complete") window.addEventListener("load", run);
+  setTimeout(run, 1500);
+})();
+</script>

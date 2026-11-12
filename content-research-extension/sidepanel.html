@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Viral Lens</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><img src="icons/icon32.png" alt=""><span>Viral Lens</span></div>
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-tab="scan" role="tab">Scan</button>
+      <button class="tab" data-tab="research" role="tab">Research</button>
+      <button class="tab" data-tab="swipe" role="tab">Swipe file <span id="swipeCount" class="pill">0</span></button>
+      <button class="tab" data-tab="settings" role="tab" title="Settings">⚙</button>
+    </nav>
+  </header>
+
+  <!-- ================= SCAN ================= -->
+  <section id="tab-scan" class="panel active">
+    <div class="pagebar">
+      <span id="platformChip" class="chip">–</span>
+      <span id="pageTitle" class="muted ellipsis">Open a YouTube, TikTok, Instagram, X, Reddit or LinkedIn page</span>
+    </div>
+    <div class="row gap">
+      <button id="scanBtn" class="btn primary">Scan this page</button>
+      <button id="deepScanBtn" class="btn" title="Scrolls the page a few times to load more posts, then scans">Deep scan</button>
+      <label class="check"><input type="checkbox" id="badgesToggle" checked> Page badges</label>
+    </div>
+    <div id="scanStatus" class="status"></div>
+
+    <div id="webSnapshot" class="card hidden"></div>
+
+    <div id="scanResults" class="hidden">
+      <div id="stats" class="stats"></div>
+      <div class="row gap wrap controls">
+        <select id="sortSel" title="Sort">
+          <option value="viralScore">Sort: Viral score</option>
+          <option value="outlier">Sort: Outlier (x typical)</option>
+          <option value="reach">Sort: Views / reach</option>
+          <option value="velocity">Sort: Velocity (per hour)</option>
+          <option value="engagement">Sort: Engagement rate</option>
+          <option value="newest">Sort: Newest</option>
+        </select>
+        <select id="tierSel" title="Filter">
+          <option value="all">All posts</option>
+          <option value="above">📈 Above avg & up</option>
+          <option value="outlier">🚀 Outliers & viral</option>
+          <option value="viral">🔥 Viral only</option>
+        </select>
+        <input id="filterText" type="search" placeholder="Filter by word…">
+      </div>
+      <div class="row gap wrap">
+        <button id="saveTopBtn" class="btn small">Save all 🚀/🔥 to swipe file</button>
+        <button id="exportScanBtn" class="btn small">Export CSV</button>
+        <button id="aiScanBtn" class="btn small ai">✨ AI market brief</button>
+      </div>
+      <div id="aiScanOut" class="ai-out hidden"></div>
+      <div id="itemList" class="list"></div>
+    </div>
+
+    <details class="help">
+      <summary>How the numbers work</summary>
+      <ul>
+        <li><b>Outlier</b> = this post's views ÷ the creator's typical post (median). If the scan has fewer than 3 posts from a creator, it compares to the whole page. <b>5x</b> means five times a normal post.</li>
+        <li><b>Velocity</b> = views per hour since posting – catches things blowing up right now.</li>
+        <li><b>Engagement</b> = (likes + comments + shares) ÷ views. On Reddit it's comments ÷ upvotes (how much discussion it sparks).</li>
+        <li><b>Viral score</b> (0–100) blends all three. 🔥 70+ Viral · 🚀 45+ Outlier · 📈 25+ Above average.</li>
+        <li>Best pages to scan: a creator's <i>Videos/Shorts/Reels</i> tab, a search results page, a hashtag page, or a subreddit's <i>Top</i> listing.</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- ================= RESEARCH ================= -->
+  <section id="tab-research" class="panel">
+    <div class="card">
+      <h3>Find content to research</h3>
+      <div class="row gap">
+        <input id="kw" type="search" placeholder="Keyword, e.g. glute workout, meal prep, ugc">
+      </div>
+      <div class="row gap wrap launch">
+        <button class="btn small" data-launch="youtube">YouTube · most viewed</button>
+        <button class="btn small" data-launch="youtubeRecent">YouTube · this month</button>
+        <button class="btn small" data-launch="tiktok">TikTok</button>
+        <button class="btn small" data-launch="instagram">Instagram #tag</button>
+        <button class="btn small" data-launch="x">X · 500+ likes</button>
+        <button class="btn small" data-launch="reddit">Reddit · top month</button>
+        <button class="btn small" data-launch="linkedin">LinkedIn posts</button>
+        <button class="btn small" data-launch="trends">Google Trends</button>
+      </div>
+      <p class="muted small">Opens the search in a new tab — then hit <b>Scan</b> there. Every scan is added to your research below.</p>
+    </div>
+
+    <div class="row gap">
+      <label class="muted small" for="sourceSel">Analyse:</label>
+      <select id="sourceSel">
+        <option value="latest">Latest scan</option>
+        <option value="all7">All scans – last 7 days</option>
+        <option value="all30">All scans – last 30 days</option>
+        <option value="swipe">My swipe file</option>
+      </select>
+      <button id="aiResearchBtn" class="btn small ai">✨ AI brief + 10 ideas</button>
+    </div>
+    <div id="aiResearchOut" class="ai-out hidden"></div>
+    <div id="researchOut"></div>
+  </section>
+
+  <!-- ================= SWIPE FILE ================= -->
+  <section id="tab-swipe" class="panel">
+    <div class="row gap wrap">
+      <input id="swipeFilter" type="search" placeholder="Search saved posts, notes or #tags">
+      <button id="swipeCsvBtn" class="btn small">Export CSV</button>
+      <button id="swipeJsonBtn" class="btn small">Backup JSON</button>
+      <label class="btn small filebtn">Import<input id="swipeImport" type="file" accept=".json" hidden></label>
+    </div>
+    <div id="swipeList" class="list"></div>
+  </section>
+
+  <!-- ================= SETTINGS ================= -->
+  <section id="tab-settings" class="panel">
+    <div class="card">
+      <h3>Your brand</h3>
+      <p class="muted small">Used to adapt winning content to <i>you</i> – in the remix ideas and AI briefs.</p>
+      <label>Niche<input id="setNiche" placeholder="e.g. strength training for busy women"></label>
+      <label>Target audience<input id="setAudience" placeholder="e.g. women 25–45 who want to get strong at home"></label>
+      <label>Offer / what you sell<input id="setOffer" placeholder="e.g. 1:1 personal training, 12-week online program"></label>
+      <label>Brand voice<input id="setVoice" placeholder="e.g. warm, no-nonsense, science-backed"></label>
+      <label>Platforms you post on<input id="setPlatforms" placeholder="e.g. Instagram Reels, TikTok, YouTube Shorts"></label>
+    </div>
+    <div class="card">
+      <h3>AI analysis (optional)</h3>
+      <p class="muted small">Everything except the ✨ buttons works without AI. For AI briefs, paste a Claude API key from <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">console.anthropic.com</a>. It's stored only in this browser and sent only to api.anthropic.com.</p>
+      <label>Claude API key<input id="setKey" type="password" placeholder="sk-ant-…" autocomplete="off"></label>
+      <label>Model<select id="setModel"></select></label>
+      <div class="row gap"><button id="testKeyBtn" class="btn small">Test key</button><span id="testKeyOut" class="small muted"></span></div>
+    </div>
+    <div class="row gap">
+      <button id="saveSettingsBtn" class="btn primary">Save settings</button>
+      <span id="settingsSaved" class="small muted"></span>
+    </div>
+    <div class="card">
+      <h3>Data</h3>
+      <p class="muted small" id="dataInfo"></p>
+      <button id="clearScansBtn" class="btn small danger">Clear scan history</button>
+    </div>
+  </section>
+
+  <!-- ================= REMIX DRAWER ================= -->
+  <div id="drawer" class="drawer hidden" role="dialog" aria-modal="true">
+    <div class="drawer-inner">
+      <div class="row between"><h3>Replicate this</h3><button id="drawerClose" class="btn small">✕</button></div>
+      <div id="drawerBody"></div>
+    </div>
+  </div>
+
+  <script type="module" src="sidepanel.js"></script>
+</body>
+</html>

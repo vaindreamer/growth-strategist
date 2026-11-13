@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>START HERE | {{productName}}</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+@page { size: letter; margin: 0; }
+* { box-sizing: border-box; }
+body { margin: 0; font: 400 11pt/1.55 Inter, Arial, sans-serif; color: #2e1f2a; }
+h1, h2, h3 { font-family: Poppins, Arial, sans-serif; line-height: 1.2; margin: 0 0 .4em; }
+.page { width: 8.5in; height: 11in; padding: .75in .8in; position: relative; page-break-after: always; overflow: hidden; }
+.page:last-child { page-break-after: auto; }
+.cover { background: linear-gradient(160deg, #fdf8f5 0%, #f7e1da 100%); display: flex; flex-direction: column; justify-content: center; }
+.mark { width: 70px; height: 70px; border-radius: 20px; background: linear-gradient(135deg, #8a3f6b, #d27a8f); color: #fff; display: grid; place-items: center; font: 800 1.4rem Poppins, sans-serif; margin-bottom: 28px; }
+.cover h1 { font-size: 40pt; color: #2e1f2a; }
+.cover h1 span { color: #8a3f6b; }
+.cover .tag { font-size: 14pt; color: #74636e; max-width: 5.6in; margin-bottom: 36px; }
+.btn { display: inline-block; background: #8a3f6b; color: #fff !important; text-decoration: none; padding: 16px 30px; border-radius: 999px; font: 700 13pt Inter, sans-serif; }
+.link { font-size: 10pt; color: #74636e; margin-top: 12px; word-break: break-all; }
+.link a { color: #8a3f6b; }
+.foot { position: absolute; bottom: .55in; left: .8in; right: .8in; font-size: 8.5pt; color: #9a8a94; display: flex; justify-content: space-between; }
+h2 { font-size: 20pt; color: #6a2d51; margin-bottom: 14px; }
+h3 { font-size: 12.5pt; margin-top: 18px; }
+.box { background: #fdf3ef; border-radius: 14px; padding: 16px 20px; margin: 14px 0; }
+.steps { counter-reset: s; list-style: none; padding: 0; margin: 0; }
+.steps li { counter-increment: s; position: relative; padding: 0 0 16px 46px; }
+.steps li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 30px; height: 30px; border-radius: 50%; background: #8a3f6b; color: #fff; font: 700 11pt Poppins, sans-serif; display: grid; place-items: center; }
+.steps b { display: block; font-size: 12pt; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.card { border: 1.5px solid #ecdcd6; border-radius: 12px; padding: 14px 16px; }
+.card h3 { margin-top: 0; color: #8a3f6b; }
+ul.tick { list-style: none; padding: 0; margin: 6px 0; }
+ul.tick li { padding-left: 22px; position: relative; margin-bottom: 6px; }
+ul.tick li::before { content: '✓'; position: absolute; left: 0; color: #2f8a5b; font-weight: 700; }
+.week { display: grid; grid-template-columns: 90px 1fr; gap: 6px 14px; margin-top: 8px; }
+.week b { color: #8a3f6b; }
+.small { font-size: 9.5pt; color: #74636e; }
+</style></head>
+<body>
+
+<!-- PAGE 1: COVER -->
+<section class="page cover">
+  <div class="mark">VA</div>
+  <h1>Welcome to the<br><span>{{productName}}</span></h1>
+  <p class="tag">{{tagline}}</p>
+  <div><a class="btn" href="{{appUrl}}">Open my kit →</a></div>
+  <p class="link">Or copy this link into your browser: <a href="{{appUrl}}">{{appUrl}}</a><br>Tip: bookmark it, or on your phone tap Share, then "Add to Home Screen".</p>
+  <div class="foot"><span>© {{year}} {{sellerName}}</span><span>Version {{version}}</span></div>
+</section>
+
+<!-- PAGE 2: HOW TO USE -->
+<section class="page">
+  <h2>How to use your kit</h2>
+  <p>Set aside about 2 hours for your first session. A laptop is easiest, but everything works on a phone too.</p>
+  <ol class="steps">
+    <li><b>About You</b>Fill in the form once. Unsure about something? Click "Fill with sample data" to see a finished example, then click "Start over" and type your own answers. Be honest. Only tick skills and tools you've really used.</li>
+    <li><b>Make 3 practice projects</b>No clients yet? This step matters most. Ideas: a Gmail folder system, a 1-week Canva social media calendar, a lead list in Google Sheets, a step-by-step guide (SOP). Save each one in Google Drive and set it to "Anyone with the link can view".</li>
+    <li><b>Resume</b>Pick a style and click "Download PDF", then choose "Save as PDF".</li>
+    <li><b>Portfolio website</b>Pick a theme and click "Download website". Go to <b style="display:inline">app.netlify.com/drop</b> and drag the file in to get a free link. Paste that link back into Step 1 so it appears on your resume.</li>
+    <li><b>Profile Optimizer</b>Choose Upwork or OnlineJobs.ph and click "Load my drafts". Then work through "Fix these next" until your score is 85 or higher. Copy your title, overview and skills into your real profile.</li>
+    <li><b>Apply every day</b>Paste each job post into the Proposal builder. Edit the draft so it sounds like you, and answer any questions the client asked.</li>
+  </ol>
+  <div class="box"><b>Your answers save automatically</b> in the browser you use. To switch devices or keep a safe copy, click "Back up my answers" and later "Restore backup". Nothing is uploaded anywhere, so your information stays private.</div>
+  <div class="foot"><span>{{productName}}</span><span>2</span></div>
+</section>
+
+<!-- PAGE 3: FIRST 30 DAYS -->
+<section class="page">
+  <h2>Your first 30 days</h2>
+  <p>New VAs who get hired usually have two things: a <b>specific, client-focused profile</b> and <b>consistent applications</b>. This kit helps with the first. The plan below covers the second.</p>
+  <div class="week">
+    <b>Week 1</b><span>Finish About You, make your 3 practice projects, and download your resume and portfolio.</span>
+    <b>Week 2</b><span>Set up your profile and get your score to 85+. Complete identity verification and add your portfolio items. Send your first 5 proposals.</span>
+    <b>Week 3</b><span>Send 5–10 tailored proposals a day. Track them in a simple sheet: date, job, reply (yes/no).</span>
+    <b>Week 4</b><span>Look at your tracker. Few replies? Rewrite your first 2 lines and proposal opener. Getting replies but no hires? Offer a small paid trial task.</span>
+  </div>
+  <div class="two" style="margin-top:22px">
+    <div class="card"><h3>Do</h3><ul class="tick">
+      <li>Choose one kind of client to start with</li>
+      <li>Use their name and answer their questions</li>
+      <li>Keep proposals short: 120–180 words</li>
+      <li>Reply to messages quickly</li>
+    </ul></div>
+    <div class="card"><h3>Avoid</h3><ul class="tick">
+      <li>"Newbie, please give me a chance"</li>
+      <li>Copy-pasting the same proposal everywhere</li>
+      <li>Paying "agencies" that promise jobs</li>
+      <li>Moving payments off-platform early on</li>
+    </ul></div>
+  </div>
+  <p class="small" style="margin-top:20px">An honest note: no template or tool can guarantee you'll be hired. Results depend on your effort, your skills, the market and each client. This kit gives you a strong, professional starting point and a clear daily plan.</p>
+  <div class="foot"><span>{{productName}}</span><span>3</span></div>
+</section>
+
+<!-- PAGE 4: FAQ + LICENSE -->
+<section class="page">
+  <h2>FAQ</h2>
+  <h3>Can I use it on my phone?</h3>
+  <p>Yes. Open the link and add it to your Home Screen. Downloading the PDF and website files is a little easier on a laptop.</p>
+  <h3>Can I use it without internet?</h3>
+  <p>Yes. Unzip the download and double-click <b>index.html</b> inside the <b>kit</b> folder. Your answers are saved separately for the online link and the offline file, so use "Back up my answers" to move them between the two.</p>
+  <h3>I lost my answers!</h3>
+  <p>Clearing your browser history or using private/incognito mode erases them. Make a backup after each session.</p>
+  <h3>Do I need to pay for hosting my portfolio?</h3>
+  <p>No. Netlify Drop and GitHub Pages are free for a simple one-page site.</p>
+  <h3>Need help?</h3>
+  <p>Email <b>{{supportEmail}}</b> and include your order number.</p>
+
+  <h2 style="margin-top:28px">License</h2>
+  <p class="small">This kit is licensed for <b>one person's personal use</b>. You may create and use as many resumes, portfolio websites and profiles for yourself as you like. You may not share, resell, give away or redistribute the kit, its files or its link, in whole or in part. Not affiliated with, or endorsed by, Upwork or OnlineJobs.ph. Platform rules and limits can change, so always check the platform's current guidelines.</p>
+  <div class="foot"><span>© {{year}} {{sellerName}} · All rights reserved</span><span>4</span></div>
+</section>
+</body></html>

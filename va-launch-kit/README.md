@@ -25,3 +25,12 @@ All data stays in the user's browser (localStorage). Users can back up and resto
 ## A note on claims
 
 The optimizer score is based on common client-hiring advice. It does not reflect how Upwork or OnlineJobs.ph rank profiles internally, and it cannot guarantee anyone gets hired. Keep sales copy honest, for example "build a client-ready profile" rather than "guaranteed clients."
+
+## Selling it
+
+Everything for Etsy / Gumroad / Payhip is in `sell/`:
+
+- `sell/config.json`: your shop name, support email and hosted link
+- `node sell/build.js`: builds `dist/` (hostable app, buyer ZIP, START HERE PDF, listing images)
+- `sell/LISTING-COPY.md`: titles, tags, descriptions and pricing
+- `sell/LAUNCH-CHECKLIST.md`: step-by-step launch

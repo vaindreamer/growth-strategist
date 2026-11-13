@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VA Momma Launch Kit | Resume, Portfolio & Profile Optimizer</title>
+<meta name="description" content="Everything a mom needs to launch as a Virtual Assistant: a resume builder, a portfolio website template, and an OnlineJobs.ph / Upwork profile optimizer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header no-print">
+  <div class="wrap header-inner">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">VA</span>
+      <span class="brand-text">VA Momma <strong>Launch Kit</strong></span>
+    </div>
+    <span class="save-status" id="saveStatus">Your work saves automatically on this device</span>
+  </div>
+  <nav class="wrap tabs" role="tablist" aria-label="Kit steps">
+    <button class="tab is-active" role="tab" data-tab="about" aria-selected="true"><span>1</span> About You</button>
+    <button class="tab" role="tab" data-tab="resume" aria-selected="false"><span>2</span> Resume</button>
+    <button class="tab" role="tab" data-tab="portfolio" aria-selected="false"><span>3</span> Portfolio</button>
+    <button class="tab" role="tab" data-tab="optimizer" aria-selected="false"><span>4</span> Profile Optimizer</button>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ STEP 1: ABOUT YOU ============ -->
+  <section class="panel is-active" id="tab-about" role="tabpanel">
+    <div class="intro no-print">
+      <h1>Hi Momma! Let's get you hired.</h1>
+      <p>Fill this out once. Your <strong>resume</strong>, <strong>portfolio website</strong> and <strong>Upwork / OnlineJobs.ph profile drafts</strong> are built from it. No experience? That's okay. The <em>Mom Skills Translator</em> and <em>Practice Projects</em> sections are made for you.</p>
+    </div>
+
+    <form id="aboutForm" class="card-stack" autocomplete="on" onsubmit="return false">
+      <fieldset class="card">
+        <legend>The basics</legend>
+        <div class="grid-2">
+          <label>Full name<input name="fullName" placeholder="Maria Santos"></label>
+          <label>Email<input name="email" type="email" placeholder="maria.va@gmail.com"></label>
+          <label>Location<input name="location" placeholder="Cebu, Philippines"></label>
+          <label>Phone / WhatsApp <small>(optional)</small><input name="phone" placeholder="+63 9xx xxx xxxx"></label>
+          <label>Hours you can work<input name="availability" placeholder="20 hrs/week, US Eastern business hours"></label>
+          <label>Target rate (USD/hr)<input name="rate" type="number" min="0" step="0.5" placeholder="6"></label>
+          <label>Portfolio link <small>(add after Step 3)</small><input name="portfolioUrl" placeholder="https://maria-va.carrd.co"></label>
+          <label>LinkedIn <small>(optional)</small><input name="linkedin" placeholder="https://linkedin.com/in/..."></label>
+          <label class="span-2">Photo link <small>(optional, for your portfolio)</small><input name="photoUrl" placeholder="https://... (a friendly headshot with good light)"></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="card">
+        <legend>Your niche</legend>
+        <p class="hint">Clients don't hire "a VA who does everything." They hire "the VA for <em>people like me</em>." Choose one kind of client to start with. You can change it later.</p>
+        <div class="grid-2">
+          <label>Who do you want to help?
+            <input name="niche" list="nicheIdeas" placeholder="busy coaches and course creators">
+            <datalist id="nicheIdeas">
+              <option value="busy coaches and course creators">
+              <option value="real estate agents">
+              <option value="Shopify and e-commerce store owners">
+              <option value="small business owners">
+              <option value="podcasters and YouTubers">
+              <option value="healthcare and wellness practices">
+              <option value="busy executives and founders">
+            </datalist>
+          </label>
+          <label>Your main role / job title
+            <input name="headline" placeholder="leave blank and we'll suggest one">
+          </label>
+          <label class="span-2">Short summary about you <small>(leave blank and we'll write a draft)</small>
+            <textarea name="summary" rows="3" placeholder="Organized, reliable mom of two who keeps inboxes, calendars and to-do lists running smoothly..."></textarea>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="card">
+        <legend>Services you offer <small>(pick 3–6)</small></legend>
+        <div class="chips" id="servicesChips"></div>
+        <label class="inline-add">Add your own<input id="customService" placeholder="e.g. Pinterest management"><button type="button" class="btn btn-sm" data-add-custom="services">Add</button></label>
+      </fieldset>
+
+      <fieldset class="card">
+        <legend>Tools you can use</legend>
+        <p class="hint">Only pick tools you've actually used. Free tutorials count if you practiced with the tool. Clients search by tool name, so this matters.</p>
+        <div class="chips" id="toolsChips"></div>
+        <label class="inline-add">Add your own<input id="customTool" placeholder="e.g. Airtable"><button type="button" class="btn btn-sm" data-add-custom="tools">Add</button></label>
+      </fieldset>
+
+      <fieldset class="card">
+        <legend>Mom Skills Translator</legend>
+        <p class="hint">Running a household <em>is</em> project management. Tick what you've really done. These show up on your resume under <strong>Transferable Skills</strong>, worded the way clients write job posts.</p>
+        <div class="translator" id="translatorList"></div>
+      </fieldset>
+
+      <fieldset class="card">
+        <legend>Work experience</legend>
+        <p class="hint">Include office jobs, BPO/call-center work, family business, freelancing, volunteering and school/church roles. Start each bullet with a verb and add a number when you can ("Answered 60+ customer emails a day").</p>
+        <div id="experienceList" class="repeat-list"></div>
+        <button type="button" class="btn btn-ghost" data-add-item="experience">+ Add experience</button>
+      </fieldset>
+
+      <fieldset class="card">
+        <legend>Practice projects / portfolio samples</legend>
+        <p class="hint">No clients yet? Make <strong>3 sample projects</strong>. Ideas: a cleaned-up inbox folder system (screenshot), a 1-week Canva social media calendar, a lead list in Google Sheets, a travel itinerary, an SOP document. Link each one through Google Drive set to "anyone with the link can view."</p>
+        <div id="projectsList" class="repeat-list"></div>
+        <button type="button" class="btn btn-ghost" data-add-item="projects">+ Add project</button>
+      </fieldset>
+
+      <fieldset class="card">
+        <legend>Training & education</legend>
+        <div class="grid-2">
+          <label>Courses / certifications <small>(one per line)</small>
+            <textarea name="certifications" rows="3" placeholder="Google Workspace Essentials, 2026&#10;HubSpot Inbound Marketing, 2026"></textarea>
+          </label>
+          <label>Education <small>(one per line)</small>
+            <textarea name="education" rows="3" placeholder="BS Business Administration, University of San Carlos"></textarea>
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="actions-row no-print">
+        <button type="button" class="btn btn-primary" data-goto="resume">Next: See my resume →</button>
+        <button type="button" class="btn btn-ghost" id="loadSample">Fill with sample data</button>
+        <button type="button" class="btn btn-ghost" id="exportData">Back up my answers</button>
+        <label class="btn btn-ghost file-btn">Restore backup<input type="file" id="importData" accept="application/json"></label>
+        <button type="button" class="btn btn-danger-ghost" id="resetData">Start over</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- ============ STEP 2: RESUME ============ -->
+  <section class="panel" id="tab-resume" role="tabpanel">
+    <div class="toolbar no-print">
+      <div>
+        <h2>Your VA Resume</h2>
+        <p class="hint">Click <strong>Download PDF</strong>, then choose <em>Save as PDF</em> in the print window. To change anything, edit Step 1.</p>
+      </div>
+      <div class="toolbar-controls">
+        <label>Style
+          <select id="resumeTemplate">
+            <option value="classic">Classic (ATS-friendly)</option>
+            <option value="modern">Modern (sidebar)</option>
+          </select>
+        </label>
+        <label>Accent
+          <input type="color" id="resumeAccent" value="#8a3f6b">
+        </label>
+        <button class="btn btn-primary" id="printResume">Download PDF</button>
+      </div>
+    </div>
+    <div class="resume-tips no-print" id="resumeTips"></div>
+    <div class="paper-wrap">
+      <article class="paper" id="resumeOut"></article>
+    </div>
+  </section>
+
+  <!-- ============ STEP 3: PORTFOLIO ============ -->
+  <section class="panel" id="tab-portfolio" role="tabpanel">
+    <div class="toolbar no-print">
+      <div>
+        <h2>Your Portfolio Website</h2>
+        <p class="hint">A one-page site you can host for free. Download the file, then drag it onto <strong>Netlify Drop</strong> (app.netlify.com/drop) or upload it to <strong>GitHub Pages</strong>. You'll get a link to put on your resume and profiles.</p>
+      </div>
+      <div class="toolbar-controls">
+        <label>Theme
+          <select id="portfolioTheme">
+            <option value="blush">Blush & Plum</option>
+            <option value="sage">Sage & Cream</option>
+            <option value="ocean">Ocean & Sand</option>
+            <option value="midnight">Midnight & Gold</option>
+          </select>
+        </label>
+        <label>Booking link <small>(Calendly etc.)</small>
+          <input id="bookingUrl" placeholder="https://calendly.com/...">
+        </label>
+        <button class="btn btn-primary" id="downloadPortfolio">Download website (.html)</button>
+      </div>
+    </div>
+    <div class="browser">
+      <div class="browser-bar"><span></span><span></span><span></span><em id="browserUrl">your-name-va.netlify.app</em></div>
+      <iframe id="portfolioFrame" title="Portfolio preview"></iframe>
+    </div>
+  </section>
+
+  <!-- ============ STEP 4: OPTIMIZER ============ -->
+  <section class="panel" id="tab-optimizer" role="tabpanel">
+    <div class="toolbar no-print">
+      <div>
+        <h2>Profile Optimizer</h2>
+        <p class="hint">Paste your current profile, or click <strong>Load my drafts</strong> to start from your Step 1 answers. Your score updates as you type.</p>
+      </div>
+      <div class="toolbar-controls">
+        <div class="seg" role="radiogroup" aria-label="Platform">
+          <button class="seg-btn is-active" data-platform="upwork" role="radio" aria-checked="true">Upwork</button>
+          <button class="seg-btn" data-platform="olj" role="radio" aria-checked="false">OnlineJobs.ph</button>
+        </div>
+        <button class="btn btn-primary" id="loadDrafts">Load my drafts</button>
+      </div>
+    </div>
+
+    <div class="opt-grid">
+      <div class="card-stack">
+        <div class="card">
+          <label><span id="titleLabel">Profile title</span> <small id="titleCount" class="counter"></small>
+            <input id="optTitle" placeholder="Executive Assistant for Busy Coaches | Inbox, Calendar & Client Onboarding">
+          </label>
+          <div class="suggestions" id="titleIdeas"></div>
+        </div>
+        <div class="card">
+          <label><span id="overviewLabel">Overview</span> <small id="overviewCount" class="counter"></small>
+            <textarea id="optOverview" rows="14" placeholder="Paste your profile overview / about me here..."></textarea>
+          </label>
+          <div class="preview-snippet">
+            <strong>What clients see first (search preview):</strong>
+            <p id="snippet"></p>
+          </div>
+        </div>
+        <div class="card">
+          <label>Skills <small>(comma-separated)</small> <small id="skillsCount" class="counter"></small>
+            <input id="optSkills" placeholder="Email Management, Calendar Management, Canva, Google Workspace">
+          </label>
+          <label>Hourly rate (USD)<input id="optRate" type="number" min="0" step="0.5"></label>
+        </div>
+        <div class="card">
+          <h3>Profile checklist</h3>
+          <div id="checklist" class="checklist"></div>
+        </div>
+      </div>
+
+      <aside class="score-col">
+        <div class="card score-card">
+          <div class="gauge" id="gauge"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" class="g-bg"/><circle cx="60" cy="60" r="52" class="g-fg" id="gaugeArc"/></svg><div class="gauge-num"><b id="scoreNum">0</b><span>/100</span></div></div>
+          <p class="score-label" id="scoreLabel">Let's start!</p>
+          <p class="fine">This score checks your profile against what clients look for. A high score gives you a better chance at interviews. It can't promise you'll be hired. Sending good proposals every day is what gets you clients.</p>
+        </div>
+        <div class="card">
+          <h3>Fix these next</h3>
+          <ol id="fixList" class="fix-list"></ol>
+        </div>
+        <div class="card">
+          <h3>Doing well</h3>
+          <ul id="winList" class="win-list"></ul>
+        </div>
+      </aside>
+    </div>
+
+    <div class="card proposal-card">
+      <div class="toolbar">
+        <div>
+          <h3>Proposal / application builder</h3>
+          <p class="hint">Your profile gets you found. Your proposal gets you hired. Paste a job post and we'll draft a short, personal reply. <strong>Always edit it before sending.</strong></p>
+        </div>
+      </div>
+      <div class="grid-2">
+        <label>Paste the job post
+          <textarea id="jobPost" rows="10" placeholder="Looking for a VA to manage my inbox and schedule social media posts in Canva..."></textarea>
+        </label>
+        <label>Your draft <button class="btn btn-sm" id="copyProposal" type="button">Copy</button>
+          <textarea id="proposalOut" rows="10"></textarea>
+        </label>
+      </div>
+      <p class="hint" id="jobMatch"></p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer no-print">
+  <div class="wrap">VA Momma Launch Kit · Everything stays in your browser. Nothing is uploaded.</div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/resume.js"></script>
+<script src="js/portfolio.js"></script>
+<script src="js/optimizer.js"></script>
+</body>
+</html>

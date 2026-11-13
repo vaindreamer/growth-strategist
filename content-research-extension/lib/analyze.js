@@ -289,7 +289,72 @@ export function remixIdeas(item, settings = {}) {
 
 // ---------- export ----------
 export function toCSV(rows) {
-  const cols = ['platform', 'title', 'author', 'url', 'reach', 'views', 'likes', 'comments', 'shares', 'outlier', 'velocity', 'engagement', 'viralScore', 'tier', 'ageHours', 'format', 'tags', 'notes', 'savedAt'];
-  const esc = (v) => { if (v == null) return ''; const s = Array.isArray(v) ? v.join('|') : typeof v === 'number' ? String(Math.round(v * 1000) / 1000) : String(v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+  const cols = ['platform', 'title', 'author', 'url', 'reach', 'views', 'likes', 'comments', 'shares', 'saves', 'outlier', 'velocity', 'engagement', 'viralScore', 'tier', 'ageHours', 'postedAt', 'durationSec', 'format', 'sound', 'topComments', 'tags', 'notes', 'savedAt'];
+  const esc = (v) => { if (v == null) return ''; const s = Array.isArray(v) ? v.map((x) => (x && typeof x === 'object' ? x.text : x)).join(' | ') : typeof v === 'number' ? String(Math.round(v * 1000) / 1000) : String(v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
   return [cols.join(','), ...rows.map((r) => cols.map((c) => esc(r[c])).join(','))].join('\n');
+}
+
+// ---------- competitor research ----------
+/** Per-competitor numbers: audience size, typical reach, engagement, posting rhythm, best formats. */
+export function competitorSummary(posts, profile = {}) {
+  const views = posts.map((p) => p.views).filter((n) => n != null);
+  const likes = posts.map((p) => p.likes).filter((n) => n != null);
+  const comments = posts.map((p) => p.comments).filter((n) => n != null);
+  const eng = posts.map((p) => p.engagement).filter((n) => n != null);
+  const times = posts.map((p) => (p.postedAt ? new Date(p.postedAt).getTime() : p.ageHours != null ? Date.now() - p.ageHours * 3.6e6 : null)).filter((t) => t && isFinite(t)).sort((a, b) => a - b);
+  let postsPerWeek = null, lastPostDays = null;
+  if (times.length >= 3) {
+    const spanWeeks = (times[times.length - 1] - times[0]) / (7 * 864e5);
+    postsPerWeek = spanWeeks > 0.1 ? (times.length - 1) / spanWeeks : null;
+  }
+  if (times.length) lastPostDays = (Date.now() - times[times.length - 1]) / 864e5;
+  const fmts = {};
+  for (const p of posts) if (p.format) (fmts[p.format] ||= []).push(p.reach ?? 0);
+  const formats = Object.entries(fmts).map(([format, v]) => ({ format, n: v.length, median: median(v) })).sort((a, b) => b.median - a.median);
+  const durs = posts.filter((p) => p.durationSec).map((p) => p.durationSec);
+  const top = [...posts].filter((p) => p.reach != null).sort((a, b) => (b.outlier || 0) - (a.outlier || 0) || b.reach - a.reach);
+  const tags = {};
+  for (const p of posts) for (const h of p.hashtags || ((p.title || '').match(/#[\p{L}\p{N}_]+/gu) || []).map((x) => x.slice(1))) tags[h.toLowerCase()] = (tags[h.toLowerCase()] || 0) + 1;
+  return {
+    followers: profile.followers ?? null,
+    posts: posts.length,
+    medianViews: median(views), medianLikes: median(likes), medianComments: median(comments),
+    avgEngagement: eng.length ? eng.reduce((a, b) => a + b, 0) / eng.length : null,
+    viewsPerFollower: profile.followers && views.length ? median(views) / profile.followers : null,
+    postsPerWeek, lastPostDays,
+    formats, medianDuration: median(durs),
+    hits: posts.filter((p) => p.outlier >= 2).length,
+    best: top[0] || null, top: top.slice(0, 5),
+    hashtags: Object.entries(tags).sort((a, b) => b[1] - a[1]).slice(0, 10).map(([tag, n]) => ({ tag, n }))
+  };
+}
+
+const INTENTS = [
+  { key: 'price', label: '💲 Price & cost', re: /\b(how much|price|cost|costs|fee|fees|pay|payment|payments|afford|cheap|expensive|percent|%|down payment|financ\w*|\$\d*)\b/i },
+  { key: 'how', label: '❓ How it works / process', re: /\b(how (do|does|can|long|to)|what (do|should|can) (i|we)|what happens|process|steps|requirements?|need to|do i need|is it possible|can (i|you|they)|what if|explain)\b/i },
+  { key: 'contact', label: '📞 Wants to contact / buy', re: /\b(dm|inbox|call|number|phone|contact|reach|location|where are you|near me|available|open|24\/?7|hire|book|link|website|text me|email)\b/i },
+  { key: 'praise', label: '🙌 Praise & trust', re: /\b(thank(s| you)?|great|amazing|best|love|recommend|helped|saved|legit|god bless|awesome|professional|fast|grateful|appreciate)\b|❤|🙏|🔥|👏/i },
+  { key: 'complaint', label: '⚠️ Complaints & doubts', re: /\b(scam|fake|rip ?off|worst|rude|never again|terrible|lie|lied|liar|waste|overpriced|ripped|horrible|bad experience|didn'?t|don'?t trust)\b/i },
+  { key: 'story', label: '🗣 Personal stories', re: /\b(my (son|daughter|husband|wife|brother|sister|mom|dad|friend|boyfriend|girlfriend|family|cousin)|i was|when i|happened to me|been there|same thing)\b/i }
+];
+
+const isQuestion = (t) => /\?\s*$|\?/.test(t) || /^(how|what|can|do|does|is|are|where|when|why|who|which|should|will|would|could)\b/i.test(t.trim());
+
+/** What people say in the comments: intents, top questions, common words. */
+export function commentInsights(posts) {
+  const all = [];
+  for (const p of posts) for (const c of p.topComments || []) if (c && c.text) all.push({ ...c, post: p });
+  if (!all.length) return { n: 0 };
+  const intents = INTENTS.map((it) => {
+    const hits = all.filter((c) => it.re.test(c.text));
+    return { key: it.key, label: it.label, n: hits.length, share: hits.length / all.length, examples: [...new Set(hits.map((c) => c.text))].sort((a, b) => (b.length < 140) - (a.length < 140) || a.length - b.length).slice(0, 4) };
+  }).filter((i) => i.n).sort((a, b) => b.n - a.n);
+  const qSeen = new Set();
+  const questions = all.filter((c) => isQuestion(c.text) && c.text.length >= 8 && c.text.length <= 220)
+    .filter((c) => { const k = c.text.toLowerCase().replace(/\W+/g, ' ').trim(); if (qSeen.has(k)) return false; qSeen.add(k); return true; })
+    .sort((a, b) => (b.likes || 0) - (a.likes || 0)).slice(0, 15).map((c) => ({ text: c.text, likes: c.likes || null, url: c.post.url }));
+  const df = {};
+  for (const c of all) for (const w of new Set(tokenize(c.text))) df[w] = (df[w] || 0) + 1;
+  const words = Object.entries(df).filter(([, n]) => n >= 2).sort((a, b) => b[1] - a[1]).slice(0, 20).map(([word, n]) => ({ word, n }));
+  return { n: all.length, intents, questions, words };
 }

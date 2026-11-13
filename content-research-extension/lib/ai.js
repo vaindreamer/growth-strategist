@@ -87,6 +87,39 @@ Word count: ${page.wordCount}
 Give me: their positioning and promise, target customer, offer structure, messaging angles and proof they use, weaknesses/gaps I can exploit, and 8 content ideas I could make that position my brand against this.`;
 }
 
+export function buildCompetitorPrompt(results, insights, settings, query) {
+  const blocks = results.map((r, n) => {
+    const s = r.summary;
+    const head = `### Competitor ${n + 1}: ${r.name || r.handle} (@${r.handle}) on ${r.platform}
+Followers: ${fmt(s.followers)} | posts analysed: ${s.posts} | median views: ${fmt(s.medianViews)} | median likes: ${fmt(s.medianLikes)} | median comments: ${fmt(s.medianComments)} | avg engagement: ${pct(s.avgEngagement)} | posts/week: ${s.postsPerWeek ? s.postsPerWeek.toFixed(1) : '?'} | last post: ${s.lastPostDays != null ? Math.round(s.lastPostDays) + ' days ago' : '?'} | 2x+ hits: ${s.hits}
+Formats (median reach): ${s.formats.map((f) => `${f.format} ${fmt(f.median)} (n=${f.n})`).join(', ') || '?'}${s.medianDuration ? ` | median video length ${s.medianDuration}s` : ''}
+Top hashtags: ${s.hashtags.map((h) => '#' + h.tag).join(' ') || 'none'}
+Bio: ${(r.bio || '').slice(0, 250)}`;
+    const posts = s.top.map((p, k) => `${itemLine(p, k + 1)}${p.sound ? ` | sound: ${p.sound}` : ''}${p.topComments && p.topComments.length ? `\n   comments: ${p.topComments.slice(0, 5).map((c) => '"' + c.text.slice(0, 120) + '"').join(' · ')}` : ''}`).join('\n');
+    return `${head}\nTop posts:\n${posts}`;
+  }).join('\n\n');
+  const ci = insights && insights.n ? `
+What the audience says in comments (${insights.n} comments read):
+${insights.intents.map((i) => `- ${i.label}: ${Math.round(i.share * 100)}% e.g. ${i.examples.slice(0, 2).map((e) => '"' + e.slice(0, 120) + '"').join(', ')}`).join('\n')}
+Top questions people ask: ${insights.questions.slice(0, 12).map((q) => '"' + q.text + '"').join(' · ')}` : '';
+  return `${brandBlock(settings)}
+
+I researched competitors${query ? ` for "${query}"` : ''} on Instagram / TikTok / Facebook. Here is their real performance data:
+
+${blocks}
+${ci}
+
+Write a competitor research report with these sections:
+1. **Snapshot table** – one row per competitor: platform, audience size, typical views, engagement, posting frequency, their strongest content type, and one-line verdict.
+2. **What's working for each competitor** – for each one: the 2–3 content types/hooks behind their best posts (cite the post), and what they do badly.
+3. **Patterns across the market** – themes, hooks, formats, video lengths and posting rhythm that consistently win.
+4. **What the audience is asking and feeling** – based on comments: the questions, fears and objections to answer in content.
+5. **Gaps I can own** – angles, formats or questions no competitor covers well.
+6. **15 content ideas for my brand** – a table: Hook (first line / first 3 seconds) | Format & platform | Idea in 1–2 sentences | Which competitor insight it's based on | CTA.
+7. **My 30-day posting plan** – frequency per platform, content mix, and the 3 ideas to film first.
+8. **Watch-outs** – if the industry is regulated (e.g. bail bonds, legal, finance, health), flag claims or wording that may need a compliance check, and never suggest copying a competitor's content.`;
+}
+
 export async function askClaude({ apiKey, model, prompt, signal }) {
   if (!apiKey) throw new Error('Add your Claude API key in Settings to use AI analysis.');
   const m = model || 'claude-opus-5-5';

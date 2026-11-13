@@ -11,8 +11,9 @@
     <div class="brand"><img src="icons/icon32.png" alt=""><span>Viral Lens</span></div>
     <nav class="tabs" role="tablist">
       <button class="tab active" data-tab="scan" role="tab">Scan</button>
+      <button class="tab" data-tab="competitors" role="tab">Competitors</button>
       <button class="tab" data-tab="research" role="tab">Research</button>
-      <button class="tab" data-tab="swipe" role="tab">Swipe file <span id="swipeCount" class="pill">0</span></button>
+      <button class="tab" data-tab="swipe" role="tab">Saved <span id="swipeCount" class="pill">0</span></button>
       <button class="tab" data-tab="settings" role="tab" title="Settings">⚙</button>
     </nav>
   </header>
@@ -21,7 +22,7 @@
   <section id="tab-scan" class="panel active">
     <div class="pagebar">
       <span id="platformChip" class="chip">–</span>
-      <span id="pageTitle" class="muted ellipsis">Open a YouTube, TikTok, Instagram, X, Reddit or LinkedIn page</span>
+      <span id="pageTitle" class="muted ellipsis">Open a YouTube, TikTok, Instagram, Facebook, X, Reddit or LinkedIn page</span>
     </div>
     <div class="row gap">
       <button id="scanBtn" class="btn primary">Scan this page</button>
@@ -72,6 +73,65 @@
     </details>
   </section>
 
+  <!-- ================= COMPETITORS ================= -->
+  <section id="tab-competitors" class="panel">
+    <div class="card">
+      <h3>1 · Find competitors</h3>
+      <p class="muted small">Searches each platform for accounts in your market. Log in to Instagram and Facebook in this browser first.</p>
+      <div class="row gap">
+        <input id="cqKeyword" placeholder="What they do, e.g. bail bonds">
+        <input id="cqCity" placeholder="City (optional)" style="max-width:130px">
+      </div>
+      <div class="row gap wrap">
+        <label class="check inline"><input type="checkbox" class="cqPlat" value="instagram" checked> Instagram</label>
+        <label class="check inline"><input type="checkbox" class="cqPlat" value="tiktok" checked> TikTok</label>
+        <label class="check inline"><input type="checkbox" class="cqPlat" value="facebook" checked> Facebook</label>
+        <button id="cqFindBtn" class="btn small primary" style="margin-left:auto">Find</button>
+      </div>
+      <div id="cqCandidates"></div>
+    </div>
+
+    <div class="card">
+      <h3>2 · Your competitors <span id="compCount" class="pill">0</span></h3>
+      <div id="compList"></div>
+      <textarea id="compPaste" rows="2" placeholder="Or paste profile links / @handles, one per line"></textarea>
+      <div class="row gap wrap">
+        <select id="compPastePlat" title="Platform for plain @handles">
+          <option value="instagram">@handles are Instagram</option>
+          <option value="tiktok">@handles are TikTok</option>
+          <option value="facebook">@handles are Facebook</option>
+        </select>
+        <button id="compAddBtn" class="btn small">Add</button>
+        <button id="compAddTabBtn" class="btn small" title="Add the profile open in the current tab">+ Current tab</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>3 · Deep research</h3>
+      <p class="muted small">Opens each competitor in a research tab, scrolls their profile and opens their posts one by one, like you would — just faster. You can watch it work, but keep the research tab and this panel open.</p>
+      <div class="row gap wrap">
+        <label class="inline-label">Posts each
+          <select id="drMax"><option value="12">12</option><option value="24" selected>24</option><option value="40">40</option></select>
+        </label>
+        <label class="inline-label">Depth
+          <select id="drMode"><option value="deep" selected>Deep – stats + top comments</option><option value="fast">Fast – stats &amp; captions only</option></select>
+        </label>
+      </div>
+      <p class="muted small" id="drEstimate"></p>
+      <div class="row gap">
+        <button id="drStartBtn" class="btn primary">▶ Start deep research</button>
+        <button id="drStopBtn" class="btn hidden">■ Stop</button>
+      </div>
+      <div id="drProgress" class="hidden">
+        <div class="progress"><div id="drBar"></div></div>
+        <div id="drStatus" class="status"></div>
+        <details class="small"><summary class="muted">Activity log</summary><div id="drLog" class="log"></div></details>
+      </div>
+    </div>
+
+    <div id="drResults"></div>
+  </section>
+
   <!-- ================= RESEARCH ================= -->
   <section id="tab-research" class="panel">
     <div class="card">
@@ -98,7 +158,8 @@
         <option value="latest">Latest scan</option>
         <option value="all7">All scans – last 7 days</option>
         <option value="all30">All scans – last 30 days</option>
-        <option value="swipe">My swipe file</option>
+        <option value="deep">Latest competitor research</option>
+        <option value="swipe">My saved posts</option>
       </select>
       <button id="aiResearchBtn" class="btn small ai">✨ AI brief + 10 ideas</button>
     </div>

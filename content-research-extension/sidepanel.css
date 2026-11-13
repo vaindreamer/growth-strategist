@@ -107,3 +107,30 @@ table.mini td, table.mini th { padding: 3px 4px; border-bottom: 1px solid var(--
 .drawer-inner { background: var(--bg); width: 100%; max-height: 88vh; overflow-y: auto; border-radius: 14px 14px 0 0; padding: 12px; }
 .drawer ol { padding-left: 18px; }
 .drawer li { margin: 4px 0; }
+
+/* ---- competitors ---- */
+label.check input { display: inline; width: auto; margin: 0; }
+.check.inline { margin-left: 0; color: var(--text); }
+.tab { font-size: 12px; }
+textarea#compPaste { width: 100%; margin-top: 8px; resize: vertical; }
+.inline-label { display: flex; flex-direction: column; gap: 3px; margin: 0; }
+.inline-label select { width: auto; margin: 0; }
+.comp-row, .cand { display: grid; grid-template-columns: auto auto 1fr auto auto; gap: 6px; align-items: center; padding: 5px 0; border-bottom: 1px solid var(--line); font-weight: 400; margin: 0; }
+.comp-row:last-child, .cand:last-child { border-bottom: 0; }
+.cands { max-height: 260px; overflow-y: auto; margin: 6px 0; border: 1px solid var(--line); border-radius: 8px; padding: 0 8px; }
+.progress { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; margin: 8px 0 4px; }
+#drBar { height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width .4s; }
+.log { max-height: 160px; overflow-y: auto; font-family: ui-monospace, Menlo, monospace; font-size: 11px; color: var(--muted); }
+.tablewrap { overflow-x: auto; }
+table.cmp td { white-space: nowrap; }
+details.comp > summary { cursor: pointer; list-style: none; }
+details.comp > summary::-webkit-details-marker { display: none; }
+details.comp > summary::before { content: '▸ '; color: var(--muted); }
+details.comp[open] > summary::before { content: '▾ '; }
+details.intent summary { display: grid; grid-template-columns: 1fr 48px; gap: 6px; cursor: pointer; list-style: none; font-size: 12px; }
+details.intent summary .track { grid-column: 1 / -1; }
+details.intent ul { margin: 4px 0 8px; padding-left: 18px; }
+ol.qs li { margin: 3px 0; }
+details.cm { font-size: 12px; margin-top: 4px; }
+details.cm summary { cursor: pointer; color: var(--muted); }
+details.cm ul { margin: 4px 0; padding-left: 16px; }

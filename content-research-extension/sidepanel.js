@@ -1,17 +1,20 @@
 import { scoreItems, summarize, research, remixIdeas, toTemplate, detectHooks, tokenize, tierOf, fmt, pct, ageLabel, reachLabel, toCSV } from './lib/analyze.js';
 import { MODELS, askClaude, buildMarketPrompt, buildRemixPrompt, buildPagePrompt, md } from './lib/ai.js';
+import { initCompetitors } from './competitors.js';
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const PLATFORM_NAMES = { youtube: 'YouTube', tiktok: 'TikTok', instagram: 'Instagram', x: 'X', reddit: 'Reddit', linkedin: 'LinkedIn', web: 'Web page' };
+const PLATFORM_NAMES = { youtube: 'YouTube', tiktok: 'TikTok', instagram: 'Instagram', facebook: 'Facebook', x: 'X', reddit: 'Reddit', linkedin: 'LinkedIn', web: 'Web page' };
 const MAX_SCANS = 40;
 
-const state = { settings: {}, scans: [], swipe: [], current: null, tabId: null };
+const state = { settings: {}, scans: [], swipe: [], current: null, tabId: null, competitors: [], deep: null };
 
 // ---------------- storage ----------------
 async function load() {
-  const d = await chrome.storage.local.get(['settings', 'scans', 'swipe']);
+  const d = await chrome.storage.local.get(['settings', 'scans', 'swipe', 'competitors', 'deep']);
+  state.competitors = d.competitors || [];
+  state.deep = d.deep || null;
   state.settings = d.settings || {};
   state.scans = d.scans || [];
   state.swipe = d.swipe || [];
@@ -40,6 +43,7 @@ function platformOf(url) {
     if (/(^|\.)x\.com$|twitter\.com$/.test(h)) return 'x';
     if (/reddit\.com$/.test(h)) return 'reddit';
     if (/linkedin\.com$/.test(h)) return 'linkedin';
+    if (/facebook\.com$/.test(h)) return 'facebook';
     if (/^https?:/.test(url)) return 'web';
   } catch {}
   return null;
@@ -167,6 +171,7 @@ function itemCard(i, inSwipe) {
     i.engagement != null ? `<span class="badge" title="${i.platform === 'reddit' ? 'comments ÷ upvotes' : 'engagement rate'}">💬 ${pct(i.engagement)}</span>` : '',
     i.likes != null && i.views != null ? `<span class="badge">♥ ${fmt(i.likes)}</span>` : '',
     i.comments != null ? `<span class="badge">🗨 ${fmt(i.comments)}</span>` : '',
+    i.shares != null ? `<span class="badge" title="shares">↗ ${fmt(i.shares)}</span>` : '',
     i.followerRatio != null && i.followerRatio > 1 ? `<span class="badge" title="views ÷ followers">${i.followerRatio.toFixed(1)}x followers</span>` : ''
   ].join('');
   const saved = isSaved(i.url);
@@ -176,6 +181,7 @@ function itemCard(i, inSwipe) {
       <div class="title" data-act="open" title="Open post">${esc(i.title || '(no caption)')}</div>
       <div class="meta">${esc(PLATFORM_NAMES[i.platform] || i.platform)}${i.author ? ' · ' + esc(i.author) : ''}${i.ageHours != null ? ' · ' + ageLabel(i.ageHours) : ''}${i.duration ? ' · ' + esc(i.duration) : ''}${i.format ? ' · ' + esc(i.format) : ''}</div>
       <div class="badges"><span class="badge tier" style="background:${t.color}">${t.emoji} ${t.label} · ${i.viralScore ?? '–'}</span>${bits}</div>
+      ${i.topComments && i.topComments.length ? `<details class="cm"><summary>What people said (${i.topComments.length})</summary><ul>${i.topComments.map((c) => `<li>${esc(c.text.slice(0, 220))}${c.likes ? ` <span class="muted">♥ ${fmt(c.likes)}</span>` : ''}</li>`).join('')}</ul></details>` : ''}
       ${inSwipe ? `<input class="tags" data-field="tags" placeholder="#tags (e.g. #hook #carousel)" value="${esc((i.tags || []).join(' '))}">
         <textarea data-field="notes" placeholder="Notes: why it works, what you'd change…">${esc(i.notes || '')}</textarea>` : ''}
       <div class="actions">
@@ -190,7 +196,8 @@ function itemCard(i, inSwipe) {
 
 function findItem(url) {
   return (state.current && state.current.items.find((i) => i.url === url)) || state.swipe.find((i) => i.url === url) ||
-    state.scans.flatMap((s) => s.items).find((i) => i.url === url);
+    state.scans.flatMap((s) => s.items).find((i) => i.url === url) ||
+    (state.deep ? state.deep.results.flatMap((r) => r.posts) : []).find((i) => i.url === url);
 }
 
 function saveItem(i) {
@@ -246,7 +253,8 @@ function renderWebSnapshot() {
 // ---------------- research ----------------
 function researchItems() {
   const src = $('#sourceSel').value;
-  if (src === 'swipe') return { items: state.swipe, label: 'my swipe file' };
+  if (src === 'swipe') return { items: state.swipe, label: 'my saved posts' };
+  if (src === 'deep') return { items: state.deep ? state.deep.results.flatMap((r) => r.posts) : [], label: 'my latest competitor research' + (state.deep && state.deep.query ? ` for "${state.deep.query}"` : '') };
   if (src === 'latest') return { items: state.current ? state.current.items : [], label: state.current ? `${PLATFORM_NAMES[state.current.platform]} – ${state.current.pageTitle}` : 'nothing yet' };
   const days = src === 'all7' ? 7 : 30;
   const since = Date.now() - days * 864e5;
@@ -462,6 +470,7 @@ const dateStamp = () => new Date().toISOString().slice(0, 10);
   await load();
   $('#swipeCount').textContent = state.swipe.length;
   await refreshActiveTab();
+  initCompetitors({ state, $, $$, esc, itemCard, runAI, download, dateStamp, showResearch: (src) => { showTab('research'); $('#sourceSel').value = src; renderResearch(); } });
   if (state.current) { renderScan(); setStatus(`Showing your last scan: ${esc(state.current.pageTitle)} (${ageLabel((Date.now() - new Date(state.current.scannedAt)) / 3.6e6)})`); }
 })();
 

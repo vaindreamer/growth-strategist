@@ -1,0 +1,11 @@
+{
+  "id": "2026-11-18-2-reel-2am-call",
+  "platform": "reel",
+  "scenes": [
+    {"type": "call", "caller": "Unknown number", "sub": "2:14 AM · incoming call…", "title": "The call *nobody* is ready for.", "duration": 4.6},
+    {"type": "search", "query": "bail bondsman near me", "title": "Search *less.* Call *sooner.*", "duration": 5.2},
+    {"type": "slide", "style": "list", "title": "Before you call, *have:*", "body": ["Their full legal name", "Date of birth", "Jail or booking number", "Charges, if you know them"], "duration": 5.6},
+    {"type": "slide", "style": "quote", "anim": "type", "title": "We'll explain *every step* before you sign anything.", "duration": 4.2},
+    {"type": "slide", "style": "cta", "title": "Day or night, *we answer.*", "body": ["New Castle · Kent · Sussex"], "duration": 4.8}
+  ]
+}

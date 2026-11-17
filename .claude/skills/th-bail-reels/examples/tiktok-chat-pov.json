@@ -1,0 +1,16 @@
+{
+  "id": "2026-11-18-4-tiktok-group-chat",
+  "platform": "tiktok",
+  "scenes": [
+    {"type": "slide", "style": "hook", "anim": "shake", "title": "POV: the *family group chat* at 2 a.m.", "duration": 2.8},
+    {"type": "chat", "contact": "Aunt Lisa", "status": "online", "messages": [
+      {"from": "them", "text": "They just arrested my son 😭"},
+      {"from": "them", "text": "What do I even do??"},
+      {"from": "me", "text": "Breathe. Find out which jail he's in 🙏"},
+      {"from": "me", "text": "Get his full name + date of birth"},
+      {"from": "me", "text": "Then call T&H. They answer 24/7 📞"}
+    ], "duration": 7.5},
+    {"type": "slide", "style": "hook", "title": "Send this to *the group chat.*", "sticker": "Share", "duration": 2.6},
+    {"type": "slide", "style": "cta", "title": "Save our *number*", "duration": 4.2}
+  ]
+}

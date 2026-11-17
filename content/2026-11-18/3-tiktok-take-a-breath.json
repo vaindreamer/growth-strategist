@@ -1,0 +1,15 @@
+{
+  "id": "2026-11-18-3-tiktok-take-a-breath",
+  "platform": "tiktok",
+  "voice": {"src": "../assets/voice/trisha-vm-1.m4a", "tail": 2.6},
+  "captions": "auto",
+  "scenes": [
+    {"type": "slide", "style": "hook", "title": "Just got *the call?*", "duration": 3.1},
+    {"type": "photo", "src": "../assets/photos/th-photo-2.jpeg", "text": "You're *not the first family*", "motion": "zoom_in", "duration": 4.1},
+    {"type": "photo", "src": "../assets/photos/th-photo-3.jpeg", "text": "You *won't* do this alone", "motion": "pan_right", "duration": 2.9},
+    {"type": "slide", "style": "list", "title": "Find out:", "body": ["Where they're held", "Full name", "Date of birth"], "duration": 4.4, "sticker": "Save this"},
+    {"type": "photo", "src": "../assets/photos/th-photo-4.jpeg", "crop": [0, 0, 1, 0.78], "text": "Call a bondsman *you trust*", "motion": "zoom_in", "duration": 2.5},
+    {"type": "photo", "src": "../assets/photos/th-photo-1.jpeg", "text": "We explain *every step*", "text_position": "bottom", "focus": "50% 20%", "motion": "zoom_in", "duration": 5.6, "sticker": "24/7"},
+    {"type": "slide", "style": "cta", "title": "Call us *any hour*"}
+  ]
+}

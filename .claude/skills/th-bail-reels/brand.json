@@ -11,11 +11,19 @@
   "apply_url": "https://www.thbailbondagency.com/forms",
   "state": "Delaware",
   "service_area": "New Castle, Kent & Sussex Counties, Delaware",
-  "services": ["Criminal", "Traffic", "Juvenile", "Federal", "State", "Violation of probation (VOP)", "Out-of-state transfer bail"],
+  "services": [
+    "Criminal",
+    "Traffic",
+    "Juvenile",
+    "Federal",
+    "State",
+    "Violation of probation (VOP)",
+    "Out-of-state transfer bail"
+  ],
   "cta_primary": "Call 24/7 or tap the link in bio",
   "cta_short": "Link in bio • 24/7",
   "instagram": "@thbailbondagencyllc",
-  "tiktok": null,
+  "tiktok": "@thbailbondagencyllc",
   "colors": {
     "primary": "#000000",
     "surface": "#29292D",

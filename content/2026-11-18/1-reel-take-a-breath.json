@@ -1,0 +1,14 @@
+{
+  "id": "2026-11-18-1-reel-take-a-breath",
+  "platform": "reel",
+  "voice": {"src": "../assets/voice/trisha-vm-1.m4a", "tail": 2.6},
+  "captions": "auto",
+  "scenes": [
+    {"type": "slide", "style": "hook", "kicker": "Just got the call?", "title": "*First,* take a breath.", "duration": 3.1},
+    {"type": "photo", "src": "../assets/photos/th-photo-2.jpeg", "text": "You're *not alone* in this", "motion": "zoom_in", "duration": 7.0},
+    {"type": "slide", "style": "list", "title": "Have this *ready*", "body": ["Where they're being held", "Their full name", "Date of birth"], "duration": 4.3},
+    {"type": "photo", "src": "../assets/photos/th-photo-4.jpeg", "crop": [0, 0, 1, 0.78], "text": "Call a bondsman *you trust*", "motion": "pan_up", "duration": 2.8},
+    {"type": "photo", "src": "../assets/photos/th-photo-1.jpeg", "text": "We explain *every step*", "text_position": "bottom", "focus": "50% 20%", "motion": "zoom_out", "duration": 5.3},
+    {"type": "slide", "style": "cta", "title": "We answer *24/7*", "body": ["All 3 Delaware counties"]}
+  ]
+}

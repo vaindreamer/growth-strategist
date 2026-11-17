@@ -51,17 +51,18 @@ Replies to comments as videos work well (pillar E).
 
 ## Captions & hashtags
 Structure: **hook line** → 2–3 short lines of value → **CTA** ("Call 24/7 or tap
-the link in bio") → 3–5 hashtags. Include the service area for local search.
-Hashtag mix: 1–2 broad (#bailbonds #bail), 1–2 local (#[city]bailbonds
-#[county]), 1 topical (#knowyourrights #familysupport). No hashtag stuffing.
+the link in bio") → 3–5 hashtags. Include the service area for local search (Wilmington, New Castle / Kent / Sussex County, Delaware).
+Hashtag mix: 1–2 broad (#bailbonds #bail), 1–2 local (#delawarebailbonds
+#wilmingtonde #newcastlecounty #kentcounty #sussexcounty), 1 topical (#knowyourrights #familysupport). No hashtag stuffing.
 Best posting windows to test: 7–9 a.m., 12–1 p.m., 7–10 p.m. local; also late
 night, when urgent searches happen. Track which wins after 2 weeks.
 
 ## Compliance (check every script)
-Bail bond advertising is regulated by state insurance departments and the rules
-differ by state. **Confirm her state's rules with her before launch** and update
-this section. Common safe defaults built into this skill:
-- Show the **business name and license number** on every video (CTA slide footer). Many states require it in all advertising.
+T&H is licensed in **Delaware** (license #3000375457, shown on every video). Bail
+agents in Delaware are licensed through the Delaware Department of Insurance; ask
+Trisha to confirm any specific advertising rules she follows and note them here.
+Safe defaults built into this skill:
+- Show the **business name and license number** on every video (CTA slide + slide footers).
 - **Never promise release, speed, or outcomes** ("we'll get them out in an hour", "guaranteed").
 - **No legal advice.** Explain the bail process in general terms; say "talk to an attorney" for case questions.
 - **Don't imply a connection to police, courts or jails.** No badges, official seals, or "official" wording.

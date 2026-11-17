@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """Make word-level timings for a voice recording -> <audio>.words.json
 
-    python3 transcribe.py VOICE.m4a                 # speech-to-text (faster-whisper)
+    python3 transcribe.py VOICE.m4a                 # speech-to-text (HyperFrames whisper,
+                                                    #   falls back to faster-whisper)
     python3 transcribe.py VOICE.m4a --text "..."    # you supply the words; timing is
     python3 transcribe.py VOICE.m4a --text-file t.txt  # estimated from pauses
 
-Mode 1 needs `pip install faster-whisper` and network access to huggingface.co
-to download the model once. If that is unavailable, it falls back to mode 2 when
+Mode 1 runs `npx hyperframes transcribe` (whisper.cpp, model small.en). It needs
+network access to huggingface.co, us.aws.cdn.hf.co and github.com the first time. If that is unavailable, it falls back to mode 2 when
 text is supplied, otherwise it exits with instructions.
 
 Output JSON: {"text": "...", "duration": 12.3,
@@ -61,6 +62,26 @@ def align_text(text, segs):
     return out
 
 
+def hyperframes(path, model):
+    import os
+    import shutil
+    import tempfile
+    with tempfile.TemporaryDirectory() as td:
+        tmp_audio = Path(td) / Path(path).name
+        shutil.copy(path, tmp_audio)
+        env = dict(os.environ, NODE_USE_ENV_PROXY="1", HYPERFRAMES_SKIP_SKILLS="1",
+                   NODE_EXTRA_CA_CERTS=os.environ.get("NODE_EXTRA_CA_CERTS",
+                                                      "/root/.ccr/ca-bundle.crt"))
+        r = subprocess.run(["npx", "--yes", "hyperframes@0.9.59", "transcribe", str(tmp_audio),
+                            "--model", model, "--json"], capture_output=True, text=True,
+                           env=env, cwd=td)
+        last = json.loads(r.stdout.strip().splitlines()[-1]) if r.stdout.strip() else {}
+        if r.returncode != 0 or not last.get("ok"):
+            raise RuntimeError(last.get("error") or r.stderr[-500:])
+        ws = json.loads(Path(last["transcriptPath"]).read_text())
+    return [{"word": w["text"].strip(), "start": w["start"], "end": w["end"]} for w in ws]
+
+
 def whisper(path, model_size):
     from faster_whisper import WhisperModel  # noqa: import inside for optional dep
     model = WhisperModel(model_size, device="cpu", compute_type="int8")
@@ -78,7 +99,7 @@ def main():
     ap.add_argument("audio")
     ap.add_argument("--text")
     ap.add_argument("--text-file")
-    ap.add_argument("--model", default="small")
+    ap.add_argument("--model", default="small.en")
     ap.add_argument("--out")
     a = ap.parse_args()
     audio = Path(a.audio)
@@ -88,8 +109,14 @@ def main():
     words, method = None, None
     if not text:
         try:
-            words, method = whisper(audio, a.model), "whisper"
-        except Exception as e:  # missing package or blocked model download
+            words, method = hyperframes(audio, a.model), f"hyperframes-whisper {a.model}"
+        except Exception as e:
+            print(f"hyperframes transcribe failed ({e}); trying faster-whisper", file=sys.stderr)
+            try:
+                words, method = whisper(audio, a.model.replace(".en", "")), "faster-whisper"
+            except Exception as e2:
+                e = e2
+        if words is None:
             sys.exit(f"Speech-to-text unavailable ({type(e).__name__}: {e}).\n"
                      "Re-run with --text \"what she says\" (or --text-file) to time the "
                      "captions from pauses instead.")

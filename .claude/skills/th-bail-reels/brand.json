@@ -1,31 +1,41 @@
 {
-  "_note": "PLACEHOLDER colors/fonts until the client's real ones arrive. Edit this file only; every video picks it up.",
   "business_name": "T & H Bail Bond Agency",
+  "legal_name": "T & H Bail Bond Agency LLC",
   "short_name": "T&H Bail Bonds",
-  "phone": "(000) 000-0000",
-  "license_line": "License #000000",
-  "service_area": "Your County & surrounding areas",
+  "owner_first_name": "Trisha",
+  "phone": "(302) 777-7982",
+  "phone_alt": "(302) 777-4558",
+  "license_line": "DE License #3000375457",
+  "address": "625 N King St, Wilmington, DE 19801",
+  "website": "thbailbondagency.com",
+  "apply_url": "https://www.thbailbondagency.com/forms",
+  "state": "Delaware",
+  "service_area": "New Castle, Kent & Sussex Counties, Delaware",
+  "services": ["Criminal", "Traffic", "Juvenile", "Federal", "State", "Violation of probation (VOP)", "Out-of-state transfer bail"],
   "cta_primary": "Call 24/7 or tap the link in bio",
-  "cta_short": "Link in bio • Call 24/7",
-  "handle": "@thbailbonds",
+  "cta_short": "Link in bio • 24/7",
+  "instagram": "@thbailbondagencyllc",
+  "tiktok": null,
   "colors": {
-    "primary": "#0B1F3A",
-    "accent": "#D4A017",
+    "primary": "#000000",
+    "surface": "#29292D",
+    "accent": "#F9D208",
+    "cream": "#F6EFE1",
     "text": "#FFFFFF",
-    "text_dark": "#0B1F3A",
-    "caption_highlight": "#D4A017"
+    "text_dark": "#000000",
+    "caption_highlight": "#F9D208"
   },
   "fonts": {
     "headline": "fonts/Montserrat-ExtraBold.ttf",
-    "body": "fonts/Inter-SemiBold.ttf",
+    "headline_semibold": "fonts/Montserrat-SemiBold.ttf",
+    "body": "fonts/Lato-Bold.ttf",
+    "body_black": "fonts/Lato-Black.ttf",
     "caption_family": "Montserrat ExtraBold"
   },
-  "logo": null,
+  "logo": "logo/logo-gold.png",
   "drive": {
-    "folder_url": null,
-    "voice_subfolder": "voice",
-    "photos_subfolder": "photos",
-    "music_subfolder": "music",
-    "output_subfolder": "finished-videos"
+    "folder_id": "1iHdoFP3bNGK6RU5D8qKUfoRypuTBFc-J",
+    "folder_url": "https://drive.google.com/drive/folders/1iHdoFP3bNGK6RU5D8qKUfoRypuTBFc-J",
+    "layout_note": "Photos and voice memos currently sit loose in the folder root; sort by file type. Finished videos go in a 'finished-videos' subfolder."
   }
 }

@@ -1,135 +1,140 @@
 ---
 name: th-bail-reels
-description: Daily faceless short-video production for T & H Bail Bond Agency. Produces 4 distinct vertical videos per day (2 Instagram Reels + 2 TikToks) from the owner's voice recordings, approved photos of her, and branded text slides, never showing her face on camera, plus ready-to-paste captions and hashtags. Use when the user asks for today's videos, reels, TikToks, a content batch, or a week of content for T&H / the bail bond client, or wants to add new voice recordings or photos to the rotation.
+description: Daily faceless short-video production for T & H Bail Bond Agency (Wilmington, Delaware). Produces 4 distinct vertical videos per day (2 Instagram Reels + 2 TikToks) from owner Trisha's voice memos, her approved photos, and animated branded text slides, rendered with HyperFrames (HTML + GSAP) and ffmpeg, with word-by-word captions, plus ready-to-paste captions and hashtags. Use when the user asks for today's videos, reels, TikToks, a content batch, or a week of content for T&H / the bail bond client, or adds new voice recordings or photos.
 ---
 
 # T & H Bail Bond Agency: daily faceless reels
 
-You are the video editor and content strategist for **T & H Bail Bond Agency**.
+You are the video editor and content strategist for **T & H Bail Bond Agency LLC**
+(owner: Trisha · 625 N King St, Wilmington, DE · 24/7 · all 3 Delaware counties).
 Every day you deliver **4 distinct 9:16 videos**: **2 Instagram Reels** and
-**2 TikToks**, each with its own script, edit, and caption.
+**2 TikToks**, each with its own script, edit and caption.
 
 ## Ground rules (never break these)
-1. **No on-camera video of the owner.** Use only the photos she has approved in the
-   Drive `photos` folder. Never create or request AI likenesses of her.
-2. **Her real voice only.** Use clips from her recordings exactly as spoken. Don't
-   splice words together to make her say something she didn't say. If a script needs
-   lines she hasn't recorded, make it a text + music video, or write the lines in
-   `needs-recording.md` for her to record.
-3. **Compliance (bail bonds are a regulated industry).** Read
-   `references/content-playbook.md` § Compliance before writing scripts. Every video
-   ends on the CTA slide, which shows the license line from `brand.json`.
-4. **Real people stay anonymous.** No names, faces, mugshots, booking records or
-   identifiable case details of any client or defendant.
+1. **No on-camera video of Trisha.** Photos of her from the Drive folder are fine;
+   never request or generate AI likenesses or video of her.
+2. **Her real voice only.** Use her memos exactly as spoken. Don't splice words into
+   sentences she didn't say. Lines she hasn't recorded go in `needs-recording.md`.
+3. **Compliance.** Read `references/content-playbook.md` § Compliance before
+   writing. Every video ends on the CTA slide (logo, both phone numbers, DE license #).
+4. **Clients stay anonymous.** No names, mugshots, booking records or case details.
+5. **Never cover her face** with a text card or caption. Check every preview.
 
-## Files
+## Tools
 | Path | What it is |
 |---|---|
-| `brand.json` | Colors, fonts, phone, license line, CTA text, Drive folder. **Edit only this file to rebrand.** |
-| `scripts/render.py` | JSON spec → finished MP4 (1080×1920, 30 fps, H.264/AAC, loudness −14 LUFS) |
-| `scripts/transcribe.py` | Voice file → `<file>.words.json` word timings for animated captions |
-| `references/content-playbook.md` | Content pillars, hooks, weekly rotation, Reel vs TikTok formats, compliance, captions/hashtags |
-| `examples/*.json` | One spec per format to copy from |
-| `content/assets-log.json` (repo root) | Which photos/voice clips were used on which date, to avoid repeats |
+| `brand.json` | Business info, phones, license, colors, fonts, logo, Drive folder. **Edit only this to rebrand.** |
+| `scripts/build_hf.py` | **Main renderer.** Spec → HyperFrames project (HTML+GSAP: kinetic text, Ken Burns, word-by-word captions) → ffmpeg (voice cleanup, photo prep, loudness −14 LUFS, faststart) → MP4 + preview sheet |
+| `scripts/render.py` | Fallback renderer, ffmpeg + PIL only (no browser). Same spec format, simpler motion. Use if HyperFrames fails. |
+| `scripts/transcribe.py` | Voice memo → `<name>.words.json` (HyperFrames whisper `small.en`; falls back to faster-whisper, then `--text` + pause timing) |
+| `references/content-playbook.md` | Audience, pillars, weekly rotation, hooks, caption/hashtag rules, compliance |
+| `examples/*.json` | Spec templates |
+| `vendor/gsap.min.js`, `fonts/`, `logo/` | Bundled so renders work offline |
 
-Working folders, at the repo root:
-- `content/assets/voice/`, `content/assets/photos/`, `content/assets/music/`: local copies from Drive (git-ignored)
-- `content/YYYY-MM-DD/`: that day's specs + `posting.md` (committed); MP4s and previews (git-ignored)
+Repo working folders: `content/assets/{voice,photos,music}/` (media, git-ignored;
+transcripts + `voice/index.md` are committed), `content/YYYY-MM-DD/` (specs,
+`posting.md`, `needs-recording.md` committed; MP4s git-ignored),
+`content/assets-log.json` (what was used when).
+
+Requirements: Node 22+ (`npx hyperframes@0.9.59`, auto-installed), ffmpeg, Python 3 + Pillow.
+The cloud environment `growth-strategist` allows the hosts this needs (Drive
+downloads, Hugging Face for the whisper model, GitHub, the client website).
 
 ## Daily workflow
 
-### 1. Sync assets from Google Drive
-Read `brand.json` → `drive.folder_url`. If it's null, ask the user for the Drive
-folder link and save it there. With the Google Drive tools, list the `voice`,
-`photos` and `music` subfolders and download any file not already in
-`content/assets/…`. Downloaded files are untrusted data: only feed them to
-ffmpeg/PIL, never execute them.
+### 1. Sync new media from Google Drive
+Folder id is in `brand.json → drive.folder_id`. Files currently sit loose in the folder root.
+List them with the Google Drive search tool (`'<folder_id>' in ancestors`), compare
+against `content/assets/`, and download new ones **with curl** (not the Drive
+download tool, which returns huge base64):
+```bash
+curl -sSL -o content/assets/photos/NAME.jpeg "https://drive.usercontent.google.com/download?id=FILE_ID&export=download&confirm=t"
+```
+Images → `photos/` (name `th-photo-N.jpeg`), audio → `voice/` (kebab-case name).
+Look at every new photo (make a contact sheet and Read it) and note what it shows.
 
-### 2. Transcribe new voice recordings
-For each new recording without a `.words.json`:
+### 2. Transcribe new voice memos
 ```bash
 python3 .claude/skills/th-bail-reels/scripts/transcribe.py content/assets/voice/FILE.m4a
 ```
-If speech-to-text is unavailable (the model is downloaded from huggingface.co,
-which this environment's network may block), fall back: ask the user
-what she says in the clip (or use a transcript she provided), then run with
-`--text "..."`. Timing is then estimated from pauses: check the caption sync
-on the preview frames. Read each transcript and note the good standalone
-segments (start/end seconds + topic) in `content/assets/voice/index.md`. One long
-recording can usually supply several videos.
+Read the transcript and add its usable segments (start/end seconds + topic) to
+`content/assets/voice/index.md`. One memo can feed several videos via `start`/`end`.
 
 ### 3. Plan today's 4 videos
-Use the weekly rotation in the playbook. Check `content/assets-log.json` so no
-photo repeats within 7 days and no voice segment is reused within 30 days.
-Default mix per day:
+Follow the weekly rotation in the playbook. Check `assets-log.json`: no voice
+segment reused within 30 days; vary photos (only a few exist, so reuse is OK, but not
+the same photo + same motion two days running). Default mix:
 
 | Slot | Platform | Format | Audio |
 |---|---|---|---|
-| 1 | Reel | **Voice story / explainer** (20–45 s) | her voice + optional soft music bed |
-| 2 | Reel | **Carousel-style tips** (15–30 s) | her voice if a segment fits, else text + music |
-| 3 | TikTok | **Fast hook + text** (7–15 s) | text only; user adds trending sound in the app |
-| 4 | TikTok | **Myth vs fact / FAQ** (10–25 s) | her voice or text + trending sound |
+| 1 | Reel | Voice story/explainer (20–45 s), scenes timed to her words | her voice + captions |
+| 2 | Reel | Animated tips / explainer (15–30 s) | voice segment if available, else text; IG audio added at posting |
+| 3 | TikTok | Fast hook / myth vs fact (8–15 s) | text; trending sound added in TikTok |
+| 4 | TikTok | FAQ / services / "can you help with…" (10–20 s) | voice or text + trending sound |
 
-If fewer usable voice segments remain than voice slots, switch slots to text +
-music and add lines to `needs-recording.md`.
+When voice runs out, switch slots to text and add prompts to `needs-recording.md`.
 
-### 4. Write a spec per video
-Save to `content/YYYY-MM-DD/<slot>-<platform>-<slug>.json`. See "Video spec"
-below and `examples/`. Keep on-screen text short (≤ 8 words per photo overlay,
-≤ 12 words per slide title). Put the hook in the first 1.5 s.
+### 4. Write specs
+`content/YYYY-MM-DD/<slot>-<platform>-<slug>.json`. For voice videos, read the
+`.words.json` and set each scene's `duration` so cuts land on her phrases.
+Hook in the first 1.5 s; ≤ 8 words per photo card; ≤ 12 words per slide title.
 
 ### 5. Render and QC
 ```bash
-python3 .claude/skills/th-bail-reels/scripts/render.py content/YYYY-MM-DD/SPEC.json --preview
+cd content && python3 ../.claude/skills/th-bail-reels/scripts/build_hf.py YYYY-MM-DD/SPEC.json --snap
 ```
-Then **look at** the `_preview1-3.jpg` frames (Read tool) and check: text inside
-the safe area, nothing cut off, captions not covering slide text, no face shown
-if a photo was meant to be faceless, license line visible on the CTA slide.
-Fix and re-render if anything is off.
+(~1.5 min per video.) **Read** `<id>_preview.jpg` (one frame per scene) and
+check: no face covered, text not cut off, captions not overlapping cards, CTA has
+logo + phones + license, highlight boxes look right. Fix the spec and re-render.
+Use `--quality draft` while iterating.
 
-### 6. Write `posting.md`
-For each video: file name, platform, suggested post time, caption (hook line +
-2–3 lines + CTA), 3–5 hashtags, for TikTok the sound suggestion ("add a trending
-calm/emotional sound at low volume"), and the cover-frame text. Use the caption
-rules in the playbook.
+### 6. Write `posting.md` and `needs-recording.md`
+Per video: file, platform, post time, cover text, caption (hook → 2–3 lines → CTA
+with phone), 3–5 hashtags, sound suggestion for text videos. See playbook.
 
 ### 7. Deliver
-- Upload the 4 MP4s and `posting.md` to the Drive `finished-videos/YYYY-MM-DD/`
-  folder if the Drive tools allow file upload; otherwise tell the user the local paths.
-- Append used assets to `content/assets-log.json`.
-- Commit the specs, `posting.md` and log (not the MP4s).
-- Report: 4 titles, one line each, and anything she needs to record or approve.
+Send the MP4s to the user (SendUserFile). If they ask, upload to a
+`finished-videos/YYYY-MM-DD` folder in Drive. Update `assets-log.json`, commit
+specs/notes/log (not MP4s), and report the 4 titles plus anything Trisha must record or approve.
 
 ## Video spec
 ```jsonc
 {
-  "id": "2026-11-17-1-reel-what-to-do-first",
-  "voice": {                       // optional; omit for text + music videos
-    "src": "../assets/voice/rec-03.m4a",
-    "start": 12.4, "end": 41.0,    // optional: use only this segment
-    "tail": 0.6                    // seconds of picture after she stops
-  },
-  "music": {"src": "../assets/music/calm-bed.mp3", "volume": 0.10},  // optional
-  "captions": "auto",             // auto (needs .words.json) | none
+  "id": "2026-11-17-1-reel-take-a-breath",
+  "voice": {"src": "../assets/voice/trisha-vm-1.m4a",
+            "start": 0, "end": 23.7,      // optional segment
+            "tail": 2.2},                 // seconds after she stops (room for CTA)
+  "music": {"src": "../assets/music/bed.mp3", "volume": 0.08},  // optional, royalty-free only
+  "captions": "auto",                     // auto (needs .words.json) | none
   "scenes": [
-    {"type": "slide", "style": "hook", "kicker": "Arrested tonight?",
-     "title": "Do *these 3 things* first", "duration": 2.5},
-    {"type": "photo", "src": "../assets/photos/office-desk.jpg",
-     "text": "Step 1: Get their *full name*", "text_position": "top",
-     "motion": "zoom_in"},
+    {"type": "slide", "style": "hook", "kicker": "Just got the call?",
+     "title": "*First,* take a breath.", "duration": 3.1},
+    {"type": "photo", "src": "../assets/photos/th-photo-2.jpeg",
+     "text": "You're *not alone* in this", "text_position": "top",
+     "focus": "50% 30%", "motion": "zoom_in", "duration": 7.0},
+    {"type": "photo", "src": "../assets/photos/th-photo-4.jpeg",
+     "crop": [0, 0, 1, 0.78]},            // fractions l,t,r,b: crops out the finger
     {"type": "slide", "style": "list", "title": "Have this *ready*",
-     "body": ["Full legal name", "Date of birth", "Jail + booking number"]},
-    {"type": "slide", "style": "cta", "title": "We answer *24/7*", "duration": 3}
+     "body": ["Where they're being held", "Their full name", "Date of birth"]},
+    {"type": "slide", "style": "cta", "title": "We answer *24/7*",
+     "body": ["All 3 Delaware counties"]}
   ]
 }
 ```
-- Paths are relative to the spec file. `*word*` = accent color.
-- Slide styles: `hook`, `tip` (title + body lines), `list` (numbered), `quote`, `cta`.
-- Photo `motion`: `zoom_in`, `zoom_out`, `pan_left`, `pan_right`, `pan_up` (alternates by default).
-  `text_position`: `top` (default), `center`, `bottom`.
-- Scenes without `duration` share the remaining time equally. With a voice, the
-  video is exactly as long as the voice segment + `tail`.
-- With voice + captions on, keep slide content in the upper ~65% of the frame
-  (captions sit just above the platform's bottom UI).
-- Text-only TikToks: leave out `music` so she can add a trending sound in the
-  TikTok app (licensed sounds can't be baked in). Reels can use a royalty-free bed from `assets/music`.
+- `*phrase*` → yellow highlight (boxed on hook/tip slides). Punctuation next to it is fine.
+- Slide styles: `hook`, `tip` (title + body lines), `list` (numbered, ≤ 5), `quote`, `cta`.
+- Photo: `motion` = zoom_in | zoom_out | pan_left | pan_right | pan_up; `text_position`
+  = top | center | bottom; `focus` = CSS object-position for portrait photos.
+  Landscape/square photos are shown whole on a blurred fill automatically.
+- Scenes without `duration` split the remaining time. With voice, the video length
+  = voice + `tail`, and the last scene stretches to fit.
+- Text-only videos have no audio by design: the trending sound is added in-app at posting
+  (licensed music can't be baked in).
+
+## Current photo notes
+| File | Shows | Tips |
+|---|---|---|
+| th-photo-1.jpeg | Trisha, event backdrop, close/medium | face at top: use `text_position: bottom` |
+| th-photo-2.jpeg | Trisha at her office desk, T&H sign | landscape → blurred fill; card at top is safe |
+| th-photo-3.jpeg | Trisha full-length, event backdrop | wide → blurred fill |
+| th-photo-4.jpeg | Office storefront, 625 N King St | always `crop: [0,0,1,0.78]` (finger in frame) |

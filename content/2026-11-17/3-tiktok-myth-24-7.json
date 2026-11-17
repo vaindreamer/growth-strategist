@@ -1,0 +1,10 @@
+{
+  "id": "2026-11-17-3-tiktok-myth-24-7",
+  "captions": "none",
+  "scenes": [
+    {"type": "slide", "style": "hook", "kicker": "Myth", "title": "\"Bail bondsmen only work *9 to 5.*\"", "duration": 2.6},
+    {"type": "slide", "style": "hook", "kicker": "Fact", "title": "Arrests don't wait. *Neither do we.*", "duration": 2.6},
+    {"type": "photo", "src": "../assets/photos/th-photo-4.jpeg", "crop": [0, 0, 1, 0.78], "text": "Nights. Weekends. *Holidays.*", "text_position": "center", "motion": "zoom_in", "duration": 2.8},
+    {"type": "slide", "style": "cta", "title": "Call us *any hour*", "duration": 3.5}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "2026-11-17-2-reel-bail-basics",
+  "captions": "none",
+  "scenes": [
+    {"type": "slide", "style": "hook", "kicker": "Delaware families", "title": "Bail, explained in *20 seconds*", "duration": 2.8},
+    {"type": "slide", "style": "tip", "kicker": "1", "title": "A *judge* sets the bail amount.", "body": ["It's money that guarantees your loved one comes back to court."], "duration": 4.2},
+    {"type": "slide", "style": "tip", "kicker": "2", "title": "A *bail bond* covers it for you.", "body": ["You don't have to come up with the full amount in cash."], "duration": 4.2},
+    {"type": "slide", "style": "tip", "kicker": "3", "title": "Every court date *matters*.", "body": ["Showing up to court keeps the bond in good standing."], "duration": 4.2},
+    {"type": "photo", "src": "../assets/photos/th-photo-2.jpeg", "text": "Questions? *Ask us* anything", "motion": "zoom_in", "duration": 3.2},
+    {"type": "slide", "style": "cta", "title": "We'll walk you *through it*", "body": ["All 3 Delaware counties"], "duration": 4}
+  ]
+}

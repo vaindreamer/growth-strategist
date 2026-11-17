@@ -1,0 +1,10 @@
+{
+  "id": "2026-11-17-4-tiktok-what-we-cover",
+  "captions": "none",
+  "scenes": [
+    {"type": "slide", "style": "hook", "title": "\"Can you help with *THIS* kind of charge?\"", "duration": 2.6},
+    {"type": "slide", "style": "list", "title": "We handle *bail* for:", "body": ["Criminal & traffic", "Juvenile", "State & federal", "Violation of probation", "Out-of-state transfers"], "duration": 5.5},
+    {"type": "photo", "src": "../assets/photos/th-photo-3.jpeg", "text": "One call. *We explain every step.*", "text_position": "top", "motion": "zoom_in", "duration": 3},
+    {"type": "slide", "style": "cta", "title": "Not sure? *Just ask.*", "body": ["All 3 Delaware counties"], "duration": 3.5}
+  ]
+}

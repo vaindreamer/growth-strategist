@@ -1,0 +1,281 @@
+{
+ "text": "First, take a breath. You're not the first family to get this call, and you won't figure it out alone. Find out where they're being held and their full name and date of birth. Then call the bail bondsman you trust. At T&H, we'll explain every step and start working on their release right away.",
+ "method": "hyperframes-whisper small.en",
+ "words": [
+  {
+   "word": "First,",
+   "start": 0.03,
+   "end": 1.16
+  },
+  {
+   "word": "take",
+   "start": 1.57,
+   "end": 1.82
+  },
+  {
+   "word": "a",
+   "start": 1.82,
+   "end": 1.98
+  },
+  {
+   "word": "breath.",
+   "start": 1.98,
+   "end": 3.2
+  },
+  {
+   "word": "You're",
+   "start": 3.2,
+   "end": 3.61
+  },
+  {
+   "word": "not",
+   "start": 3.62,
+   "end": 3.82
+  },
+  {
+   "word": "the",
+   "start": 3.82,
+   "end": 4.02
+  },
+  {
+   "word": "first",
+   "start": 4.03,
+   "end": 4.4
+  },
+  {
+   "word": "family",
+   "start": 4.4,
+   "end": 4.88
+  },
+  {
+   "word": "to",
+   "start": 4.88,
+   "end": 4.97
+  },
+  {
+   "word": "get",
+   "start": 5,
+   "end": 5.2
+  },
+  {
+   "word": "this",
+   "start": 5.2,
+   "end": 5.46
+  },
+  {
+   "word": "call,",
+   "start": 5.46,
+   "end": 6.59
+  },
+  {
+   "word": "and",
+   "start": 7.3,
+   "end": 7.5
+  },
+  {
+   "word": "you",
+   "start": 7.5,
+   "end": 7.58
+  },
+  {
+   "word": "won't",
+   "start": 7.58,
+   "end": 7.8
+  },
+  {
+   "word": "figure",
+   "start": 7.8,
+   "end": 8.08
+  },
+  {
+   "word": "it",
+   "start": 8.11,
+   "end": 8.4
+  },
+  {
+   "word": "out",
+   "start": 8.4,
+   "end": 8.88
+  },
+  {
+   "word": "alone.",
+   "start": 9.65,
+   "end": 10.16
+  },
+  {
+   "word": "Find",
+   "start": 10.16,
+   "end": 10.34
+  },
+  {
+   "word": "out",
+   "start": 10.38,
+   "end": 10.54
+  },
+  {
+   "word": "where",
+   "start": 10.54,
+   "end": 10.64
+  },
+  {
+   "word": "they're",
+   "start": 10.64,
+   "end": 11.19
+  },
+  {
+   "word": "being",
+   "start": 11.19,
+   "end": 11.46
+  },
+  {
+   "word": "held",
+   "start": 11.46,
+   "end": 11.7
+  },
+  {
+   "word": "and",
+   "start": 11.7,
+   "end": 11.84
+  },
+  {
+   "word": "their",
+   "start": 11.84,
+   "end": 12.13
+  },
+  {
+   "word": "full",
+   "start": 12.21,
+   "end": 12.48
+  },
+  {
+   "word": "name",
+   "start": 12.57,
+   "end": 12.98
+  },
+  {
+   "word": "and",
+   "start": 12.98,
+   "end": 13.29
+  },
+  {
+   "word": "date",
+   "start": 13.29,
+   "end": 13.7
+  },
+  {
+   "word": "of",
+   "start": 13.7,
+   "end": 13.9
+  },
+  {
+   "word": "birth.",
+   "start": 13.9,
+   "end": 14.56
+  },
+  {
+   "word": "Then",
+   "start": 14.59,
+   "end": 14.85
+  },
+  {
+   "word": "call",
+   "start": 14.85,
+   "end": 15.13
+  },
+  {
+   "word": "the",
+   "start": 15.14,
+   "end": 15.35
+  },
+  {
+   "word": "bail",
+   "start": 15.35,
+   "end": 15.64
+  },
+  {
+   "word": "bondsman",
+   "start": 15.64,
+   "end": 16.21
+  },
+  {
+   "word": "you",
+   "start": 16.21,
+   "end": 16.42
+  },
+  {
+   "word": "trust.",
+   "start": 16.42,
+   "end": 17.04
+  },
+  {
+   "word": "At",
+   "start": 17.04,
+   "end": 17.1
+  },
+  {
+   "word": "T&H,",
+   "start": 17.21,
+   "end": 17.6
+  },
+  {
+   "word": "we'll",
+   "start": 17.6,
+   "end": 18
+  },
+  {
+   "word": "explain",
+   "start": 18.18,
+   "end": 18.6
+  },
+  {
+   "word": "every",
+   "start": 18.6,
+   "end": 18.96
+  },
+  {
+   "word": "step",
+   "start": 19.05,
+   "end": 19.35
+  },
+  {
+   "word": "and",
+   "start": 19.35,
+   "end": 19.6
+  },
+  {
+   "word": "start",
+   "start": 19.6,
+   "end": 20.02
+  },
+  {
+   "word": "working",
+   "start": 20.09,
+   "end": 20.49
+  },
+  {
+   "word": "on",
+   "start": 21.15,
+   "end": 21.23
+  },
+  {
+   "word": "their",
+   "start": 21.23,
+   "end": 21.51
+  },
+  {
+   "word": "release",
+   "start": 21.51,
+   "end": 21.9
+  },
+  {
+   "word": "right",
+   "start": 21.9,
+   "end": 22.19
+  },
+  {
+   "word": "away.",
+   "start": 22.19,
+   "end": 22.47
+  }
+ ]
+}

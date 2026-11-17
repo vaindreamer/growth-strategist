@@ -1,9 +1,11 @@
-# Client media stays in Google Drive, not git
+# Client media stays in Google Drive, not git (transcripts and the index are kept)
 assets/voice/*
 assets/photos/*
 assets/music/*
 !assets/*/.gitkeep
 !assets/voice/index.md
-# Rendered output
+!assets/voice/*.words.json
+# Rendered output and HyperFrames build folders
 *.mp4
 *_preview*.jpg
+.hf/

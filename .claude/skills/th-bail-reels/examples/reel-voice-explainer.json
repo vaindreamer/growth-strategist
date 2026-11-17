@@ -1,0 +1,13 @@
+{
+  "id": "example-reel-voice-explainer",
+  "voice": {"src": "../assets/voice/REPLACE.m4a", "start": 0, "end": 30, "tail": 0.6},
+  "music": {"src": "../assets/music/REPLACE.mp3", "volume": 0.08},
+  "captions": "auto",
+  "scenes": [
+    {"type": "slide", "style": "hook", "kicker": "Arrested tonight?", "title": "Do *these 3 things* first", "duration": 2.5},
+    {"type": "photo", "src": "../assets/photos/REPLACE-1.jpg", "text": "Step 1: Their *full name + birthday*"},
+    {"type": "photo", "src": "../assets/photos/REPLACE-2.jpg", "text": "Step 2: Which *jail* they're in"},
+    {"type": "slide", "style": "list", "title": "Have this *ready*", "body": ["Full legal name", "Date of birth", "Jail + booking number", "Charges, if known"]},
+    {"type": "slide", "style": "cta", "title": "We answer *24/7*", "duration": 3}
+  ]
+}

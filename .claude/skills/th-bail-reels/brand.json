@@ -1,0 +1,31 @@
+{
+  "_note": "PLACEHOLDER colors/fonts until the client's real ones arrive. Edit this file only; every video picks it up.",
+  "business_name": "T & H Bail Bond Agency",
+  "short_name": "T&H Bail Bonds",
+  "phone": "(000) 000-0000",
+  "license_line": "License #000000",
+  "service_area": "Your County & surrounding areas",
+  "cta_primary": "Call 24/7 or tap the link in bio",
+  "cta_short": "Link in bio • Call 24/7",
+  "handle": "@thbailbonds",
+  "colors": {
+    "primary": "#0B1F3A",
+    "accent": "#D4A017",
+    "text": "#FFFFFF",
+    "text_dark": "#0B1F3A",
+    "caption_highlight": "#D4A017"
+  },
+  "fonts": {
+    "headline": "fonts/Montserrat-ExtraBold.ttf",
+    "body": "fonts/Inter-SemiBold.ttf",
+    "caption_family": "Montserrat ExtraBold"
+  },
+  "logo": null,
+  "drive": {
+    "folder_url": null,
+    "voice_subfolder": "voice",
+    "photos_subfolder": "photos",
+    "music_subfolder": "music",
+    "output_subfolder": "finished-videos"
+  }
+}

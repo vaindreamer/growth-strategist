@@ -1,0 +1,9 @@
+# Client media stays in Google Drive, not git
+assets/voice/*
+assets/photos/*
+assets/music/*
+!assets/*/.gitkeep
+!assets/voice/index.md
+# Rendered output
+*.mp4
+*_preview*.jpg

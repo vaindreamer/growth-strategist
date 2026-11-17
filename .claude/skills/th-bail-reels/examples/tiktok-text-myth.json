@@ -1,0 +1,11 @@
+{
+  "id": "example-tiktok-text-myth",
+  "captions": "none",
+  "scenes": [
+    {"type": "slide", "style": "hook", "title": "Bail bond *myth* I hear every week", "duration": 2},
+    {"type": "slide", "style": "tip", "kicker": "Myth", "title": "\"You need cash for the *full* bail amount.\"", "duration": 3},
+    {"type": "slide", "style": "tip", "kicker": "Fact", "title": "A *bail bond* is how most families avoid that.", "body": ["Call us and we'll walk you through how it works in our state."], "duration": 4},
+    {"type": "photo", "src": "../assets/photos/REPLACE.jpg", "text": "Questions? *Ask us*", "text_position": "center", "duration": 2.5},
+    {"type": "slide", "style": "cta", "title": "Real answers, *any hour*", "duration": 2.5}
+  ]
+}

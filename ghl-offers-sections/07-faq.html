@@ -1,0 +1,54 @@
+<!-- ===== 07 FAQ (click to open) ===== -->
+<!-- GHL: paste into a Custom Code element. Section + row + column: full width, 0 padding. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<style>
+/* MRJ base (same in every section, safe to repeat) */
+.mrj{--paper:#FFF8CA;--card:#FFFDF0;--ink:#2D120D;--ink-soft:#6B4A42;--line:#E6D9A8;--tint:#CDE3E8;--gold:#6B0B0C;--gold-deep:#6B0B0C;--on-dark:#FFF8CA;--dark-soft:#E3D3C8;--shadow:45,18,13;--display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;--body:"Figtree","Helvetica Neue",Arial,sans-serif;--accent-serif:"Instrument Serif",Georgia,serif;--wrap:1170px;width:auto;max-width:none;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);position:relative;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-align:left}
+html,body{overflow-x:clip}
+.mrj *,.mrj *::before,.mrj *::after{box-sizing:border-box}
+.mrj img,.mrj video{max-width:100%;display:block}
+.mrj a{color:inherit}
+.mrj p{margin:0}
+.mrj a:focus-visible,.mrj button:focus-visible{outline:3px solid var(--tint);box-shadow:0 0 0 5px var(--gold);outline-offset:3px;border-radius:6px}
+.mrj .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.mrj h1,.mrj h2,.mrj h3{font-family:var(--display);line-height:1.05;letter-spacing:-.025em;margin:0;text-wrap:balance;color:inherit;text-transform:none}
+.mrj em.s{font-family:var(--accent-serif);font-style:italic;font-weight:400;letter-spacing:-.01em}
+.mrj .eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.mrj .btn{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;background:var(--ink);color:#fff;font-family:var(--body);font-weight:700;text-decoration:none;font-size:15px;line-height:1.2;border:2px solid var(--ink);transition:transform .15s ease,background .15s}
+.mrj .btn:hover{transform:translateY(-2px)}
+.mrj .btn.gold{background:var(--gold);border-color:var(--gold);color:var(--paper)}
+.mrj .btn.ghost{background:transparent;color:var(--ink)}
+.mrj .btn.small{padding:9px 16px;font-size:14px}
+.mrj .sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:24px}
+.mrj .sec-head h2{font-size:clamp(36px,5vw,64px);font-weight:800}
+.mrj .sec-head p{max-width:42ch;color:var(--ink-soft);margin:0}
+.mrj [id]{scroll-margin-top:80px}
+@media (prefers-reduced-motion:reduce){.mrj *{animation:none!important;transition:none!important}}
+</style>
+<style>
+.mrj{--rose:#6B0B0C;--serif:var(--accent-serif)}
+.mrj .chip{display:inline-block;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--tint);color:var(--ink);line-height:1.4}
+
+.mrj-faq{padding:104px 0}
+.mrj-faq .faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px}
+.mrj-faq h2{font-size:clamp(34px,4.4vw,56px);font-weight:800}
+.mrj-faq details{border-bottom:1px solid var(--line);padding:18px 0;margin:0}
+.mrj-faq details:first-child{border-top:1px solid var(--line)}
+.mrj-faq summary{cursor:pointer;font-family:var(--display);font-weight:700;font-size:20px;line-height:1.3;list-style:none;display:flex;justify-content:space-between;gap:20px}
+.mrj-faq summary::-webkit-details-marker{display:none}
+.mrj-faq summary::after{content:"+";color:var(--rose);font-size:26px;line-height:1}
+.mrj-faq details[open] summary::after{content:"–"}
+.mrj-faq details p{margin:12px 0 0;color:var(--ink-soft);max-width:62ch}
+.mrj-faq summary:focus-visible{outline:3px solid var(--tint);box-shadow:0 0 0 5px var(--rose);border-radius:6px}
+@media (max-width:900px){.mrj-faq .faq-grid{grid-template-columns:1fr;gap:28px}}
+</style>
+<section class="mrj mrj-faq" id="faq" aria-labelledby="faq-h">
+  <div class="wrap faq-grid">
+    <div><div class="eyebrow">FAQ</div><h2 id="faq-h">Questions before you book</h2></div>
+    <div>
+      <details><summary>Why is there a 3-month minimum for social media?</summary><p>The first month is for learning what your audience responds to. Months two and three are where that turns into consistent results. Shorter than that, and you're paying for setup without seeing the payoff.</p></details><details><summary>What do you need from me?</summary><p>A kickoff call, access to your accounts and platform, your logo and brand colors, and photos or short clips of you and your business. After that, about 30 minutes a month to approve your content calendar.</p></details><details><summary>I don't want to be on camera. Can we still do reels?</summary><p>Yes. Reels can use clips of your space, your clients (with permission), text on screen, and voiceover. We'll plan formats you're comfortable with.</p></details><details><summary>Can you build the landing page on my existing platform?</summary><p>Yes. I build on GoHighLevel, ClickFunnels, Systeme.io and Kajabi. If you don't have one yet, I'll recommend the right fit for your offer and budget.</p></details><details><summary>Can I change plans later?</summary><p>Yes. You can move up a plan at any time, and adjust your plan after your first 3 months.</p></details><details><summary>Do you run paid ads?</summary><p>These packages cover organic content and landing pages. I also manage Google Ads and Meta ads, so ask about it on your call if you'd like ads added.</p></details>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,215 @@
+<!-- ===== 05 OFFER 02: SOCIAL MEDIA MANAGEMENT (tiers + bundle) + design samples ===== -->
+<!-- GHL: paste into a Custom Code element. Section + row + column: full width, 0 padding. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<style>
+/* MRJ base (same in every section, safe to repeat) */
+.mrj{--paper:#FFF8CA;--card:#FFFDF0;--ink:#2D120D;--ink-soft:#6B4A42;--line:#E6D9A8;--tint:#CDE3E8;--gold:#6B0B0C;--gold-deep:#6B0B0C;--on-dark:#FFF8CA;--dark-soft:#E3D3C8;--shadow:45,18,13;--display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;--body:"Figtree","Helvetica Neue",Arial,sans-serif;--accent-serif:"Instrument Serif",Georgia,serif;--wrap:1170px;width:auto;max-width:none;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);position:relative;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-align:left}
+html,body{overflow-x:clip}
+.mrj *,.mrj *::before,.mrj *::after{box-sizing:border-box}
+.mrj img,.mrj video{max-width:100%;display:block}
+.mrj a{color:inherit}
+.mrj p{margin:0}
+.mrj a:focus-visible,.mrj button:focus-visible{outline:3px solid var(--tint);box-shadow:0 0 0 5px var(--gold);outline-offset:3px;border-radius:6px}
+.mrj .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.mrj h1,.mrj h2,.mrj h3{font-family:var(--display);line-height:1.05;letter-spacing:-.025em;margin:0;text-wrap:balance;color:inherit;text-transform:none}
+.mrj em.s{font-family:var(--accent-serif);font-style:italic;font-weight:400;letter-spacing:-.01em}
+.mrj .eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.mrj .btn{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;background:var(--ink);color:#fff;font-family:var(--body);font-weight:700;text-decoration:none;font-size:15px;line-height:1.2;border:2px solid var(--ink);transition:transform .15s ease,background .15s}
+.mrj .btn:hover{transform:translateY(-2px)}
+.mrj .btn.gold{background:var(--gold);border-color:var(--gold);color:var(--paper)}
+.mrj .btn.ghost{background:transparent;color:var(--ink)}
+.mrj .btn.small{padding:9px 16px;font-size:14px}
+.mrj .sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:24px}
+.mrj .sec-head h2{font-size:clamp(36px,5vw,64px);font-weight:800}
+.mrj .sec-head p{max-width:42ch;color:var(--ink-soft);margin:0}
+.mrj [id]{scroll-margin-top:80px}
+@media (prefers-reduced-motion:reduce){.mrj *{animation:none!important;transition:none!important}}
+</style>
+<style>
+.mrj{--rose:#6B0B0C;--serif:var(--accent-serif)}
+.mrj .chip{display:inline-block;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--tint);color:var(--ink);line-height:1.4}
+
+.mrj ul.ticks{list-style:none;padding:0;margin:22px 0 26px;display:grid;gap:10px;font-size:15.5px}
+.mrj ul.ticks li{padding-left:28px;position:relative;list-style:none}
+.mrj ul.ticks li::before{content:"";position:absolute;left:0;top:5px;width:16px;height:16px;border-radius:50%;background:var(--tint);box-shadow:inset 0 0 0 5px var(--tint),inset 0 0 0 16px var(--rose)}
+.mrj .amount{display:flex;align-items:baseline;gap:8px;font-family:var(--display);font-weight:800}
+.mrj .amount .cur{font-size:26px}
+.mrj .amount .num{font-size:64px;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.mrj .amount .per{font-family:var(--body);font-weight:500;font-size:15px;color:var(--ink-soft)}
+.mrj .sec-label{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.mrj .sec-label .n{font-family:var(--display);font-weight:800;color:var(--rose);font-size:15px;letter-spacing:.06em}
+.mrj .offer-h2{font-size:clamp(36px,5vw,64px);font-weight:800;max-width:18ch}
+.mrj p.sub{color:var(--ink-soft);font-size:19px;max-width:54ch;margin:18px 0 0}
+
+.mrj .samples{margin-top:72px}
+.mrj .samples-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.mrj .samples-head h3{font-size:clamp(24px,2.6vw,32px);font-weight:700}
+.mrj .samples-head p{color:var(--ink-soft);font-size:15px}
+.mrj .shot{position:relative;display:block;width:100%;margin:0;padding:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:0 22px 44px -26px rgba(var(--shadow),.4);cursor:zoom-in;text-align:left;font:inherit;color:inherit;transition:transform .15s}
+.mrj .shot:hover{transform:translateY(-3px)}
+.mrj .shot img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top}
+.mrj .shot .meta{display:block;padding:12px 14px;font-size:13.5px;color:var(--ink-soft);border-top:1px solid var(--line)}
+.mrj .shot .meta b{display:block;color:var(--ink);font-size:15px}
+.mrj .shot .open{position:absolute;right:10px;top:10px;background:var(--ink);color:#fff;font-size:12px;font-weight:700;padding:6px 12px;border-radius:999px}
+.mrj dialog.lb{border:0;padding:0;width:min(1000px,94vw);height:90vh;max-height:90vh;border-radius:16px;background:var(--card);box-shadow:0 40px 80px rgba(0,0,0,.5);overflow:hidden}
+.mrj dialog.lb::backdrop{background:rgba(45,18,13,.8)}
+.mrj .lb-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;background:var(--ink);color:#fff;font-weight:700;font-size:15px}
+.mrj .lb-head button{background:var(--on-dark);color:var(--ink);border:0;border-radius:999px;padding:8px 16px;font:inherit;font-weight:700;cursor:pointer}
+.mrj .lb-body{height:calc(90vh - 56px);overflow:auto}
+.mrj .lb-body img{width:100%;display:block}
+
+.mrj.mrj-smm{padding:104px 0;background:var(--tint)}
+.mrj-smm .sec-label .chip{background:var(--card)}
+.mrj-smm .why{display:grid;grid-template-columns:repeat(3,1fr);margin-top:44px;border-top:2px solid var(--ink)}
+.mrj-smm .why>div{padding:22px 22px 0 0}
+.mrj-smm .why>div+div{padding-left:22px;border-left:1px solid rgba(var(--shadow),.15)}
+.mrj-smm .why .m{font-family:var(--display);font-weight:800;font-size:14px;color:var(--rose);letter-spacing:.06em}
+.mrj-smm .why h3{font-size:22px;margin:6px 0}
+.mrj-smm .why p{color:var(--ink-soft);font-size:15.5px}
+@media (max-width:760px){.mrj-smm .why{grid-template-columns:1fr}.mrj-smm .why>div+div{padding-left:0;border-left:0;border-top:1px solid rgba(var(--shadow),.15);margin-top:18px}}
+.mrj-smm .feed{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;align-items:start}
+.mrj-smm .phone{border-radius:24px;background:var(--ink);padding:7px;box-shadow:0 24px 50px -22px rgba(var(--shadow),.55)}
+.mrj-smm .phone video{border-radius:18px;aspect-ratio:9/16;object-fit:cover;width:100%;background:#000}
+.mrj-smm .post{border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--card);box-shadow:0 18px 36px -24px rgba(var(--shadow),.45)}
+.mrj-smm .post img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.mrj-smm .cap{font-size:13px;color:var(--ink-soft);margin-top:6px;font-weight:600}
+.mrj-smm .shot.cal{margin-top:18px}
+.mrj-smm .shot.cal img{aspect-ratio:auto;height:300px;object-fit:cover;object-position:top left}
+@media (max-width:900px){.mrj-smm .feed{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:520px){.mrj-smm .feed{grid-template-columns:1fr 1fr}}
+.mrj-smm .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:72px;align-items:stretch}
+.mrj-smm .tier{background:var(--card);border-radius:22px;padding:30px;display:flex;flex-direction:column;border:1px solid var(--line)}
+.mrj-smm .tier.pop{background:var(--ink);color:var(--paper);border-color:var(--ink);transform:translateY(-12px);box-shadow:0 36px 60px -30px rgba(var(--shadow),.7)}
+.mrj-smm .badge{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--on-dark);color:var(--ink);padding:5px 10px;border-radius:999px;margin-bottom:12px}
+.mrj-smm .tier .k{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--rose)}
+.mrj-smm .tier.pop .k{color:var(--tint)}
+.mrj-smm .tier h3{font-size:30px;margin:6px 0 4px}
+.mrj-smm .tier .for{color:var(--ink-soft);font-size:15px;margin:0 0 18px;min-height:3em}
+.mrj-smm .tier.pop .for,.mrj-smm .tier.pop .ticks,.mrj-smm .tier.pop .amount .per{color:var(--dark-soft)}
+.mrj-smm .tier .amount .num{font-size:52px}
+.mrj-smm .tier .ticks{flex:1}
+.mrj-smm .tier.pop .ticks li::before{background:var(--on-dark);box-shadow:inset 0 0 0 5px var(--ink),inset 0 0 0 16px var(--on-dark)}
+.mrj-smm .tier .btn{justify-content:center}
+.mrj-smm .tier.pop .btn{background:var(--on-dark);border-color:var(--on-dark);color:var(--ink)}
+.mrj-smm .term{margin-top:28px;text-align:center;color:var(--ink-soft);font-size:15px}
+@media (max-width:960px){.mrj-smm .tiers{grid-template-columns:1fr;max-width:520px}.mrj-smm .tier.pop{transform:none}.mrj-smm .tier .for{min-height:0}}
+.mrj-smm .bundle{margin-top:56px;background:var(--rose);color:var(--paper);border-radius:22px;padding:34px 36px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+.mrj-smm .bundle h3{font-size:clamp(24px,3vw,34px)}
+.mrj-smm .bundle p{margin:8px 0 0;color:#F3DADA;max-width:60ch}
+.mrj-smm .bundle s{opacity:.7}
+.mrj-smm .bundle .btn{background:var(--on-dark);border-color:var(--on-dark);color:var(--ink)}
+@media (max-width:760px){.mrj-smm .bundle{grid-template-columns:1fr}}
+</style>
+<section class="mrj mrj-smm" id="social-media" aria-labelledby="smm-h">
+  <div class="wrap">
+    <div class="sec-label"><span class="n">OFFER 02</span><span class="chip">Monthly · 3-month minimum</span></div>
+    <h2 id="smm-h" class="offer-h2">Social media management that sends people <em class="s">somewhere</em></h2>
+    <p class="sub">Consistent content planned around your offers, written in your voice, and connected to a place to book.</p>
+
+    <div class="why" aria-label="Why a 3-month minimum">
+      <div><span class="m">MONTH 1</span><h3>Set up &amp; learn</h3><p>Strategy, content pillars, brand voice and a first month of posts. We find out what your audience responds to.</p></div>
+      <div><span class="m">MONTH 2</span><h3>Test &amp; refine</h3><p>We double down on the formats that get saves, shares and DMs, and drop what doesn't.</p></div>
+      <div><span class="m">MONTH 3</span><h3>Grow &amp; report</h3><p>Content runs on a proven rhythm, and you get a clear report on reach, leads and what's next.</p></div>
+    </div>
+
+    <div class="samples" aria-labelledby="smm-samples-h">
+      <div class="samples-head"><h3 id="smm-samples-h">Content I've made for clients</h3><p>Reels, carousels and promo posts, planned in one monthly calendar.</p></div>
+      <div class="feed">
+        <div><div class="phone"><video src="img/molima-reel-bf.mp4" poster="img/molima-reel-bf-poster.jpg" muted loop playsinline autoplay preload="none" aria-label="Black Friday launch reel"></video></div><div class="cap">Launch reel</div></div>
+        <div><div class="post"><img src="img/molima-50over50-1.jpg" alt="50 Women Over 50 carousel cover" loading="lazy"></div><div class="cap">Objection carousel</div></div>
+        <div><div class="phone"><video src="img/qfitu-reel-floor.mp4" poster="img/qfitu-reel-floor-poster.jpg" muted loop playsinline autoplay preload="none" aria-label="Floor-to-stand how-to reel"></video></div><div class="cap">How-to reel</div></div>
+        <div><div class="post"><img src="img/boc-webinar.jpg" alt="Reset from Within webinar post" loading="lazy"></div><div class="cap">Webinar promo</div></div>
+        <div><div class="phone"><video src="img/qfitu-reel-sweat.mp4" poster="img/qfitu-reel-sweat-poster.jpg" muted loop playsinline autoplay preload="none" aria-label="Community class reel"></video></div><div class="cap">Community reel</div></div>
+        <div><div class="post"><img src="img/qfitu-client-story.jpg" alt="Client story post" loading="lazy"></div><div class="cap">Client story</div></div>
+      </div>
+      <button class="shot cal" type="button" data-full="img/beacons-calendar.jpg" data-title="Monthly content calendar"><img src="img/beacons-calendar.jpg" alt="Monthly content calendar in Google Sheets" loading="lazy"><span class="open">View calendar ↗</span><span class="meta"><b>The monthly content calendar</b>Pillars, post types, captions per platform, status and a feedback column for your approval</span></button>
+    </div>
+
+    <div class="tiers">
+      <div class="tier">
+        <div class="k">Starter</div>
+        <h3>Show up</h3>
+        <p class="for">For coaches and small studios who need a steady, professional presence.</p>
+        <div class="amount"><span class="cur">$</span><span class="num">697</span><span class="per">/ month</span></div>
+        <ul class="ticks">
+          <li>5 posts per week (3 reels, 2 graphics)</li>
+          <li>Instagram + Facebook</li>
+          <li>Monthly content calendar for approval</li>
+          <li>Captions and hashtags</li>
+          <li>Scheduling</li>
+          <li>Monthly performance summary</li>
+        </ul>
+        <a class="btn ghost" href="#book">Book a discovery call</a>
+      </div>
+      <div class="tier pop">
+        <span class="badge">Most popular</span>
+        <div class="k">Growth</div>
+        <h3>Get leads</h3>
+        <p class="for">For businesses ready to turn content into inquiries and bookings.</p>
+        <div class="amount"><span class="cur">$</span><span class="num">997</span><span class="per">/ month</span></div>
+        <ul class="ticks">
+          <li>10 posts per week (5 reels, 5 graphics)</li>
+          <li>Instagram + Facebook</li>
+          <li>Content planned around your offers</li>
+          <li>Story posts each week</li>
+          <li>Comment and DM replies</li>
+          <li>Monthly report with leads tracked</li>
+        </ul>
+        <a class="btn" href="#book">Book a discovery call</a>
+      </div>
+      <div class="tier">
+        <div class="k">Premium</div>
+        <h3>Launch &amp; scale</h3>
+        <p class="for">For brands running launches, challenges or multiple offers.</p>
+        <div class="amount"><span class="cur">$</span><span class="num">1,497</span><span class="per">/ month</span></div>
+        <ul class="ticks">
+          <li>10 posts per week (5 reels, 5 graphics)</li>
+          <li>Instagram, Facebook + LinkedIn or TikTok</li>
+          <li>Launch campaigns (teaser, launch, deadline)</li>
+          <li>Daily stories and community management</li>
+          <li>Monthly strategy call</li>
+          <li>Funnel tie-in: posts linked to your landing page</li>
+        </ul>
+        <a class="btn ghost" href="#book">Book a discovery call</a>
+      </div>
+    </div>
+    <p class="term">All plans have a 3-month minimum, then continue month to month.</p>
+
+    <div class="bundle">
+      <div>
+        <h3>Bundle both: get your landing page for $897</h3>
+        <p>Start a 3-month Growth or Premium plan and save $300 on a 7-day landing page (<s>$1,197</s> $897), so your content has a place to send people from the first week.</p>
+      </div>
+      <a class="btn" href="#book">Ask about the bundle</a>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var lb=document.getElementById('mrj-lb');
+  if(!lb){
+    var w=document.createElement('div');w.className='mrj mrj-lbwrap';w.style.height='0';
+    w.innerHTML='<dialog class="lb" id="mrj-lb" aria-labelledby="mrj-lb-title"><div class="lb-head"><span id="mrj-lb-title">Full page</span><button type="button" id="mrj-lb-close">Close</button></div><div class="lb-body"><img id="mrj-lb-img" alt=""></div></dialog>';
+    document.body.appendChild(w);lb=document.getElementById('mrj-lb');
+    document.getElementById('mrj-lb-close').addEventListener('click',function(){lb.close();});
+    lb.addEventListener('click',function(e){if(e.target===lb)lb.close();});
+  }
+  var img=document.getElementById('mrj-lb-img'),t=document.getElementById('mrj-lb-title');
+  document.querySelectorAll('.mrj .shot[data-full]').forEach(function(b){
+    if(b.dataset.lbBound)return; b.dataset.lbBound='1';
+    b.addEventListener('click',function(){
+      img.src=b.dataset.full;img.alt=b.dataset.title;t.textContent=b.dataset.title;
+      lb.querySelector('.lb-body').scrollTop=0;
+      if(lb.showModal){lb.showModal();}else{lb.setAttribute('open','');}
+    });
+  });
+})();
+
+(function(){
+  if(!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){v.preload='auto';var p=v.play();if(p&&p.catch)p.catch(function(){});}else{v.pause();}});},{threshold:.25});
+  document.querySelectorAll('.mrj-smm video').forEach(function(v){io.observe(v);});
+})();
+</script>

@@ -1,0 +1,51 @@
+<!-- ===== 06 TOOLKIT (4 columns) ===== -->
+<!-- GHL: paste into a Custom Code element. Section + row + column: full width, 0 padding. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<style>
+/* MRJ base (same in every section, safe to repeat) */
+.mrj{--paper:#FFF8CA;--card:#FFFDF0;--ink:#2D120D;--ink-soft:#6B4A42;--line:#E6D9A8;--tint:#CDE3E8;--gold:#6B0B0C;--gold-deep:#6B0B0C;--on-dark:#FFF8CA;--dark-soft:#E3D3C8;--shadow:45,18,13;--display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;--body:"Figtree","Helvetica Neue",Arial,sans-serif;--accent-serif:"Instrument Serif",Georgia,serif;--wrap:1170px;width:100%;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-align:left}
+.mrj *,.mrj *::before,.mrj *::after{box-sizing:border-box}
+.mrj img,.mrj video{max-width:100%;display:block}
+.mrj a{color:inherit}
+.mrj p{margin:0}
+.mrj a:focus-visible,.mrj button:focus-visible{outline:3px solid var(--tint);box-shadow:0 0 0 5px var(--gold);outline-offset:3px;border-radius:6px}
+.mrj .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.mrj h1,.mrj h2,.mrj h3{font-family:var(--display);line-height:1.05;letter-spacing:-.025em;margin:0;text-wrap:balance;color:inherit;text-transform:none}
+.mrj em.s{font-family:var(--accent-serif);font-style:italic;font-weight:400;letter-spacing:-.01em}
+.mrj .eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.mrj .btn{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;background:var(--ink);color:#fff;font-family:var(--body);font-weight:700;text-decoration:none;font-size:15px;line-height:1.2;border:2px solid var(--ink);transition:transform .15s ease,background .15s}
+.mrj .btn:hover{transform:translateY(-2px)}
+.mrj .btn.gold{background:var(--gold);border-color:var(--gold);color:var(--paper)}
+.mrj .btn.ghost{background:transparent;color:var(--ink)}
+.mrj .btn.small{padding:9px 16px;font-size:14px}
+.mrj .sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:24px}
+.mrj .sec-head h2{font-size:clamp(36px,5vw,64px);font-weight:800}
+.mrj .sec-head p{max-width:42ch;color:var(--ink-soft);margin:0}
+.mrj [id]{scroll-margin-top:80px}
+@media (prefers-reduced-motion:reduce){.mrj *{animation:none!important;transition:none!important}}
+</style>
+<style>
+.mrj-tools{padding:96px 0}
+.mrj-tools .tool-grid{display:grid;grid-template-columns:repeat(4,1fr);margin-top:40px;border-top:2px solid var(--ink)}
+.mrj-tools .tool-col{padding:22px 22px 22px 0}
+.mrj-tools .tool-col+.tool-col{padding-left:22px;border-left:1px solid var(--line)}
+.mrj-tools .tool-col h3{font-size:18px;margin-bottom:14px}
+.mrj-tools .tool-col ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.mrj-tools .tool-col li{font-weight:600;list-style:none}
+.mrj-tools .tool-col li small{display:block;font-weight:400;color:var(--ink-soft);font-size:14px;line-height:1.4}
+@media (max-width:900px){.mrj-tools .tool-grid{grid-template-columns:1fr 1fr}.mrj-tools .tool-col:nth-child(3){padding-left:0;border-left:0}}
+@media (max-width:480px){.mrj-tools .tool-grid{grid-template-columns:1fr}.mrj-tools .tool-col+.tool-col{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
+</style>
+<section class="mrj mrj-tools" aria-labelledby="tools-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="tools-h">Toolkit</h2><p>I work in the platforms you already pay for, or recommend the right one for your offer.</p></div>
+    <div class="tool-grid">
+      <div class="tool-col"><h3>Funnels &amp; CRM</h3><ul><li>GoHighLevel<small>Pages, forms, pipelines, automations</small></li><li>ClickFunnels</li><li>Systeme.io</li><li>Kajabi<small>Courses, offers and checkout</small></li></ul></div>
+      <div class="tool-col"><h3>Booking &amp; tracking</h3><ul><li>Calendly<small>Discovery and consult booking</small></li><li>Meta Pixel<small>Events, audiences and retargeting</small></li><li>Google Ads</li></ul></div>
+      <div class="tool-col"><h3>Content</h3><ul><li>Canva<small>Carousels, statics, banners</small></li><li>CapCut<small>Reels with captions</small></li><li>Google Docs &amp; Sheets<small>Calendars, captions, approvals</small></li></ul></div>
+      <div class="tool-col"><h3>Search</h3><ul><li>SEO for landing pages<small>Titles, meta, headings, alt text</small></li><li>SEO blog posts<small>Articles that answer what your customers search</small></li></ul></div>
+    </div>
+  </div>
+</section>

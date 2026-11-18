@@ -1,0 +1,217 @@
+<!-- ===== 04 SELECTED WORK (5 case studies + full-page lightbox) ===== -->
+<!-- GHL: paste into a Custom Code element. Section + row + column: full width, 0 padding. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<style>
+/* MRJ base (same in every section, safe to repeat) */
+.mrj{--paper:#FFF8CA;--card:#FFFDF0;--ink:#2D120D;--ink-soft:#6B4A42;--line:#E6D9A8;--tint:#CDE3E8;--gold:#6B0B0C;--gold-deep:#6B0B0C;--on-dark:#FFF8CA;--dark-soft:#E3D3C8;--shadow:45,18,13;--display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;--body:"Figtree","Helvetica Neue",Arial,sans-serif;--accent-serif:"Instrument Serif",Georgia,serif;--wrap:1170px;width:100%;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-align:left}
+.mrj *,.mrj *::before,.mrj *::after{box-sizing:border-box}
+.mrj img,.mrj video{max-width:100%;display:block}
+.mrj a{color:inherit}
+.mrj p{margin:0}
+.mrj a:focus-visible,.mrj button:focus-visible{outline:3px solid var(--tint);box-shadow:0 0 0 5px var(--gold);outline-offset:3px;border-radius:6px}
+.mrj .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.mrj h1,.mrj h2,.mrj h3{font-family:var(--display);line-height:1.05;letter-spacing:-.025em;margin:0;text-wrap:balance;color:inherit;text-transform:none}
+.mrj em.s{font-family:var(--accent-serif);font-style:italic;font-weight:400;letter-spacing:-.01em}
+.mrj .eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.mrj .btn{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;background:var(--ink);color:#fff;font-family:var(--body);font-weight:700;text-decoration:none;font-size:15px;line-height:1.2;border:2px solid var(--ink);transition:transform .15s ease,background .15s}
+.mrj .btn:hover{transform:translateY(-2px)}
+.mrj .btn.gold{background:var(--gold);border-color:var(--gold);color:var(--paper)}
+.mrj .btn.ghost{background:transparent;color:var(--ink)}
+.mrj .btn.small{padding:9px 16px;font-size:14px}
+.mrj .sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:24px}
+.mrj .sec-head h2{font-size:clamp(36px,5vw,64px);font-weight:800}
+.mrj .sec-head p{max-width:42ch;color:var(--ink-soft);margin:0}
+.mrj [id]{scroll-margin-top:80px}
+@media (prefers-reduced-motion:reduce){.mrj *{animation:none!important;transition:none!important}}
+</style>
+<style>
+.mrj-work{padding:96px 0 40px}
+.mrj-work .case{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;padding:64px 0;border-top:1px solid var(--line)}
+.mrj-work .case:nth-of-type(even) .copy{order:2}
+.mrj-work .num{font-family:var(--display);font-weight:800;font-size:15px;color:var(--gold-deep);letter-spacing:.06em}
+.mrj-work .client{font-weight:700;margin-top:10px;font-size:15px;color:var(--ink-soft)}
+.mrj-work .case h3{font-size:clamp(28px,3.2vw,40px);font-weight:700;margin:12px 0 18px}
+.mrj-work .case p{margin:0 0 14px;max-width:60ch}
+.mrj-work ul.did{padding:0;margin:18px 0;list-style:none;display:grid;gap:10px}
+.mrj-work ul.did li{padding-left:26px;position:relative;list-style:none}
+.mrj-work ul.did li::before{content:"";position:absolute;left:0;top:10px;width:14px;border-top:2px solid var(--gold)}
+.mrj-work .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.mrj-work .chip{font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--tint);color:var(--ink)}
+.mrj-work .result{margin-top:22px;display:flex;gap:18px;align-items:center;padding:18px 20px;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:12px}
+.mrj-work .result strong{font-family:var(--display);font-size:44px;line-height:1;font-weight:800;letter-spacing:-.03em}
+.mrj-work .result span{font-size:15px;color:var(--ink-soft)}
+.mrj-work .visual{display:grid;gap:18px;align-content:start;min-width:0}
+.mrj-work .shot{position:relative;display:block;border-radius:14px;overflow:hidden;background:var(--card);border:1px solid var(--line);box-shadow:0 22px 44px -24px rgba(var(--shadow),.35);cursor:zoom-in;padding:0;margin:0;text-align:left;font:inherit;color:inherit;width:100%}
+.mrj-work .shot img{width:100%;aspect-ratio:10/7;object-fit:cover;object-position:top}
+.mrj-work .shot .open{position:absolute;right:12px;bottom:12px;background:var(--ink);color:#fff;font-size:13px;font-weight:700;padding:8px 14px;border-radius:999px}
+.mrj-work .shot.wide img{aspect-ratio:auto}
+.mrj-work .row{display:grid;gap:14px}
+.mrj-work .row.r2{grid-template-columns:1fr 1fr}
+.mrj-work .row.mix{grid-template-columns:repeat(4,1fr);align-items:start}
+.mrj-work .phone{border-radius:28px;background:var(--ink);padding:8px;box-shadow:0 24px 50px -18px rgba(var(--shadow),.5)}
+.mrj-work .phone video{border-radius:21px;aspect-ratio:9/16;object-fit:cover;width:100%;background:#000}
+.mrj-work .post{border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+.mrj-work .post img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.mrj-work .cap{font-size:13px;color:var(--ink-soft);margin-top:6px;font-weight:500}
+@media (max-width:900px){.mrj-work .case{grid-template-columns:1fr;gap:32px}.mrj-work .case:nth-of-type(even) .copy{order:0}.mrj-work .row.mix{grid-template-columns:1fr 1fr}}
+/* Lightbox */
+.mrj dialog.lb{border:0;padding:0;width:min(1000px,94vw);height:90vh;max-height:90vh;border-radius:16px;background:var(--card);box-shadow:0 40px 80px rgba(0,0,0,.5);overflow:hidden}
+.mrj dialog.lb::backdrop{background:rgba(45,18,13,.8)}
+.mrj .lb-head{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;background:var(--ink);color:#fff;font-weight:700;font-size:15px;z-index:2}
+.mrj .lb-head button{background:var(--on-dark);color:var(--ink);border:0;border-radius:999px;padding:8px 16px;font:inherit;font-weight:700;cursor:pointer}
+.mrj .lb-body{height:calc(90vh - 56px);overflow:auto}
+.mrj .lb-body img{width:100%}
+</style>
+<section class="mrj mrj-work" id="work" aria-labelledby="work-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="work-h">Selected work</h2>
+      <p>Real client funnels and content. Click any page to scroll through the full build.</p>
+    </div>
+
+    <!-- Case 1 -->
+    <article class="case">
+      <div class="copy">
+        <div class="num">01 · SOCIAL + FUNNEL</div>
+        <div class="client">Mo Lima Photography · Portrait &amp; brand studio, US</div>
+        <h3>A waitlist-first Black Friday launch, from teaser reel to sales page</h3>
+        <p>Mo needed her premium sessions to feel worth waiting for. I planned a tease-then-reveal launch on social and built the page every post pointed to.</p>
+        <ul class="did">
+          <li>Waitlist teaser reel ("the details stay secret until Monday") followed by a launch reel and a 7-slide offer carousel</li>
+          <li>"50 Women Over 50" carousel that answers real objections like "I hate being in pictures"</li>
+          <li>"The Polished Edit" sales page for a $599 photo and beauty session: how it works in 4 steps, what's included, team bios, testimonials, a 12-question FAQ and a booking form</li>
+        </ul>
+        <div class="chips"><span class="chip">Sales page</span><span class="chip">Booking form</span><span class="chip">Launch reels</span><span class="chip">Carousels</span><span class="chip">Campaign copy</span></div>
+      </div>
+      <div class="visual">
+        <button class="shot" type="button" data-full="img/molima-polished-full.jpg" data-title="Mo Lima · The Polished Edit sales page"><img src="img/molima-polished-hero.jpg" alt="The Polished Edit sales page" loading="lazy"><span class="open">View full page ↗</span></button>
+        <div class="row mix">
+          <div><div class="phone"><video src="img/molima-reel-bf.mp4" poster="img/molima-reel-bf-poster.jpg" muted loop playsinline autoplay preload="none" aria-label="Black Friday launch reel"></video></div><div class="cap">Launch reel</div></div>
+          <div><div class="post"><img src="img/molima-bf-1.jpg" alt="Black Friday carousel cover" loading="lazy"></div><div class="cap">Offer carousel</div></div>
+          <div><div class="post"><img src="img/molima-50over50-1.jpg" alt="50 Women Over 50 carousel cover" loading="lazy"></div><div class="cap">Objection carousel</div></div>
+          <div><div class="post"><img src="img/molima-50over50-2.jpg" alt="Carousel slide: I hate being in pictures" loading="lazy"></div><div class="cap">Slide 2 of 7</div></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Case 2 -->
+    <article class="case">
+      <div class="copy">
+        <div class="num">02 · SOCIAL + FUNNEL</div>
+        <div class="client">QfitU (Quinntessential Fitness) · Personal training, Phoenix AZ</div>
+        <h3>An entry offer and content plan for adults 40+ getting back into training</h3>
+        <p>QfitU's best clients are adults over 40 who are worried about injury. The page and the content both speak to that fear first, then make the first step small.</p>
+        <ul class="did">
+          <li>"Thrive Kickstart" offer page: a $269 starter package with an assessment, three 1:1 sessions and nutrition guidance</li>
+          <li>Copy that opens with the doubts ("Feel betrayed by your body?"), then a 3-step how it works, certifications, testimonials and coach bios</li>
+          <li>Captioned how-to reels, community reels, a client story post and a holiday gift card promo with DM, link and call options</li>
+        </ul>
+        <div class="chips"><span class="chip">Offer page</span><span class="chip">Reels editing</span><span class="chip">Client stories</span><span class="chip">Seasonal promos</span></div>
+      </div>
+      <div class="visual">
+        <button class="shot" type="button" data-full="img/qfitu-kickstart-full.jpg" data-title="QfitU · Thrive Kickstart offer page"><img src="img/qfitu-kickstart-hero.jpg" alt="Thrive Kickstart landing page" loading="lazy"><span class="open">View full page ↗</span></button>
+        <div class="row mix">
+          <div><div class="phone"><video src="img/qfitu-reel-floor.mp4" poster="img/qfitu-reel-floor-poster.jpg" muted loop playsinline autoplay preload="none" aria-label="Floor-to-stand how-to reel"></video></div><div class="cap">How-to reel</div></div>
+          <div><div class="phone"><video src="img/qfitu-reel-sweat.mp4" poster="img/qfitu-reel-sweat-poster.jpg" muted loop playsinline autoplay preload="none" aria-label="Community class reel"></video></div><div class="cap">Community reel</div></div>
+          <div><div class="post"><img src="img/qfitu-client-story.jpg" alt="Client story post" loading="lazy"></div><div class="cap">Client story</div></div>
+          <div><div class="post"><img src="img/qfitu-giftcard.jpg" alt="Gift card promo slide" loading="lazy"></div><div class="cap">Gift card promo</div></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Case 3 -->
+    <article class="case">
+      <div class="copy">
+        <div class="num">03 · FUNNELS + ADS</div>
+        <div class="client">Habitat Gym · Strength &amp; personal training, Sydney</div>
+        <h3>Two funnels for one gym: a low-risk trial and a founding-member launch</h3>
+        <p>Habitat had two jobs to fill: bring in new members who were nervous about starting, and sell out founding spots for their new space. Each got its own page.</p>
+        <ul class="did">
+          <li><strong>Strong Start Trial:</strong> 3 sessions for $199 with no lock-in, written for busy professionals, with a "this is for you if" checklist, Google reviews and a 24-hour callback promise</li>
+          <li><strong>Founding Membership:</strong> a launch page with 20 limited spots, a live spots-left bar, a 15-minute call booking and a grand opening RSVP</li>
+          <li>Event email banner for their Recovery &amp; Performance Workshop, plus Google Ads and a Meta retargeting campaign sending traffic to the pages</li>
+        </ul>
+        <div class="chips"><span class="chip">Trial funnel</span><span class="chip">Launch funnel</span><span class="chip">Call booking</span><span class="chip">Google Ads</span><span class="chip">Meta retargeting</span><span class="chip">Email design</span></div>
+      </div>
+      <div class="visual">
+        <div class="row r2">
+          <button class="shot" type="button" data-full="img/habitat-trial-full.jpg" data-title="Habitat Gym · Strong Start Trial"><img src="img/habitat-trial-hero.jpg" alt="Strong Start Trial landing page" loading="lazy"><span class="open">Trial page ↗</span></button>
+          <button class="shot" type="button" data-full="img/habitat-founding-full.jpg" data-title="Habitat Gym · Founding Membership"><img src="img/habitat-founding-hero.jpg" alt="Founding Membership landing page" loading="lazy"><span class="open">Launch page ↗</span></button>
+        </div>
+        <button class="shot wide" type="button" data-full="img/habitat-workshop-email.jpg" data-title="Habitat Gym · Workshop email banner"><img src="img/habitat-workshop-email.jpg" alt="Recovery and Performance Workshop email banner" loading="lazy"><span class="open">Email banner</span></button>
+      </div>
+    </article>
+
+    <!-- Case 4 -->
+    <article class="case">
+      <div class="copy">
+        <div class="num">04 · LEAD MAGNET FUNNEL</div>
+        <div class="client">Level Up Talent Solutions · VA staffing &amp; RPO</div>
+        <h3>A free guide that turns overwhelmed founders into warm leads</h3>
+        <p>Business owners who don't know what to delegate aren't ready to hire a VA yet. So the funnel gives them the answer first: a guide to 100 tasks they can hand off.</p>
+        <ul class="did">
+          <li>Opt-in page with the form above the fold, pain-point cards, a look inside all 9 task categories, trust numbers and client testimonials</li>
+          <li>Consent checkbox for email marketing, so every lead can be nurtured</li>
+          <li>Next step built in: a free 1-week trial with a VA after download</li>
+        </ul>
+        <div class="chips"><span class="chip">Lead magnet</span><span class="chip">Opt-in page</span><span class="chip">Form + consent</span><span class="chip">Nurture handoff</span></div>
+        <div class="result"><strong>76</strong><span>form submissions on the free guide funnel</span></div>
+      </div>
+      <div class="visual">
+        <button class="shot" type="button" data-full="img/luts-guide-full.jpg" data-title="Level Up Talent Solutions · Free guide funnel"><img src="img/luts-guide-hero.jpg" alt="Free guide opt-in page" loading="lazy"><span class="open">View full page ↗</span></button>
+        <div class="post" style="padding:14px;max-width:420px"><img src="img/luts-submissions.png" alt="Form dashboard showing 76 total submissions" style="aspect-ratio:auto;object-fit:contain" loading="lazy"></div>
+      </div>
+    </article>
+
+    <!-- Case 5 -->
+    <article class="case">
+      <div class="copy">
+        <div class="num">05 · SOCIAL MEDIA MANAGEMENT</div>
+        <div class="client">Beacons of Change · Michal Spiegelman, coach &amp; author</div>
+        <h3>A month of content for a coach, author and community leader</h3>
+        <p>Michal runs a community, teaches, and is launching a book. Her content needed to promote all three without sounding like ads, on Instagram, Facebook and LinkedIn.</p>
+        <ul class="did">
+          <li>Monthly content calendar with pillars, content and post types, separate IG/FB and LinkedIn captions, asset links, status and a feedback column</li>
+          <li>Webinar promo set for a free live Zoom: save-the-date post with QR code and a day-of "Tonight" reminder</li>
+          <li>Book launch posts that bring her community into the story, like the cover vote and the book ambassadors</li>
+        </ul>
+        <div class="chips"><span class="chip">Content calendar</span><span class="chip">Caption writing</span><span class="chip">Webinar promo</span><span class="chip">LinkedIn</span><span class="chip">Client approvals</span></div>
+      </div>
+      <div class="visual">
+        <button class="shot wide" type="button" data-full="img/beacons-calendar.jpg" data-title="Beacons of Change · Monthly content calendar"><img src="img/beacons-calendar.jpg" alt="Content calendar in Google Sheets" loading="lazy"><span class="open">Content calendar</span></button>
+        <div class="row mix">
+          <div><div class="post"><img src="img/boc-webinar.jpg" alt="Reset from Within webinar post" loading="lazy"></div><div class="cap">Webinar promo</div></div>
+          <div><div class="post"><img src="img/boc-webinar-tonight.jpg" alt="Webinar tonight reminder post" loading="lazy"></div><div class="cap">Day-of reminder</div></div>
+          <div><div class="post"><img src="img/boc-ambassadors.jpg" alt="Book ambassadors post" loading="lazy"></div><div class="cap">Book launch</div></div>
+          <div><div class="post"><img src="img/boc-cover-vote.jpg" alt="Cover vote story post" loading="lazy"></div><div class="cap">Community story</div></div>
+        </div>
+      </div>
+    </article>
+  </div>
+  <dialog class="lb" id="mrj-lb" aria-labelledby="mrj-lb-title">
+    <div class="lb-head"><span id="mrj-lb-title">Full page</span><button type="button" id="mrj-lb-close">Close</button></div>
+    <div class="lb-body"><img id="mrj-lb-img" alt=""></div>
+  </dialog>
+</section>
+<script>
+(function(){
+  var root=document.querySelector('.mrj-work'); if(!root) return;
+  var lb=document.getElementById('mrj-lb'),img=document.getElementById('mrj-lb-img'),t=document.getElementById('mrj-lb-title');
+  root.querySelectorAll('.shot').forEach(function(b){
+    b.addEventListener('click',function(){
+      img.src=b.dataset.full; img.alt=b.dataset.title; t.textContent=b.dataset.title;
+      lb.querySelector('.lb-body').scrollTop=0;
+      if(lb.showModal){lb.showModal();}else{lb.setAttribute('open','');}
+    });
+  });
+  document.getElementById('mrj-lb-close').addEventListener('click',function(){lb.close();});
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.close();});
+  // Only play reels that are on screen
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){v.preload='auto';var p=v.play();if(p&&p.catch)p.catch(function(){});}else{v.pause();}});},{threshold:.25});
+    root.querySelectorAll('video').forEach(function(v){io.observe(v);});
+  }
+})();
+</script>

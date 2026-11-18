@@ -1,0 +1,69 @@
+<!-- ===== 05 SERVICES (3 cards) ===== -->
+<!-- GHL: paste into a Custom Code element. Section + row + column: full width, 0 padding. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<style>
+/* MRJ base (same in every section, safe to repeat) */
+.mrj{--paper:#FFF8CA;--card:#FFFDF0;--ink:#2D120D;--ink-soft:#6B4A42;--line:#E6D9A8;--tint:#CDE3E8;--gold:#6B0B0C;--gold-deep:#6B0B0C;--on-dark:#FFF8CA;--dark-soft:#E3D3C8;--shadow:45,18,13;--display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;--body:"Figtree","Helvetica Neue",Arial,sans-serif;--accent-serif:"Instrument Serif",Georgia,serif;--wrap:1170px;width:100%;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-align:left}
+.mrj *,.mrj *::before,.mrj *::after{box-sizing:border-box}
+.mrj img,.mrj video{max-width:100%;display:block}
+.mrj a{color:inherit}
+.mrj p{margin:0}
+.mrj a:focus-visible,.mrj button:focus-visible{outline:3px solid var(--tint);box-shadow:0 0 0 5px var(--gold);outline-offset:3px;border-radius:6px}
+.mrj .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.mrj h1,.mrj h2,.mrj h3{font-family:var(--display);line-height:1.05;letter-spacing:-.025em;margin:0;text-wrap:balance;color:inherit;text-transform:none}
+.mrj em.s{font-family:var(--accent-serif);font-style:italic;font-weight:400;letter-spacing:-.01em}
+.mrj .eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.mrj .btn{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;background:var(--ink);color:#fff;font-family:var(--body);font-weight:700;text-decoration:none;font-size:15px;line-height:1.2;border:2px solid var(--ink);transition:transform .15s ease,background .15s}
+.mrj .btn:hover{transform:translateY(-2px)}
+.mrj .btn.gold{background:var(--gold);border-color:var(--gold);color:var(--paper)}
+.mrj .btn.ghost{background:transparent;color:var(--ink)}
+.mrj .btn.small{padding:9px 16px;font-size:14px}
+.mrj .sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:24px}
+.mrj .sec-head h2{font-size:clamp(36px,5vw,64px);font-weight:800}
+.mrj .sec-head p{max-width:42ch;color:var(--ink-soft);margin:0}
+.mrj [id]{scroll-margin-top:80px}
+@media (prefers-reduced-motion:reduce){.mrj *{animation:none!important;transition:none!important}}
+</style>
+<style>
+.mrj.mrj-services{padding:96px 0;background:var(--tint)}
+.mrj-services .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.mrj-services .svc{background:var(--card);border-radius:18px;padding:30px;border:1px solid var(--line);display:flex;flex-direction:column}
+.mrj-services .svc.feature{background:var(--ink);color:#fff;border-color:var(--ink)}
+.mrj-services .svc.feature p,.mrj-services .svc.feature li{color:var(--dark-soft)}
+.mrj-services .label{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep)}
+.mrj-services .svc.feature .label{color:var(--on-dark)}
+.mrj-services .svc h3{font-size:28px;margin:10px 0 12px}
+.mrj-services .svc p{margin:0 0 14px;color:var(--ink-soft)}
+.mrj-services .svc ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:15.5px;list-style:disc}
+@media (max-width:900px){.mrj-services .svc-grid{grid-template-columns:1fr}}
+</style>
+<section class="mrj mrj-services" id="services" aria-labelledby="svc-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="svc-h">Ways to work together</h2>
+      <p>Start with the piece you need most, or let me build the whole path from post to booked call.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc">
+        <div class="label">Funnel build</div>
+        <h3>Funnels &amp; landing pages</h3>
+        <p>For offers that get attention but not enough sign-ups.</p>
+        <ul><li>Funnel map and page copy</li><li>Landing, sales or opt-in pages</li><li>Forms, CRM pipeline and booking</li><li>Meta Pixel and conversion tracking</li><li>SEO setup for each page</li></ul>
+      </div>
+      <div class="svc feature">
+        <div class="label">Most complete</div>
+        <h3>Social + funnel system</h3>
+        <p>Content and conversion handled by one person, built around one offer.</p>
+        <ul><li>Everything in both other services</li><li>Content planned to send traffic to your funnel</li><li>Launch campaigns (teaser, reveal, deadline)</li><li>Monthly report on posts, leads and bookings</li></ul>
+      </div>
+      <div class="svc">
+        <div class="label">Monthly</div>
+        <h3>Social media management</h3>
+        <p>For brands that want to show up consistently without doing it themselves.</p>
+        <ul><li>Content strategy and pillars</li><li>Monthly calendar with captions</li><li>Reels, carousels and static posts</li><li>Scheduling and approvals</li><li>SEO blog posts on request</li></ul>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,71 @@
+<!-- ===== 03 WHILE YOU WAIT (work samples + offers recap) ===== -->
+<!-- GHL: paste into a Custom Code element. Section + row + column: full width, 0 padding. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<style>
+/* MRJ base (same in every section, safe to repeat) */
+.mrj{--paper:#FFF8CA;--card:#FFFDF0;--ink:#2D120D;--ink-soft:#6B4A42;--line:#E6D9A8;--tint:#CDE3E8;--gold:#6B0B0C;--gold-deep:#6B0B0C;--on-dark:#FFF8CA;--dark-soft:#E3D3C8;--shadow:45,18,13;--display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;--body:"Figtree","Helvetica Neue",Arial,sans-serif;--accent-serif:"Instrument Serif",Georgia,serif;--wrap:1170px;width:auto;max-width:none;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);position:relative;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-align:left}
+html,body{overflow-x:clip}
+.mrj *,.mrj *::before,.mrj *::after{box-sizing:border-box}
+.mrj img,.mrj video{max-width:100%;display:block}
+.mrj a{color:inherit}
+.mrj p{margin:0}
+.mrj a:focus-visible,.mrj button:focus-visible{outline:3px solid var(--tint);box-shadow:0 0 0 5px var(--gold);outline-offset:3px;border-radius:6px}
+.mrj .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.mrj h1,.mrj h2,.mrj h3{font-family:var(--display);line-height:1.05;letter-spacing:-.025em;margin:0;text-wrap:balance;color:inherit;text-transform:none}
+.mrj em.s{font-family:var(--accent-serif);font-style:italic;font-weight:400;letter-spacing:-.01em}
+.mrj .eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.mrj .btn{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;background:var(--ink);color:#fff;font-family:var(--body);font-weight:700;text-decoration:none;font-size:15px;line-height:1.2;border:2px solid var(--ink);transition:transform .15s ease,background .15s}
+.mrj .btn:hover{transform:translateY(-2px)}
+.mrj .btn.gold{background:var(--gold);border-color:var(--gold);color:var(--paper)}
+.mrj .btn.ghost{background:transparent;color:var(--ink)}
+.mrj .btn.small{padding:9px 16px;font-size:14px}
+.mrj .sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:24px}
+.mrj .sec-head h2{font-size:clamp(36px,5vw,64px);font-weight:800}
+.mrj .sec-head p{max-width:42ch;color:var(--ink-soft);margin:0}
+.mrj [id]{scroll-margin-top:80px}
+@media (prefers-reduced-motion:reduce){.mrj *{animation:none!important;transition:none!important}}
+</style>
+<style>
+.mrj{--rose:#6B0B0C}
+
+.mrj.mrj-wait{padding:96px 0;background:var(--tint)}
+.mrj-wait .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
+.mrj-wait .card{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 22px 44px -26px rgba(var(--shadow),.4);transition:transform .15s}
+.mrj-wait .card:hover{transform:translateY(-3px)}
+.mrj-wait .card img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top}
+.mrj-wait .card .meta{display:block;padding:16px 18px}
+.mrj-wait .card .k{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--rose)}
+.mrj-wait .card b{display:block;font-family:var(--display);font-size:20px;letter-spacing:-.01em;margin-top:4px;line-height:1.2}
+.mrj-wait .card span.r{display:block;font-size:14.5px;color:var(--ink-soft);margin-top:4px}
+.mrj-wait .offers{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+.mrj-wait .mini{display:flex;justify-content:space-between;align-items:center;gap:16px;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 26px}
+.mrj-wait .mini.dark{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.mrj-wait .mini .k{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--rose)}
+.mrj-wait .mini.dark .k{color:var(--tint)}
+.mrj-wait .mini h3{font-size:22px;margin-top:4px}
+.mrj-wait .mini .p{font-family:var(--display);font-weight:800;font-size:20px;white-space:nowrap}
+.mrj-wait .mini .p small{font-family:var(--body);font-weight:500;font-size:13px;opacity:.75;display:block;text-align:right}
+@media (max-width:900px){.mrj-wait .grid{grid-template-columns:1fr 1fr}.mrj-wait .offers{grid-template-columns:1fr}}
+@media (max-width:560px){.mrj-wait .grid{grid-template-columns:1fr}.mrj-wait .mini{flex-direction:column;align-items:flex-start}.mrj-wait .mini .p small{text-align:left}}
+</style>
+<section class="mrj mrj-wait" aria-labelledby="wait-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="wait-h">While you wait</h2>
+      <p>A few projects like the ones we'll talk about. Each one pairs the content that gets attention with the page that books the call.</p>
+    </div>
+    <!-- Replace each href="#" with your portfolio page URL (add #work to jump to the case studies) -->
+    <div class="grid">
+      <a class="card" href="#"><img src="img/luts-guide-hero.jpg" alt="Free guide opt-in page for a VA staffing company" loading="lazy"><span class="meta"><span class="k">Lead magnet funnel</span><b>76 opt-ins from one free guide</b><span class="r">Level Up Talent Solutions · VA staffing</span></span></a>
+      <a class="card" href="#"><img src="img/habitat-founding-hero.jpg" alt="Founding membership launch page for a gym" loading="lazy"><span class="meta"><span class="k">Launch funnel</span><b>20 founding spots for a new gym</b><span class="r">Habitat Gym · Sydney</span></span></a>
+      <a class="card" href="#"><img src="img/molima-polished-hero.jpg" alt="Sales page for a photography session" loading="lazy"><span class="meta"><span class="k">Social + sales page</span><b>A waitlist-first Black Friday launch</b><span class="r">Mo Lima Photography · US</span></span></a>
+    </div>
+    <!-- Replace each href="#" with your offers page URL (#landing-page / #social-media) -->
+    <div class="offers">
+      <a class="mini" href="#"><div><div class="k">Offer 01 · One-time</div><h3>Landing page, live in 7 days</h3></div><div class="p">$1,197<small>flat fee</small></div></a>
+      <a class="mini dark" href="#"><div><div class="k">Offer 02 · Monthly</div><h3>Social media management</h3></div><div class="p">From $697<small>/ month</small></div></a>
+    </div>
+  </div>
+</section>

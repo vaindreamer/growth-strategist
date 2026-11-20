@@ -13,7 +13,7 @@ One file per section. Paste each into its own GHL **Custom JS/HTML** element.
 | `07-testimonials.html` | **Client testimonials**: 1 video + 3 image testimonials (click to enlarge) |
 | `08-about.html` | **About me** + headshot, facts, book/portfolio buttons |
 | `09-faq.html` | FAQ (click to open) |
-| `10-book-a-call.html` | Final CTA |
+| `10-book-a-call.html` | Book a call: copy on the left, **GHL calendar slot** on the right |
 | `11-footer.html` | Footer |
 
 ## GHL setup (every section)
@@ -28,5 +28,5 @@ Sections stretch edge to edge on their own, even inside a boxed container.
    `img/testimonial-1/2/3.jpg` (each appears twice: `src` and `data-full`). Fill in every `[Client name]` / `[Business name]`.
 3. `08-about.html`: swap the headshot placeholder (instructions in the comment) and the portfolio link.
 4. `06-brands.html`: point "See my portfolio" at your GHL portfolio page.
-5. `10-book-a-call.html`: add your booking link and email.
-6. Optional: point every `href="#book"` button straight at your GHL calendar.
+5. `10-book-a-call.html`: delete the placeholder box and paste your GHL calendar embed code in its place (Calendars → your discovery call → Copy embed code).
+6. Every "Book a discovery call" button already scrolls down to the calendar, so no links to change.

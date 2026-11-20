@@ -1,4 +1,4 @@
-<!-- ===== 10 FINAL CTA (book a call) ===== -->
+<!-- ===== 10 BOOK A CALL (copy left, GHL calendar right) ===== -->
 <!-- GHL: paste into a Custom Code element. Section + row + column: full width, 0 padding. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,20 +31,39 @@ html,body{overflow-x:clip}
 .mrj{--rose:#6B0B0C;--serif:var(--accent-serif)}
 .mrj :where(.chip){display:inline-block;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--tint);color:var(--ink);line-height:1.4}
 
-.mrj.mrj-cta{padding:110px 0;background:var(--ink);color:var(--paper)}
-.mrj-cta h2{font-size:clamp(40px,6vw,80px);font-weight:800;max-width:16ch}
+.mrj.mrj-cta{padding:104px 0;background:var(--ink);color:var(--paper)}
+.mrj-cta .cta-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.mrj-cta .copy{position:sticky;top:96px}
+.mrj-cta .eyebrow{color:var(--dark-soft)}
+.mrj-cta h2{font-size:clamp(38px,4.8vw,64px);font-weight:800;max-width:14ch;margin-top:14px}
 .mrj-cta h2 .g{color:var(--tint)}
-.mrj-cta p{color:var(--dark-soft);font-size:19px;max-width:50ch;margin:22px 0 32px}
-.mrj-cta .btn{background:var(--on-dark);border-color:var(--on-dark);color:var(--ink)}
-.mrj-cta .todo{display:inline-block;border:1.5px dashed var(--on-dark);color:var(--on-dark);border-radius:8px;padding:4px 10px;font-weight:600;font-size:15px}
-.mrj-cta .contact-list{display:flex;flex-wrap:wrap;gap:12px 20px;margin-top:28px}
+.mrj-cta p{color:var(--dark-soft);font-size:19px;max-width:42ch;margin:22px 0 0}
+.mrj-cta ul.expect{list-style:none;padding:0;margin:30px 0 0;display:grid;gap:12px}
+.mrj-cta ul.expect li{list-style:none;display:flex;gap:12px;align-items:flex-start;font-size:16px;color:var(--paper)}
+.mrj-cta ul.expect li::before{content:"";flex:none;width:18px;height:18px;margin-top:4px;border-radius:50%;background:var(--tint);box-shadow:inset 0 0 0 5px var(--tint),inset 0 0 0 18px var(--ink)}
+.mrj-cta .cal{background:#fff;color:var(--ink);border-radius:22px;padding:12px;box-shadow:0 40px 70px -30px rgba(0,0,0,.7);min-height:640px}
+.mrj-cta .cal iframe{width:100%;border:0;min-height:620px;display:block}
+.mrj-cta .cal-placeholder{min-height:616px;border:2px dashed var(--line);border-radius:14px;background:repeating-linear-gradient(135deg,#FFFDF0 0 12px,#FFF8CA 12px 24px);display:grid;place-items:center;text-align:center;padding:24px;color:var(--ink-soft)}
+.mrj-cta .cal-placeholder b{display:block;font-family:var(--display);font-size:24px;color:var(--ink);margin-bottom:6px}
+@media (max-width:900px){.mrj-cta .cta-grid{grid-template-columns:1fr;gap:40px}.mrj-cta .copy{position:static}}
 </style>
 <section class="mrj mrj-cta" id="book" aria-labelledby="cta-h">
-  <div class="wrap">
-    <h2 id="cta-h">Let's find the gap between your posts and your <span class="g">bookings.</span></h2>
-    <p>On a free discovery call, I'll look at your current content and pages, and tell you which offer fits where you are right now.</p>
-    <!-- Replace href="#book" with your GHL calendar / booking link -->
-    <a class="btn" href="#book">Book a discovery call</a>
-    <div class="contact-list"><span class="todo">Add booking link</span><span class="todo">Add email</span></div>
+  <div class="wrap cta-grid">
+    <div class="copy">
+      <div class="eyebrow">Book a discovery call</div>
+      <h2 id="cta-h">Let's find the gap between your posts and your <span class="g">bookings.</span></h2>
+      <p>On a free discovery call, I'll look at your current content and pages, and tell you which offer fits where you are right now.</p>
+      <ul class="expect">
+        <li>Pick a time that suits you</li>
+        <li>Get a confirmation and calendar invite by email</li>
+        <li>Leave with the first thing I'd fix</li>
+      </ul>
+    </div>
+    <div class="cal">
+      <!-- ===== GHL CALENDAR =====
+           Delete the placeholder <div> below and paste your calendar embed code in its place.
+           GHL: Calendars > Calendar Settings > your discovery call > ⋮ (or Share) > Copy embed code -->
+      <div class="cal-placeholder"><div><b>Your GHL calendar goes here</b>Paste your calendar embed code in place of this box.</div></div>
+    </div>
   </div>
 </section>
